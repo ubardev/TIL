@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <link
+      rel="shortcut icon"
+      sizes="16x16 32x32 64x64"
+      href="https://nomadcoders.co/m.png"
+    />
+    <title>Home - My first website.</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="This is my welcome page." />
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      div {
+        background-color: teal;
+        width: 200px;
+        height: 200px;
+      }
+      @media screen and (min-device-width: 601px) and (max-width: 1200px) and (orientation: landscape) {
+        div {
+          background-color: wheat;
+        }
+      }
+      span {
+        font-size: 36px;
+      }
+      @media screen and (orientation: landscape) {
+        span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <span>Please flip your phone :(</span>
+  </body>
+</html>
