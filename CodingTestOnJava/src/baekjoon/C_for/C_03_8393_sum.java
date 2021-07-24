@@ -6,6 +6,7 @@ public class C_03_8393_sum {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int lastNumber = sc.nextInt();
+        sc.close();
         int sum = 0;
 
         for (int i=1; i<= lastNumber; i++) {
