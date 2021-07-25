@@ -3,7 +3,7 @@ package baekjoon.C_for;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class C_04_quickSum {
+public class C_04_15552_quickSum {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
