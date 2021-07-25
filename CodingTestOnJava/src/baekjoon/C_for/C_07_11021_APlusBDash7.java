@@ -1,24 +1,25 @@
 package baekjoon.C_for;
 
-import java.io.*;
-import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class C_07_11021_APlusBDash7 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int testCaseCount = Integer.parseInt(br.readLine());
+        int a = Integer.parseInt(br.readLine());
 
-        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
-        for (int i=0; i<testCaseCount; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            bw.write("Case #" + (i+1) + ": " + (Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken())) + "\n");
+        for (int i=1; i<=a; i++) {
+            String str = br.readLine();
+            sb.append("Case #")
+                    .append(i)
+                    .append(": ")
+                    .append(str.charAt(0)-'0' + str.charAt(2)-'0')
+                    .append("\n");
         }
-
-        br.close();
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
     }
 }
