@@ -5,21 +5,20 @@ import java.util.StringTokenizer;
 
 public class C_04_quickSum {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int testCaseCount = Integer.parseInt(br.readLine());
+        int testCaseCount = Integer.parseInt(bufferedReader.readLine());
 
-        StringTokenizer st;
+        StringTokenizer stringTokenizer;
 
-        for (int i=0; i<testCaseCount; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            bw.write((Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken())) + "\n");
+        for (int i = 0; i < testCaseCount; i++) {
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            bufferedWriter.write((Integer.parseInt(stringTokenizer.nextToken()) + Integer.parseInt(stringTokenizer.nextToken())) + "\n");
         }
 
-        br.close();
-
-        bw.flush();
-        bw.close();
+        bufferedReader.close();
+        bufferedWriter.flush();
+        bufferedWriter.close();
     }
 }
