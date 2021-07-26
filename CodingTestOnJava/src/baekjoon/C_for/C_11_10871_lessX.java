@@ -8,25 +8,22 @@ import java.util.StringTokenizer;
 public class C_11_10871_lessX {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int arrayCount = Integer.parseInt(st.nextToken());
-        int targetNumber = Integer.parseInt(st.nextToken());
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int[] arrays = new int[arrayCount];
-        st = new StringTokenizer(br.readLine());
-
-        for (int i=0; i<arrayCount; i++) {
-            arrays[i] = Integer.parseInt(st.nextToken());
-        }
-        br.close();
+        int N = Integer.parseInt(st.nextToken());
+        int X = Integer.parseInt(st.nextToken());
 
         StringBuilder sb = new StringBuilder();
-        for (int i=0; i<arrayCount; i++) {
-            if (arrays[i] < targetNumber) {
-                sb.append(arrays[i] + " ");
-            }
+
+        st = new StringTokenizer(br.readLine(), " ");
+
+        for (int i=0; i<N; i++) {
+            int value = Integer.parseInt(st.nextToken());
+
+            if (value < X)
+                sb.append(value).append(" ");
         }
 
-        System.out.print(sb);
+        System.out.println(sb);
     }
 }
