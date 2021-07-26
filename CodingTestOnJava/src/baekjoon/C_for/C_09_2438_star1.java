@@ -5,18 +5,16 @@ import java.io.*;
 public class C_09_2438_star1 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int count = Integer.parseInt(br.readLine());
 
-        int starCount = Integer.parseInt(br.readLine());
-        br.close();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i=1; i<=starCount; i++) {
+        for (int i=1; i<=count; i++) {
             for (int j=1; j<=i; j++) {
-                bw.write("*");
+                sb.append("*");
             }
-            bw.write("\n");
+            sb.append("\n");
         }
-        bw.flush();
-        bw.close();
+        System.out.print(sb);
     }
 }
