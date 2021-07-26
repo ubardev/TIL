@@ -9,12 +9,10 @@ public class D_01_10952_APlusBDash5 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String lineData = br.readLine();
-        StringTokenizer st;
         StringBuilder sb = new StringBuilder();
 
         while (!"0 0".equals(lineData)) {
-            st = new StringTokenizer(lineData, " ");
-            sb.append(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()))
+            sb.append(lineData.charAt(0)-48 + lineData.charAt(2)-48)
                     .append("\n");
             lineData = br.readLine();
         }
