@@ -11,10 +11,12 @@ public class D_02_10951_APlusBDash4 {
         String row;
 
         while ((row = br.readLine()) != null) {
-            sb.append((row.charAt(0) - 48) + (row.charAt(2) - 48))
-                    .append("\n");
+            int a = row.charAt(0) - 48;
+            int b = row.charAt(2) - 48;
+
+            sb.append(a+b).append("\n");
         }
 
-        System.out.print(sb);
+        System.out.println(sb);
     }
 }
