@@ -1,36 +1,30 @@
 package baekjoon.E_array;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.IOException;
 
 public class E_06_8958_ox {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        StringTokenizer st;
         StringBuilder sb = new StringBuilder();
+        int N = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            String value = st.nextToken();
             int score = 0;
             int sum = 0;
 
-            for (int j = 0; j < value.length(); j++) {
-                if (value.charAt(j) == 'O') {
+            for (byte value : br.readLine().getBytes()) {
+                if (value == 'O') {
                     score++;
+                    sum += score;
                 } else {
                     score = 0;
                 }
-
-                sum += score;
             }
 
             sb.append(sum).append("\n");
         }
-
         System.out.println(sb);
     }
 }
