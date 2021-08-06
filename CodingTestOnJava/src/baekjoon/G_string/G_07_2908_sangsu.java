@@ -19,10 +19,6 @@ public class G_07_2908_sangsu {
         int firstNumberToInteger = Integer.parseInt(firstNumber);
         int secondNumberToInteger = Integer.parseInt(secondNumber);
 
-        if (firstNumberToInteger > secondNumberToInteger)
-            System.out.println(firstNumberToInteger);
-        else
-            System.out.println(secondNumberToInteger);
-
+        System.out.println(Math.max(firstNumberToInteger, secondNumberToInteger));
     }
 }
