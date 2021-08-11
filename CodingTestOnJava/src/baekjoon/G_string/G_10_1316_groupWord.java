@@ -5,33 +5,29 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class G_10_1316_groupWord {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         int count = 0;
 
         for (int i = 0; i < N; i++) {
-            if (isGroupWord(br.readLine())) {
+            if (isGroupWord(br.readLine()))
                 count++;
-            }
         }
 
         System.out.println(count);
     }
 
     public static boolean isGroupWord(String word) {
-        boolean[] array = new boolean[26];
-        int prev = 0;
+        boolean[] charArray = new boolean[26];
+        int prevChar = 0;
 
         for (int i = 0; i < word.length(); i++) {
-            int now = word.charAt(i);
-
-            if (now != prev) {
-
-                if (array[now - 'a'] == false) {
-                    array[now - 'a'] = true;
-                    prev = now;
+            int currentChar = word.charAt(i);
+            if (currentChar != prevChar) {
+                if (!charArray[currentChar - 'a']) {
+                    charArray[currentChar - 'a'] = true;
+                    prevChar = currentChar;
                 } else {
                     return false;
                 }
