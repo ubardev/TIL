@@ -7,32 +7,23 @@ import java.io.IOException;
 public class H_06_2869_womanLeader {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[][] apart = new int[15][15];
-        createApart(apart);
-
         int testCaseCount = Integer.parseInt(br.readLine());
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuffer sb = new StringBuffer();
 
         for (int i = 0; i < testCaseCount; i++) {
             int floor = Integer.parseInt(br.readLine());
             int room = Integer.parseInt(br.readLine());
 
-            stringBuffer.append(apart[floor][room]).append("\n");
+            sb.append(getPeopleCount(floor, room)).append("\n");
         }
 
-        System.out.println(stringBuffer);
+        System.out.println(sb);
     }
 
-    private static void createApart(int[][] apart) {
-        for (int i = 0; i < 15; i++) {
-            apart[i][1] = 1;
-            apart[0][i] = i;
-        }
+    public static int getPeopleCount(int floor, int room) {
+        if (floor == 0) return room;
+        else if (room == 0) return 0;
 
-        for (int i = 1; i < 15; i++) {
-            for (int j = 2; j < 15; j++) {
-                apart[i][j] = apart[i][j-1] + apart[i-1][j];
-            }
-        }
+        return getPeopleCount(floor, room - 1) + getPeopleCount(floor - 1, room);
     }
 }
