@@ -10,11 +10,11 @@ public class H_07_2839_sugarDelivery {
         int N = Integer.parseInt(br.readLine());
         int count = 0;
 
-        while(true) {
+        while (true) {
             if (N % 5 == 0) {
-                System.out.println(N / 5 + count);
+                System.out.println(count + N / 5);
                 break;
-            } else if (N < 0) {
+            } else if (N < 0){
                 System.out.println(-1);
                 break;
             }
