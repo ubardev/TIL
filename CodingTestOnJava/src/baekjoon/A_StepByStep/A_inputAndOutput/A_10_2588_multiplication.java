@@ -1,4 +1,4 @@
-package baekjoon.A_input_and_output;
+package baekjoon.A_inputAndOutput;
 
 import java.util.Scanner;
 

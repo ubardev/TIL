@@ -1,4 +1,4 @@
-package baekjoon.A_input_and_output;
+package baekjoon.A_inputAndOutput;
 
 public class A_04_10172_dog {
     public static void main(String[] args) {
