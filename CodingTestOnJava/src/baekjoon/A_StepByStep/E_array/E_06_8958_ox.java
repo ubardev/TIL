@@ -1,4 +1,4 @@
-package baekjoon.E_array;
+package baekjoon.A_StepByStep.E_array;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

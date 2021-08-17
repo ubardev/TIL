@@ -1,4 +1,4 @@
-package baekjoon.B_if;
+package baekjoon.A_StepByStep.B_if;
 
 import java.util.Scanner;
 

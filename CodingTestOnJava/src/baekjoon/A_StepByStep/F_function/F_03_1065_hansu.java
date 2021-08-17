@@ -1,4 +1,4 @@
-package baekjoon.F_function;
+package baekjoon.A_StepByStep.F_function;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

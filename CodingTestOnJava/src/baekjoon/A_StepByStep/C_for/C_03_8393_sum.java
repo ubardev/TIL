@@ -1,4 +1,4 @@
-package baekjoon.C_for;
+package baekjoon.A_StepByStep.C_for;
 
 import java.util.Scanner;
 

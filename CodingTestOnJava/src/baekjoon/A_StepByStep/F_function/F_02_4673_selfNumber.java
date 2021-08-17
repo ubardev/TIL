@@ -1,4 +1,4 @@
-package baekjoon.F_function;
+package baekjoon.A_StepByStep.F_function;
 
 public class F_02_4673_selfNumber {
     public static void main(String[] args) {

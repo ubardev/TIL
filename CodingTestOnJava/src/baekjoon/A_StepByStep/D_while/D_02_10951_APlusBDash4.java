@@ -1,4 +1,4 @@
-package baekjoon.D_while;
+package baekjoon.A_StepByStep.D_while;
 
 import java.io.BufferedReader;
 import java.io.IOException;

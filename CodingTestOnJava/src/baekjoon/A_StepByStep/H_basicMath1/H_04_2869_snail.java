@@ -1,4 +1,4 @@
-package baekjoon.H_basicMath1;
+package baekjoon.A_StepByStep.H_basicMath1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

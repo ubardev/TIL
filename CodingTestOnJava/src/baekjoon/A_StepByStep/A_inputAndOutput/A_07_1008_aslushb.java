@@ -1,4 +1,4 @@
-package baekjoon.A_inputAndOutput;
+package baekjoon.A_StepByStep.A_inputAndOutput;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package baekjoon.G_string;
+package baekjoon.A_StepByStep.G_string;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
