@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class I_02_2581_sosoo {
+public class I_02_2581_prime {
     public static boolean prime[];
 
     public static void main(String[] args) throws IOException {
