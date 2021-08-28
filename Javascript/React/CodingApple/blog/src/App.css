@@ -4,6 +4,13 @@
 body {
   font-family: 'nanumsquare';
 }
+
+.modal {
+  margin-top: 2ppx;
+  padding: 20px;
+  background: #eee;
+}
+
 .black-nav {
   background: black;
   width: 100%;
