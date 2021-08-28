@@ -42,7 +42,18 @@ function App() {
         <hr/>
       </div>
 
-      <button onClick={ modal토글 }>버튼</button>
+      {
+        글제목.map((글) => {
+          return (
+            <div className="list">
+              <h3> { 글 } <span onClick={ () => { 따봉변경(따봉 + 1) } }>👍</span> { 따봉 } </h3>
+              <p>2월 18일 발행</p>
+              <hr/>
+            </div>
+          );
+        })
+
+      }
 
       {
         modal
