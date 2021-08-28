@@ -7,33 +7,34 @@ import java.util.StringTokenizer;
 
 public class I_09_4153_직각삼각형 {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder stringBuilder = new StringBuilder();
         String inputData;
         StringTokenizer stringTokenizer;
-        int firstNumber;
-        int secondNumber;
-        int thirdNumber;
-        int maxNumber;
-        boolean result;
+        int x;
+        int y;
+        int z;
 
         while (true) {
-            inputData = br.readLine();
+            inputData = bufferedReader.readLine();
             if (inputData.equals("0 0 0")) break;
+
             stringTokenizer = new StringTokenizer(inputData, " ");
-            firstNumber = Integer.parseInt(stringTokenizer.nextToken());
-            secondNumber = Integer.parseInt(stringTokenizer.nextToken());
-            thirdNumber = Integer.parseInt(stringTokenizer.nextToken());
-            maxNumber = Math.max(firstNumber, Math.max(secondNumber, thirdNumber));
 
-            if (firstNumber == maxNumber) {
-                result = firstNumber * firstNumber == secondNumber * secondNumber + thirdNumber * thirdNumber;
-            } else if (secondNumber == maxNumber) {
-                result = secondNumber * secondNumber == firstNumber * firstNumber + thirdNumber * thirdNumber;
-            } else {
-                result = thirdNumber * thirdNumber == firstNumber * firstNumber + secondNumber * secondNumber;
-            }
+            x = Integer.parseInt(stringTokenizer.nextToken());
+            y = Integer.parseInt(stringTokenizer.nextToken());
+            z = Integer.parseInt(stringTokenizer.nextToken());
 
-            System.out.println(result ? "right" : "wrong");
+            if (x * x == (y * y + z * z))
+                stringBuilder.append("right").append('\n');
+            else if (y * y == (x * x + z * z))
+                stringBuilder.append("right").append('\n');
+            else if (z * z == (x * x + y * y))
+                stringBuilder.append("right").append('\n');
+            else
+                stringBuilder.append("wrong").append('\n');
         }
+
+        System.out.println(stringBuilder);
     }
 }
