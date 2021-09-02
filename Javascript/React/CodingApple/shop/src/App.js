@@ -1,8 +1,14 @@
-import React from 'react';
+/* eslint-disable */
+
+import React, { useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
+import Data from './data.js';
 
 function App() {
+
+  let [shoes, shoes변경] = useState(Data);
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -38,26 +44,30 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-            <h4>상품명</h4>
-            <h4>상품설명 & 가격</h4>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="100%" />
-            <h4>상품명</h4>
-            <h4>상품설명 & 가격</h4>
-          </div>
-          <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="100%" />
-            <h4>상품명</h4>
-            <h4>상품설명 & 가격</h4>
-          </div>
+          {
+            shoes.map((shoe, index) => {
+              return (
+                <Card key={shoe.id} shoe={shoe} />
+              );
+            })
+          }
         </div>
       </div>
 
     </div>
   );
 }
+
+const Card = ({ shoe }) => {
+  return (
+    <>
+      <div className="col-md-4">
+        <img src={ shoe.thumbnailUrl } width="100%" />
+        <h4>{ shoe.title }</h4>
+        <h4>{ shoe.content } & { shoe.price }</h4>
+      </div>
+    </>
+  );
+};
 
 export default App;
