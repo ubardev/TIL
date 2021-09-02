@@ -5,6 +5,8 @@ import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bo
 import './App.css';
 import Data from './data.js';
 
+import { Link, Route, Switch } from 'react-router-dom';
+
 function App() {
 
   let [shoes, shoes변경] = useState(Data);
@@ -31,29 +33,45 @@ function App() {
         </Container>
       </Navbar>
 
-      <Jumbotron className="background">
-        <h1>20% Season Off</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
-      </Jumbotron>
+      <Route exact path="/">
+        <Jumbotron className="background">
+          <h1>20% Season Off</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for calling
+            extra attention to featured content or information.
+          </p>
+          <p>
+            <Button variant="primary">Learn more</Button>
+          </p>
+        </Jumbotron>
 
-      <div className="container">
-        <div className="row">
-          {
-            shoes.map((shoe, index) => {
-              return (
-                <Card key={shoe.id} shoe={shoe} />
-              );
-            })
-          }
+        <div className="container">
+          <div className="row">
+            {
+              shoes.map((shoe, index) => {
+                return (
+                  <Card key={shoe.id} shoe={shoe} />
+                );
+              })
+            }
+          </div>
         </div>
-      </div>
-
+      </Route>
+      <Route path="/detail">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+            </div>
+            <div className="col-md-6 mt-4">
+              <h4 className="pt-5">상품명</h4>
+              <p>상품설명</p>
+              <p>120000원</p>
+              <button className="btn btn-danger">주문하기</button>
+            </div>
+          </div>
+        </div>
+      </Route>
     </div>
   );
 }
