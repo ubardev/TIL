@@ -7,10 +7,11 @@ import Data from './data.js';
 
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from "./Detail";
+import axios from 'axios';
 
 function App() {
 
-  let [shoes, shoes변경] = useState(Data);
+  let [shoes, setShoes] = useState(Data);
 
   return (
     <div className="App">
@@ -57,6 +58,14 @@ function App() {
                 })
               }
             </div>
+            <button className="btn btn-primary" onClick={() => {
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then((result) => {
+                  setShoes([...shoes, result.data]);
+                  console.log('shoes==========>', shoes);
+                })
+                .catch(() => {});
+            }}>더 보기</button>
           </div>
         </Route>
 
@@ -82,6 +91,6 @@ const Card = ({ shoe }) => {
       </div>
     </>
   );
-};
+}
 
 export default App;
