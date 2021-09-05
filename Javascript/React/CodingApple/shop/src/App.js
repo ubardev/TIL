@@ -62,7 +62,7 @@ function App() {
               axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
                   setShoes([...shoes, result.data]);
-                  console.log('shoes==========>', shoes);
+                  console.log('shoes=========>', shoes);
                 })
                 .catch(() => {});
             }}>더 보기</button>
