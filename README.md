@@ -7,6 +7,6 @@ Today I Learned
 ## Publishing
 ## React
 
-# Change github account
+### Change github account
 git config --global user.name "Ubar"  
 git config --global user.email bellin83@gmail.com
