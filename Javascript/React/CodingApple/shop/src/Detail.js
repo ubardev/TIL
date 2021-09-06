@@ -2,13 +2,12 @@ import React, {useEffect, useState} from "react";
 import { useHistory, useParams } from 'react-router-dom';
 import './Detail.scss';
 
-const Detail = ({ shoes }) => {
+const Detail = ({ shoes, 재고, 재고변경 }) => {
   const [showAlert, setShowAlert] = useState(true);
   const [inputData, setInputData] = useState('');
 
   useEffect(() => {
     let timer = setTimeout(() => { setShowAlert(false) }, 2000);
-    console.log('1111111 ==========> ', 1111111);
     return () => clearTimeout(timer);
   }, []);
 
@@ -39,7 +38,12 @@ const Detail = ({ shoes }) => {
           <h4 className="pt-5">{shoe.title}</h4>
           <p>{shoe.content}</p>
           <p>{shoe.price}원</p>
-          <button className="btn btn-danger">주문하기</button>
+
+          <Info 재고={재고} />
+
+          <button className="btn btn-danger" onClick={() => {
+            재고변경([9,10,11]);
+          }}>주문하기</button>
           <button className="btn btn-danger" onClick={() => {
             history.push('/');
           }}>뒤로가기</button>
@@ -48,5 +52,13 @@ const Detail = ({ shoes }) => {
     </div>
   );
 };
+
+const Info = ({ 재고 }) => {
+  return (
+    <>
+      <p>재고 : {재고[0]}</p>
+    </>
+  )
+}
 
 export default Detail;
