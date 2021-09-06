@@ -53,7 +53,7 @@ function App() {
               {
                 shoes.map((shoe, index) => {
                   return (
-                    <Card key={shoe.id} shoe={shoe} />
+                    <Card key={index} shoe={shoe} />
                   );
                 })
               }
@@ -61,8 +61,7 @@ function App() {
             <button className="btn btn-primary" onClick={() => {
               axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
-                  setShoes([...shoes, result.data]);
-                  console.log('shoes=========>', shoes);
+                  setShoes([...shoes, ...result.data]);
                 })
                 .catch(() => {});
             }}>더 보기</button>
