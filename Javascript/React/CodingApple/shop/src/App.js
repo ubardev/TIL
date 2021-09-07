@@ -7,6 +7,7 @@ import Data from './data.js';
 
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from "./Detail";
+import Cart from "./Cart";
 import axios from 'axios';
 
 let 재고context = React.createContext();
@@ -76,6 +77,10 @@ function App() {
 
         <Route path="/detail/:id">
           <Detail shoes={shoes} 재고={재고} 재고변경={재고변경} />
+        </Route>
+
+        <Route path="/cart">
+          <Cart></Cart>
         </Route>
 
         <Route path="/:id">
