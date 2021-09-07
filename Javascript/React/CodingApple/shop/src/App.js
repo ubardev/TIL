@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
 import Data from './data.js';
@@ -8,6 +8,8 @@ import Data from './data.js';
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from "./Detail";
 import axios from 'axios';
+
+let 재고context = React.createContext();
 
 function App() {
 
@@ -50,6 +52,8 @@ function App() {
           </Jumbotron>
 
           <div className="container">
+
+            <재고context.Provider value={재고}>
             <div className="row">
               {
                 shoes.map((shoe, index) => {
@@ -59,6 +63,7 @@ function App() {
                 })
               }
             </div>
+            </재고context.Provider>
             <button className="btn btn-primary" onClick={() => {
               axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
@@ -82,12 +87,15 @@ function App() {
 }
 
 const Card = ({ shoe }) => {
+  let 재고 = useContext(재고context);
+
   return (
     <>
       <div className="col-md-4">
-        <img src={ shoe.thumbnailUrl } width="100%" />
+        <img src={ 'https://codingapple1.github.io/shop/shoes' + (shoe.id + 1) + '.jpg' } width="100%" />
         <h4>{ shoe.title }</h4>
-        <h4>{ shoe.content } & { shoe.price }</h4>
+        <p>{ shoe.content } & { shoe.price }</p>
+        {재고}
       </div>
     </>
   );
