@@ -3,8 +3,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import './Detail.scss';
 import { CSSTransition } from "react-transition-group";
 import { Nav } from "react-bootstrap";
+import {connect} from "react-redux";
 
-const Detail = ({ shoes, 재고, 재고변경 }) => {
+const Detail = ({ shoes, 재고, 재고변경, dispatch }) => {
   const [showAlert, setShowAlert] = useState(true);
   const [inputData, setInputData] = useState('');
 
@@ -48,6 +49,8 @@ const Detail = ({ shoes, 재고, 재고변경 }) => {
 
           <button className="btn btn-danger" onClick={() => {
             재고변경([9,10,11]);
+            dispatch({type: '항목추가', payload: {id:2, name:'새로운상품', quan:1}});
+            history.push('/cart');
           }}>주문하기</button>
           <button className="btn btn-danger" onClick={() => {
             history.push('/');
@@ -94,4 +97,12 @@ const Info = ({ 재고 }) => {
   )
 }
 
-export default Detail;
+function state를props화(state){
+  return {
+    state : state.reducer,
+    alert열렸니: state.reducer2,
+  }
+}
+
+export default connect(state를props화)(Detail);
+
