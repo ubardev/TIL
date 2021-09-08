@@ -49,7 +49,7 @@ const Detail = ({ shoes, 재고, 재고변경, dispatch }) => {
 
           <button className="btn btn-danger" onClick={() => {
             재고변경([9,10,11]);
-            dispatch({type: '항목추가', payload: {id:2, name:'새로운상품', quan:1}});
+            dispatch({type: '항목추가', payload: {id:shoe.id, name:shoe.title, quan:1}});
             history.push('/cart');
           }}>주문하기</button>
           <button className="btn btn-danger" onClick={() => {
