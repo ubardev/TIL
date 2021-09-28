@@ -7,6 +7,7 @@ import java.io.IOException;
 public class I_02_2581_소수 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int min = Integer.parseInt(br.readLine());
         int max = Integer.parseInt(br.readLine());
 
@@ -15,14 +16,13 @@ public class I_02_2581_소수 {
         getPrimes(primes);
 
         int sum = 0;
-        int minNumber = Integer.MAX_VALUE;
+        int minValue = Integer.MAX_VALUE;
 
-        for (int i = min; i < primes.length; i++) {
+        for (int i = min; i < max + 1; i++) {
             if (!primes[i]) {
                 sum += i;
-
-                if (minNumber == Integer.MAX_VALUE) {
-                    minNumber = i;
+                if (minValue == Integer.MAX_VALUE) {
+                    minValue = i;
                 }
             }
         }
@@ -31,7 +31,7 @@ public class I_02_2581_소수 {
             System.out.println(-1);
         } else {
             System.out.println(sum);
-            System.out.println(minNumber);
+            System.out.println(minValue);
         }
     }
 
@@ -45,6 +45,7 @@ public class I_02_2581_소수 {
             for (int j = i * i; j < primes.length; j += i) {
                 primes[j] = true;
             }
+
         }
     }
 }
