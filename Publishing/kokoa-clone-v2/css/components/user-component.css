@@ -11,8 +11,19 @@
 .user-component__avatar {
   width: 70px;
   height: 70px;
-  border-radius: 27px;
+  border-radius: 30px;
   margin-right: 20px;
+}
+
+.user-component__avatar--xl {
+  width: 80px;
+  height: 80px;
+}
+
+.user-component__avatar--xl {
+  width: 60px;
+  height: 60px;
+  border-radius: 25px;
 }
 
 .user-component__title {
