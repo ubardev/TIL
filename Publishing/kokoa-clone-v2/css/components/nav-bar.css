@@ -32,3 +32,15 @@
     left: 15px;
     bottom: 15px;
 }
+
+.nav__dot {
+    background-color: tomato;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 20px;
+    bottom: 25px;
+}
