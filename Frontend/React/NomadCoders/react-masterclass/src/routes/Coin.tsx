@@ -25,7 +25,6 @@ const Loader = styled.span`
 `;
 
 interface Params {
-
   coinId: string;
 }
 
@@ -109,11 +108,6 @@ function Coin() {
         const priceData = await(
           await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
         ).json();
-
-        console.log('Object.keys(priceData) ==========>', Object.keys(priceData).join());
-        console.log('Object.values(priceData).map(v => typeof v).join() ==========>', Object.values(priceData).map(v => typeof v).join());
-
-        console.log('priceData ==========>', Object.keys(priceData));
       }
     )();
   }, []);
