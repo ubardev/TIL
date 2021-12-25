@@ -10,6 +10,8 @@ import {Helmet} from "react-helmet";
 
 const Container = styled.div`
   padding: 0 20px;
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const Header = styled.div`
