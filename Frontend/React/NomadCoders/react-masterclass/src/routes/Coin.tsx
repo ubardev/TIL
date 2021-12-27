@@ -144,8 +144,11 @@ interface PriceData {
   };
 }
 
-function Coin() {
+interface ICoinProps {
+  isDark: boolean;
+}
 
+function Coin({isDark}:ICoinProps) {
   const { coinId } = useParams<Params>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -159,28 +162,6 @@ function Coin() {
       refetchInterval: 5000,
     }
   );
-
-  // const [loading, setLoading] = useState(true);
-  // const [info, setInfo] = useState<InfoData>();
-  // const [priceInfo, setPriceInfo] = useState<PriceData>();
-
-  // useEffect(() => {
-  //   (
-  //     async() => {
-  //       const infoData = await(
-  //         await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-  //       ).json();
-  //
-  //       const priceData = await(
-  //         await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-  //       ).json();
-  //
-  //       setInfo(infoData);
-  //       setPriceInfo(priceData);
-  //       setLoading(false);
-  //     }
-  //   )();
-  // }, []);
 
   const loading = infoLoading ||  tickersLoading;
 
@@ -238,7 +219,7 @@ function Coin() {
                   <Price />
                 </Route>
                 <Route path={`/${coinId}/chart`}>
-                  <Chart coinId={coinId} />
+                  <Chart isDark={isDark} coinId={coinId} />
                 </Route>
               </Switch>
             </>
