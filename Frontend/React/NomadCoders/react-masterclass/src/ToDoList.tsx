@@ -1,10 +1,10 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
 function ToDoList() {
-  const [toDo, setToDo] = useState("");
-  const onChange = (event:React.FormEvent<HTMLInputElement>) => {
+  const [toDo, setToDo] = useState('');
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
-      currentTarget: {value},
+      currentTarget: { value },
     } = event;
     setToDo(value);
   };
