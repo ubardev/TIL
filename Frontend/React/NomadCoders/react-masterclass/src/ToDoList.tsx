@@ -5,19 +5,17 @@ interface IForm {
 }
 
 function ToDoList() {
-  const { register, handleSubmit, setValue } = useForm<IForm>();
-  const handleValid = (data: IForm) => {
-    console.log('add to do', data.toDo);
-    setValue('toDo', '');
-  };
-
+  const { register, watch } = useForm();
+  console.log(watch());
   return (
     <div>
-      <form onSubmit={handleSubmit(handleValid)}>
-        <input
-          {...register('toDo', { required: 'Please write a To Do' })}
-          placeholder="Write a to do"
-        />
+      <form>
+        <input {...register('email')} placeholder="Email" />
+        <input {...register('firstName')} placeholder="First Name" />
+        <input {...register('lastName')} placeholder="Last Name" />
+        <input {...register('username')} placeholder="Username" />
+        <input {...register('password')} placeholder="Password" />
+        <input {...register('password1')} placeholder="Password1" />
         <button>Add</button>
       </form>
     </div>
