@@ -14,7 +14,16 @@ function ToDoList() {
   return (
     <div>
       <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit(onValid)}>
-        <input {...register('email', { required: true })} placeholder="Email" />
+        <input
+          {...register('email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^[A-Za-z0-9._%+-]+@naver.com$/,
+              message: 'Only naver.com emails allowed',
+            },
+          })}
+          placeholder="Email"
+        />
         <input {...register('firstName', { required: true })} placeholder="First Name" />
         <input {...register('lastName', { required: true })} placeholder="Last Name" />
         <input
