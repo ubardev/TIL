@@ -5,17 +5,9 @@ data.sort()
 first = data[N - 1]
 second = data[N - 2]
 
-result = 0
+firstCount  = int(M / (K + 1)) * K
+firstCount += int(M % (K + 1))
 
-while True:
-    for i in range(K):
-        if M == 0:
-            break
-        result += first
-        M -= 1
-    if M == 0:
-        break
-    result += second
-    M -= 1
+result = (firstCount * first) + ((M - firstCount) * second)
 
 print(result)
