@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer = 'YES',
+          max;
+        let sum = a + b + c;
+
+        // 최대값 구하기
+        if (a > b) max = a;
+        else max = b;
+        if (c > max) max = c;
+
+        if (sum - max <= max) answer = 'NO';
+
+        return answer;
+      }
+      console.log(solution(13, 33, 17));
+    </script>
+  </body>
+</html>
