@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(day, arr) {
+    let answer = 0;
+
+    arr.map((number) => {
+      if (number % 10 === day)
+        answer++;
+    })
+
+    return answer;
+  }
+
+  arr = [25, 23, 11, 47, 53, 17, 33];
+  console.log(solution(3, arr));
+</script>
+</body>
+</html>
