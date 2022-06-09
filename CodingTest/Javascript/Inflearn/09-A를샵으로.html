@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // 방법 1
+        // let answer = "";
+        // for(let x of s) {
+        //   if (x === 'A') {
+        //     answer += '#';
+        //   } else {
+        //     answer += x;
+        //   }
+        // }
+
+        // 방법 2 정규식
+        // 알아둘 점 : string은 얕은 복사가 아니라 깊은 복사가 일어난다
+        let answer = s;
+        answer = answer.replace(/A/g, '#');
+        return answer;
+      }
+      console.log(solution('BANANA'));
+    </script>
+  </body>
+</html>
