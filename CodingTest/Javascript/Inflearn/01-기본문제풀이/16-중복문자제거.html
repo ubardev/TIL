@@ -9,13 +9,27 @@
   <body>
     <script>
       function solution(s) {
-        let answer = "";
+        // let answer = "";
+        //
+        // for (let i=0; i <s.length; i++) {
+        //   // console.log(s[i], i, s.indexOf(s[i]));
+        //   if (i === s.indexOf(s[i])) {
+        //     answer += s[i];
+        //   }
+        // }
+        //
+        // return answer;
 
-        for (let i=0; i <s.length; i++) {
-          // console.log(s[i], i, s.indexOf(s[i]));
-          if (i === s.indexOf(s[i])) {
-            answer += s[i];
-          }
+
+
+        // bonus
+        // 특정 문자열이 몇개 인지 찾아라!
+        let answer = 0;
+        let pos = s.indexOf('k');
+
+        while(pos !== -1) {
+          answer++;
+          pos = s.indexOf('k', pos + 1);
         }
 
         return answer;
