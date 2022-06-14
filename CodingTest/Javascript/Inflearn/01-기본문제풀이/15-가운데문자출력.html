@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let mid = Math.floor(s.length / 2); // 정수화
+
+        if (s.length % 2 === 1) {
+          answer = s.substring(mid, mid + 1);
+        } else {
+          answer = s.substring(mid - 1, mid + 1);
+        }
+
+        // if (s.length % 2 === 1) {
+        //   answer = s.substr(mid, 1);
+        // } else {
+        //   answer = s.substr(mid - 1, 2);
+        // }
+
+        return answer;
+      }
+      console.log(solution('good'));
+    </script>
+  </body>
+</html>
