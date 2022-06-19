@@ -10,24 +10,25 @@
 <script>
   function solution(n, arr) {
     let max = Number.MIN_SAFE_INTEGER;
-    let columnSum = 0;
     let rowSum = 0;
-    let crossLeftToRight = 0;
-    let crossRightToLeft = 0;
+    let columnSum = 0;
+    let leftToRightSum = 0;
+    let rightToLeftSum = 0;
 
     for (let i = 0; i < n; i++) {
-      columnSum = rowSum = 0;
+      rowSum = 0;
+      columnSum = 0;
       for (let j = 0; j < n; j++) {
-        columnSum += arr[i][j];
-        rowSum += arr[j][i];
+        rowSum += arr[i][j];
+        columnSum += arr[j][i];
       }
-      max = Math.max(max, columnSum, rowSum);
+      max = Math.max(max, rowSum, columnSum);
 
-      crossRightToLeft += arr[i][i];
-      crossLeftToRight += arr[i][n - i - 1];
+      leftToRightSum += arr[i][i];
+      rightToLeftSum += arr[i][n - i - 1];
 
       if (i === n - 1) {
-        max = Math.max(max, crossRightToLeft, crossLeftToRight);
+        max = Math.max(max, leftToRightSum, rightToLeftSum);
       }
     }
 
