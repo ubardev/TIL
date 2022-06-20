@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(s) {
+    // 나누기 몫 정수화 : Math.floor
+
+    let answer = "YES";
+    let word = s.toLowerCase();
+
+    for (let i = 0; i < Math.floor(s.length / 2); i++) {
+      if (word[i] !== word[s.length - i - 1]) return "NO";
+    }
+
+    return answer;
+  }
+
+  let str = "gooog";
+  console.log(solution(str));
+</script>
+</body>
+</html>
