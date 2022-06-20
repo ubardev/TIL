@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(s) {
+    let answer = "YES";
+    s = s.toLowerCase().replace(/[^a-z]/g, '');
+
+    if (s.split('').reverse().join('') !== s) return "NO";
+
+    return answer;
+  }
+
+  let str = "found7, time: study; Yduts; emit, 7Dnuof"
+  console.log(solution(str));
+</script>
+</body>
+</html>
