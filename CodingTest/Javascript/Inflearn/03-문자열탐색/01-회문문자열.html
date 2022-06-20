@@ -11,12 +11,21 @@
   function solution(s) {
     // 나누기 몫 정수화 : Math.floor
 
-    let answer = "YES";
-    let word = s.toLowerCase();
+    // Solution 1
+    // let answer = "YES";
+    // let word = s.toLowerCase();
+    //
+    // for (let i = 0; i < Math.floor(s.length / 2); i++) {
+    //   if (word[i] !== word[s.length - i - 1]) return "NO";
+    // }
+    //
+    // return answer;
 
-    for (let i = 0; i < Math.floor(s.length / 2); i++) {
-      if (word[i] !== word[s.length - i - 1]) return "NO";
-    }
+    // Solution 2
+    let answer = "YES";
+    s = s.toLowerCase();
+
+    if (s.split('').reverse().join('') !== s) return "NO";
 
     return answer;
   }
