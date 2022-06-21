@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(s, t) {
+    // 내 풀이
+    // let answer = [1001];
+    //
+    // for (let i = 1; i < s.length; i++) {
+    //   if (s[i] === t) answer.push(0);
+    //   else answer.push(answer[i -1] + 1);
+    // }
+    //
+    // for (let i = s.length - 1; i >= 0; i--) {
+    //   if (s[i] === t) answer[i] = 0;
+    //   else {
+    //     if (answer[i] > answer[i + 1] + 1) {
+    //       answer[i] = answer[i + 1] + 1
+    //     }
+    //   }
+    // }
+    //
+    // return answer;
+
+    let answer = [];
+    let p = 1000;
+
+    for (let x of s) {
+      if (x === t) {
+        p = 0;
+        answer.push(p);
+      } else {
+        p++;
+        answer.push(p);
+      }
+    }
+
+    p = 1000;
+    for (let i = s.length - 1; i >= 0; i--) {
+      if (s[i] === t) p = 0;
+      else {
+        p++;
+        answer[i] = Math.min(answer[i], p);
+      }
+    }
+
+    return answer;
+  }
+
+  let str = "teachermode";
+  console.log(solution(str, 'e'));
+</script>
+</body>
+</html>
