@@ -8,29 +8,57 @@
 </head>
 <body>
 <script>
-  function isPrime(num) {
-    if (num  === 1) return false;
+  // function isPrime(num) {
+  //   if (num  === 1) return false;
+  //
+  //   for (let i = 2; i <= parseInt(Math.sqrt(num)); i++) {
+  //     if (num % i === 0) return false;
+  //   }
+  //
+  //   return true;
+  // }
 
-    for (let i = 2; i <= parseInt(Math.sqrt(num)); i++) {
-      if (num % i === 0) return false;
+  function isPrime(number) {
+    if (number === 1) return false;
+
+    for (let i = 2; i < Math.floor(Math.sqrt(number)); i++) {
+      if (number % i === 0) return false;
     }
 
     return true;
   }
 
   function solution(n, arr) {
+    // let answer = [];
+    //
+    // for (let x of arr) {
+    //   // let res = 0;
+    //   // while (x) {
+    //   //   let t = x % 10;
+    //   //   res = res * 10 + t;
+    //   //   x = parseInt(x / 10);
+    //   // }
+    //
+    //   let res = Number(x.toString().split('').reverse().join(''));
+    //   if (isPrime(res)) answer.push(res);
+    // }
+    //
+    // return answer;
+
     let answer = [];
 
-    for (let x of arr) {
-      // let res = 0;
-      // while (x) {
-      //   let t = x % 10;
-      //   res = res * 10 + t;
-      //   x = parseInt(x / 10);
-      // }
+    for (let number of arr) {
+      // let reversedNumber = Number(number.toString().split('').reverse().join(''));
 
-      let res = Number(x.toString().split('').reverse().join(''));
-      if (isPrime(res)) answer.push(res);
+      let reversedNumber = 0;
+
+      while (number) {
+        let mod = number % 10;
+        reversedNumber = reversedNumber * 10 + mod;
+        number = Math.floor(number / 10);
+      }
+
+      if (isPrime(reversedNumber)) answer.push(reversedNumber);
     }
 
     return answer;

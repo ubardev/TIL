@@ -9,6 +9,7 @@
 <body>
 <script>
   function solution(n, arr) {
+    //##### 풀이 1
     // let answer = 0;
     // let max = Number.MIN_SAFE_INTEGER;
     //
@@ -31,17 +32,34 @@
     //
     // return answer;
 
+    //##### 풀이 2
+    // let answer = 0;
+    // let max = Number.MIN_SAFE_INTEGER;
+    //
+    // for (let x  of arr) {
+    //   let sum = x.toString().split('').reduce((sum, n) => sum + Number(n), 0);
+    //
+    //   if (sum > max) {
+    //     max = sum;
+    //     answer = x;
+    //   } else if (sum === max) {
+    //     if (x > answer) answer = x;
+    //   }
+    // }
+    //
+    // return answer;
+
     let answer = 0;
     let max = Number.MIN_SAFE_INTEGER;
 
-    for (let x  of arr) {
-      let sum = x.toString().split('').reduce((sum, n) => sum + Number(n), 0);
+    for (let number of arr) {
+      let sum = number.toString().split('').reduce((sum, n) => sum + Number(n), 0);
 
       if (sum > max) {
+        answer = number;
         max = sum;
-        answer = x;
       } else if (sum === max) {
-        if (x > answer) answer = x;
+        answer = Math.max(answer, number);
       }
     }
 
