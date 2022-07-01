@@ -3,10 +3,10 @@ class Organization {
     this._name = data.name;
     this._country = data.country;
   }
-  get name() {
+  get title() {
     return this._name;
   }
-  set name(value) {
+  set title(value) {
     this._name = value;
   }
   get country() {
@@ -17,6 +17,6 @@ class Organization {
   }
 }
 const organization = new Organization({
-  name: '드림코딩',
-  country: '대한민국',
+  name: "드림코딩",
+  country: "대한민국",
 });
