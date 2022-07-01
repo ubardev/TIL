@@ -8,9 +8,10 @@ function listRecentPhotos(outStream, photos) {
   photos
     .filter((p) => p.date > recentDateCutoff())
     .forEach((p) => {
-      outStream.write('<div>\n');
+      outStream.write("<div>\n");
       emitPhotoData(outStream, p);
-      outStream.write('</div>\n');
+      outStream.write(`<p>위치!: ${photo.location}</p>\n`);
+      outStream.write("</div>\n");
     });
 }
 
@@ -21,7 +22,7 @@ function emitPhotoData(outStream, photo) {
 }
 
 function renderPhoto(outStream, aPhoto) {
-  outStream.write('');
+  outStream.write("");
 }
 
 function recentDateCutoff() {
