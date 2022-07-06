@@ -25,19 +25,18 @@
     //
     // return answer;
 
-    let temp = new Set();
+    let tempSet = new Set();
 
-    for (let i = 0; i < n; i++) {
-      for (let j = i + 1; j < n; j++) {
-        for (let k = j + 1; k < n; k++) {
-          temp.add(card[i] + card[j] + card[k]);
+    for (let i = 0; i < n; i ++) {
+      for (let j = i + 1; j < n ; j++) {
+        for (let k = j + 1; k < n ; k++) {
+          tempSet.add(card[i] + card[j] + card[k]);
         }
       }
     }
 
-    let sortedTempSet = Array.from(temp).sort((a, b) => b - a);
-
-    return sortedTempSet[k - 1];
+    let result = Array.from(tempSet).sort((a, b) => b - a);
+    return result[k - 1];
   }
 
   let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
