@@ -9,25 +9,44 @@
 <body>
 <script>
   function solution(m, product) {
-    let answer = 0;
-    let n = product.length;
+    // let answer = 0;
+    // let n = product.length;
+    //
+    // product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
+    //
+    // for (let i = 0; i < n; i++) {
+    //   let money = m - (product[i][0] / 2 + product[i][1]); // 할인받은 금액
+    //   let cnt = 1;
+    //   for (let j = 0; j < n; j++) {
+    //     if (j!==i && (product[j][0] + product[j][1] > money)) break;
+    //     if (j!==i && (product[j][0] + product[j][1] <= money)) {
+    //       money -= (product[j][0] + product[j][1]);
+    //       cnt++;
+    //     }
+    //   }
+    //   answer = Math.max(answer, cnt);
+    // }
+    //
+    // return answer;
+
+    let result = 0;
+    let productCount = product.length;
 
     product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
 
-    for (let i = 0; i < n; i++) {
-      let money = m - (product[i][0] / 2 + product[i][1]); // 할인받은 금액
-      let cnt = 1;
-      for (let j = 0; j < n; j++) {
-        if (j!==i && (product[j][0] + product[j][1] > money)) break;
-        if (j!==i && (product[j][0] + product[j][1] <= money)) {
-          money -= (product[j][0] + product[j][1]);
-          cnt++;
+    for (let i = 0; i < productCount; i++) {
+      let remainMoney = m - (product[i][0] / 2 + product[i][1]);
+      let buyCount = 1;
+      for (let j = 0; j < productCount; j++) {
+        if (i !== j && (product[j][0] + product[j][1] > remainMoney)) break;
+        if (i !== j && (product[j][0] + product[j][1] <= remainMoney)) {
+          buyCount++;
+          remainMoney -= product[j][0] + product[j][1];
         }
       }
-      answer = Math.max(answer, cnt);
+      result = Math.max(result, buyCount);
     }
-
-    return answer;
+    return result;
   }
 
   let arr = [[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
