@@ -24,14 +24,29 @@
     //
     // return answer;
 
+    // let result = [];
+    // let arr1Length = arr1.length;
+    // let arr2Length = arr2.length;
+    // let arr1Index = 0;
+    // let arr2Index = 0;
+    //
+    // while (arr1Index < arr1Length && arr2Index < arr2Length ) {
+    //   arr1[arr1Index] <= arr2[arr2Index] ? result.push(arr1[arr1Index++]) : result.push(arr2[arr2Index++]);
+    // }
+    //
+    // while (arr1Index < arr1Length) result.push(arr1[arr1Index++]);
+    // while (arr2Index < arr2Length) result.push(arr2[arr2Index++]);
+    //
+    // return result;
+
     let result = [];
     let arr1Length = arr1.length;
     let arr2Length = arr2.length;
     let arr1Index = 0;
     let arr2Index = 0;
 
-    while (arr1Index < arr1Length && arr2Index < arr2Length ) {
-      arr1[arr1Index] <= arr2[arr2Index] ? result.push(arr1[arr1Index++]) : result.push(arr2[arr2Index++]);
+    while (arr1Index < arr1Length && arr2Index < arr2Length) {
+      arr1[arr1Index] <= arr2[arr2Index] ? result.push(arr1[arr1Index++]) : result.push(arr2[arr2Index++])
     }
 
     while (arr1Index < arr1Length) result.push(arr1[arr1Index++]);
