@@ -79,3 +79,46 @@
   color: #000;
   font-weight: bold;
 }
+
+/* 컴텐츠 스타일 */
+.cont-movie .list-movieInfo {
+  overflow: hidden;
+  padding: 0 12px 24px 12px;
+  border: 2px solid #bdbdbd;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.cont-movie .list-movieInfo .tit-movie {
+  font-weight: bold;
+  line-height: 23px;
+}
+
+.cont-movie .list-movieInfo li {
+  overflow: hidden;
+  float: left;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin: 24px 13px 0;
+}
+
+.cont-movie .list-movieInfo li > a[class^="link"] {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  height: 41px;
+  line-height: 41px;
+  background: #f2f2f2;
+  border-top: 1px solid #bdbdbd;
+}
+
+.cont-movie .list-movieInfo li .link-reserv::after {
+  display: inline-block;
+  float: right;
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: #bdbdbd;
+}
+/* 여기까지 CSS 작성 - 2부 8분 42초 */
