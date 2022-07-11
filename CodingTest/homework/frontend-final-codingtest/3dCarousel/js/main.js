@@ -15,8 +15,54 @@
       next.classList.add("now");
     }
   }
-  function movePrev() {}
 
+  function movePrev() {
+    const items = document.querySelectorAll(".carousel-item");
+
+    if (items.length > 1) {
+      const currentItem = document.querySelector(".now");
+      const lastItem = carouselUl.lastElementChild;
+
+      carouselUl.insertBefore(lastItem, items[0]);
+      currentItem.classList.remove("now");
+      lastItem.classList.add("now");
+    }
+  }
+
+  function createTag(url) {
+    const list = document.createElement("li");
+    const img = document.createElement("img");
+    list.classList.add("carousel-item");
+    img.src = url;
+    list.appendChild(img);
+
+    const items = document.querySelectorAll(".carousel-item");
+    items.forEach((item) => {
+      item.classList.remove("now");
+    });
+    list.classList.add("now");
+
+    return list;
+  }
+
+  function uploadImage(value) {
+    const items = document.querySelectorAll(".carousel-item");
+
+    if (value.files) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const imgUrl = e.target.result;
+        carouselUl.insertBefore(createTag(imgUrl), items[0]);
+      };
+
+      reader.readAsDataURL(value.files[0]);
+    }
+  }
+
+  imageInput.addEventListener("change", (e) => {
+    uploadImage(e.target);
+  });
   nextButton.addEventListener("click", moveNext);
   prevButton.addEventListener("click", movePrev);
 })();
