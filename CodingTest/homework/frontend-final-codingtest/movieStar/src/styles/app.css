@@ -40,3 +40,95 @@ img {
   padding: 64px 0 0 266px;
   box-sizing: border-box;
 }
+
+.content-type span {
+  color: #dbdbdb;
+}
+
+.content-type span + span::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 13px;
+  margin: 0 7px -1px 3px;
+  background-color: #dbdbdb;
+}
+
+.content-title {
+  margin: 13px 0 114px 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 46px;
+}
+
+.content-favorite {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.content-favorite button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.button-recommend .icon-thumbs-up {
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 29px;
+  height: 29px;
+  background: center / contain url(../images/icon_thumbs_up.png) no-repeat;
+}
+
+.button-recommend.on {
+  background-color: #2f80ed;
+}
+
+.button-recommend.on .icon-thumbs-up {
+  background: center / contain url(../images/icon_thumbs_up_fill.png) no-repeat;
+}
+
+.button-heart .icon-heart {
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 29px;
+  height: 29px;
+  background: center / contain url(../images/icon_heart.png) no-repeat;
+}
+
+.button-heart.on {
+  background-color: #eb5757;
+}
+
+.button-heart.on .icon-heart {
+  background: center / contain url(../images/icon_heart_fill.png) no-repeat;
+}
+
+.star-average {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.star-point-container {
+  display: flex;
+  align-items: center;
+}
+
+.star-background {
+  display: flex;
+}
+
+.star-background img {
+  width: 51px;
+}
+
+.icon-remove-star {
+  width: 22px;
+  height: 22px;
+  margin-left: 11px;
+}
