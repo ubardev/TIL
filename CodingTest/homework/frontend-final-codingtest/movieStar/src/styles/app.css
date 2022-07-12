@@ -1,0 +1,42 @@
+#app {
+  overflow: scroll;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+.movie-container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 672px;
+  margin: 0 auto;
+}
+
+.movie {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 64px;
+}
+
+.poster-container {
+  position: absolute;
+  left: -64px;
+  width: 281px;
+  height: 396px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.content {
+  width: 608px;
+  height: 500px;
+  background-color: #333;
+  border-radius: 15px;
+  color: #fff;
+  padding: 64px 0 0 266px;
+  box-sizing: border-box;
+}
