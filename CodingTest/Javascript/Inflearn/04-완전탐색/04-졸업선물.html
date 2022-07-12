@@ -30,22 +30,27 @@
     // return answer;
 
     let result = 0;
-    let productCount = product.length;
+    let n = product.length;
 
+    // 내림차순으로 정렬
     product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
 
-    for (let i = 0; i < productCount; i++) {
-      let remainMoney = m - (product[i][0] / 2 + product[i][1]);
-      let buyCount = 1;
-      for (let j = 0; j < productCount; j++) {
-        if (i !== j && (product[j][0] + product[j][1] > remainMoney)) break;
-        if (i !== j && (product[j][0] + product[j][1] <= remainMoney)) {
-          buyCount++;
-          remainMoney -= product[j][0] + product[j][1];
+    for (let i = 0; i < n; i++) {
+      let remainMoney = m - product[i][0] / 2; // 먼저 할인 받고 남은 금액 셋팅
+      let cnt = 1;
+
+      for (let j = 0; j < n; j++) {
+        if (i !== j && (product[j][0] + product[j][1]) > remainMoney) {
+          break;
+        }
+        if (i !== j && (product[j][0] + product[j][1]) <= remainMoney) {
+          cnt++;
+          remainMoney -= (product[j][0] + product[j][1]);
         }
       }
-      result = Math.max(result, buyCount);
+      result = Math.max(cnt, result);
     }
+
     return result;
   }
 
