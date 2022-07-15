@@ -9,26 +9,48 @@
 <body>
 <script>
   function solution(s) {
-    let answer;
-    let sH = new Map();
+    // let answer;
+    // let sH = new Map();
+    //
+    // for (let x of s) {
+    //   if (sH.has(x)) {
+    //     sH.set(x, sH.get(x) + 1);
+    //   } else {
+    //     sH.set(x, 1);
+    //   }
+    // }
+    //
+    // let max = Number.MIN_SAFE_INTEGER;
+    // for (let [key, val] of sH) {
+    //   if (val > max) {
+    //     max = val;
+    //     answer = key;
+    //   }
+    // }
+    //
+    // return answer;
 
-    for (let x of s) {
-      if (sH.has(x)) {
-        sH.set(x, sH.get(x) + 1);
+    let result;
+    let targetMap = new Map();
+
+    // convert map
+    for (let character of s) {
+      if (targetMap.has(character)) {
+        targetMap.set(character, targetMap.get(character) + 1);
       } else {
-        sH.set(x, 1);
+        targetMap.set(character, 1);
       }
     }
 
     let max = Number.MIN_SAFE_INTEGER;
-    for (let [key, val] of sH) {
+    for (let [key, val] of targetMap) {
       if (val > max) {
         max = val;
-        answer = key;
+        result = key;
       }
     }
 
-    return answer;
+    return result;
   }
   let str = "BACBACCACCBDEDE";
   console.log(solution(str));
