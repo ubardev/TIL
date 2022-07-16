@@ -43,10 +43,24 @@
     let arr1Index = 0;
     let arr2Index = 0;
 
-    while (arr1Index < arr1.length && arr2Index < arr2.length) {
+    arr1.sort((a, b) => a - b);
+    arr2.sort((a, b) => a - b);
 
+    while (arr1Index < arr1.length && arr2Index < arr2.length) {
+      if (arr1[arr1Index] >= arr2[arr2Index]) {
+        result.push(arr2[arr2Index++]);
+      } else {
+        result.push(arr1[arr1Index++]);
+      }
     }
 
+    while (arr1Index < arr1.length) {
+      result.push(arr1[arr1Index++]);
+    }
+
+    while (arr2Index < arr2.length) {
+      result.push(arr2[arr2Index++]);
+    }
 
     return result;
   }
