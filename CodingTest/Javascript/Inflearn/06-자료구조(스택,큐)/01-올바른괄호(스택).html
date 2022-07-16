@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(n) {
+    let answer = "YES";
+    let stack = [];
+
+    for (let x of s) {
+      if (x === '(') stack.push(x);
+      else {
+        if (stack.length === 0) return "NO";
+        stack.pop();
+      }
+    }
+
+    if (stack.length > 0) return "NO";
+
+    return answer;
+  }
+
+  let a = "(()(()))()";
+  console.log(solution(a));
+</script>
+</body>
+</html>
