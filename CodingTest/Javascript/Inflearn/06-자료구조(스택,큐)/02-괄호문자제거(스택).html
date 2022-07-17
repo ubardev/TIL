@@ -9,23 +9,37 @@
 <body>
 <script>
   function solution(s) {
-    let answer;
+    // let answer;
+    // let stack = [];
+    //
+    // for (let x of s) {
+    //   if (x === ")") {
+    //     while (stack.pop() !== '(');
+    //   } else {
+    //     stack.push(x);
+    //   }
+    // }
+    //
+    // answer = stack.join('');
+    // return answer;
+
+    let result;
     let stack = [];
 
-    for (let x of s) {
-      if (x === ")") {
-        while (stack.pop() !== '(');
+    for (let character of s) {
+      if (character === ")") {
+        while (stack.pop() !== "(");
       } else {
-        stack.push(x);
+        stack.push(character);
       }
     }
 
-    answer = stack.join('');
-    return answer;
+    result = stack.join("");
+    return result;
   }
 
   let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
-  console.log(solution(str));
+  console.log(solution(str)); // EFLM
 </script>
 </body>
 </html>
