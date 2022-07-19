@@ -49,21 +49,18 @@
     //
     // return answer;
 
-    let answer = 0;
+    let result = 0;
     let max = Number.MIN_SAFE_INTEGER;
 
     for (let number of arr) {
-      let sum = number.toString().split('').reduce((sum, n) => sum + Number(n), 0);
-
-      if (sum > max) {
-        answer = number;
+      const sum = number.toString().split('').reduce((sum, number) => sum + Number(number), 0);
+      if (sum >= max) {
         max = sum;
-      } else if (sum === max) {
-        answer = Math.max(answer, number);
+        result = Math.max(result, number);
       }
     }
 
-    return answer;
+    return result;
   }
 
   let arr = [128, 460, 603, 40, 521, 137, 123]
