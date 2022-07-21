@@ -29,26 +29,50 @@
     //
     // return answer;
 
+    // let result = 0;
+    // let n = product.length;
+    //
+    // // 내림차순으로 정렬
+    // product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
+    //
+    // for (let i = 0; i < n; i++) {
+    //   let remainMoney = m - product[i][0] / 2; // 먼저 할인 받고 남은 금액 셋팅
+    //   let cnt = 1;
+    //
+    //   for (let j = 0; j < n; j++) {
+    //     if (i !== j && (product[j][0] + product[j][1]) > remainMoney) {
+    //       break;
+    //     }
+    //     if (i !== j && (product[j][0] + product[j][1]) <= remainMoney) {
+    //       cnt++;
+    //       remainMoney -= (product[j][0] + product[j][1]);
+    //     }
+    //   }
+    //   result = Math.max(cnt, result);
+    // }
+    //
+    // return result;
+
     let result = 0;
-    let n = product.length;
+    let studentCount = product.length;
+    let money = m;
+    let wishList = product;
+    // wishList.sort((a, b) => (b[0] + b[1]) - (a[0] + a[1]))
+    wishList.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]))
 
-    // 내림차순으로 정렬
-    product.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]));
-
-    for (let i = 0; i < n; i++) {
-      let remainMoney = m - product[i][0] / 2; // 먼저 할인 받고 남은 금액 셋팅
-      let cnt = 1;
-
-      for (let j = 0; j < n; j++) {
-        if (i !== j && (product[j][0] + product[j][1]) > remainMoney) {
+    for (let i = 0; i < studentCount; i++) {
+      let remainMoney = money - ((wishList[i][0] / 2) + wishList[i][1]);
+      let buyCount = 1;
+      for (let j = 0; j < studentCount; j++) {
+        if (i !== j && remainMoney < (wishList[j][0] + wishList[j][1])) {
           break;
         }
-        if (i !== j && (product[j][0] + product[j][1]) <= remainMoney) {
-          cnt++;
-          remainMoney -= (product[j][0] + product[j][1]);
+        if (i !== j && remainMoney >= (wishList[j][0] + wishList[j][1])) {
+          remainMoney -= (wishList[j][0] + wishList[j][1]);
+          buyCount++;
         }
       }
-      result = Math.max(cnt, result);
+      result = Math.max(result, buyCount);
     }
 
     return result;
