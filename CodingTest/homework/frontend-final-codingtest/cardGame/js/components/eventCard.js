@@ -29,7 +29,7 @@ class EventCard {
                   item.classList.remove("on");
                 }
               });
-              this.cardEl.splice(0, 2);
+              this.cardEl.splice(0, 2); // 카드 데이터 초기화
             }, 500);
           }
         }

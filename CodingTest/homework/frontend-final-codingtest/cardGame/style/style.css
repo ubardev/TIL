@@ -38,7 +38,7 @@
   margin: 0 auto;
   text-indent: -9999px;
   font-size: 1px;
-  background: no-repeat center / 270px 64px url(./../images/CardGame.png);
+  background: no-repeat center / 270px 64px url(./../images/포켓몬.png);
   background-color: #fff;
 }
 
@@ -80,27 +80,47 @@
   backface-visibility: hidden;
 }
 
-.list-card li.mura::before {
-  background-image: url(./../images/mura.png);
+.list-card li.피카츄::before {
+  background-image: url(./../images/피카츄.webp);
 }
 
-.list-card li.licat::before {
-  background-image: url(./../images/licat.png);
+.list-card li.꼬부기::before {
+  background-image: url(./../images/꼬부기.webp);
 }
 
-.list-card li.gary::before {
-  background-image: url(./../images/gary.png);
+.list-card li.리자몽::before {
+  background-image: url(./../images/리자몽.webp);
 }
 
-.list-card li.binky::before {
-  background-image: url(./../images/binky.png);
+.list-card li.파이리::before {
+  background-image: url(./../images/파이리.webp);
 }
 
-.list-card li.javadog::before {
-  background-image: url(./../images/javadog.png);
+.list-card li.푸린::before {
+  background-image: url(./../images/푸린.webp);
+}
+
+.list-card li.이브이::before {
+  background-image: url(./../images/이브이.webp);
+}
+
+.list-card li.피츄::before {
+  background-image: url(./../images/피츄.webp);
+}
+
+.list-card li.라이츄::before {
+  background-image: url(./../images/라이츄.webp);
+}
+
+.list-card li.뮤::before {
+  background-image: url(./../images/뮤.webp);
+}
+
+.list-card li.이상해씨::before {
+  background-image: url(./../images/이상해씨.webp);
 }
 
 .list-card li:after {
-  background-image: url(./../images/card_back.png);
+  background-image: url(./../images/뒷면.jpeg);
   transform: rotateY(180deg);
 }

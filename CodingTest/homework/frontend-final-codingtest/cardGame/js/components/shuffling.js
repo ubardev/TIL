@@ -1,6 +1,17 @@
 class Shuffling {
   constructor() {
-    this.data = ["mura", "gary", "binky", "licat", "javadog"];
+    this.data = [
+      "피카츄",
+      "꼬부기",
+      "리자몽",
+      "푸린",
+      "파이리",
+      "이브이",
+      "피츄",
+      "라이츄",
+      "뮤",
+      "이상해씨",
+    ];
     this.parent = document.querySelector(".list-card");
   }
 
