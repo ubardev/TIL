@@ -28,14 +28,18 @@
     let stack = [];
 
     for (let x of s) {
-      if (x === "(") stack.push(x);
-      else {
-        if (x.length === 0) return "NO";
+      if (x === '(') {
+        stack.push(x);
+      } else {
+        if (stack.length === 0) {
+          result = "NO";
+          break;
+        }
         stack.pop();
       }
     }
 
-    if (stack.length > 0) return "NO";
+    if (stack.length > 0) result = "NO";
 
     return result;
   }
