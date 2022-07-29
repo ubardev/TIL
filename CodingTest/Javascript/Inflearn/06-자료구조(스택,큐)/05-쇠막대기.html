@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(s) {
+    let answer = 0;
+    let stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+      if (s[i] === '(') stack.push(s[i]);
+      else {
+        stack.pop();
+        if (s[i - 1] === '(') answer += (stack.length);
+        else answer += 1;
+      }
+    }
+
+    return answer;
+  }
+
+  let a = "()(((()())(())()))(())";
+  console.log(solution(a));
+</script>
+</body>
+</html>
