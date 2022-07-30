@@ -9,23 +9,42 @@
 <body>
 <script>
   function solution(s) {
-    let answer;
+    // let answer;
+    // let stack = [];
+    //
+    // for (let x of s) {
+    //   if (!isNaN(x)) stack.push(Number(x));
+    //   else {
+    //     let rt = stack.pop();
+    //     let lt = stack.pop();
+    //     if (x === '+') stack.push(lt + rt);
+    //     else if (x === '-') stack.push(lt - rt);
+    //     else if (x === '*') stack.push(lt * rt);
+    //     else if (x === '/') stack.push(lt / rt);
+    //   }
+    // }
+    //
+    // answer = stack[0];
+    // return answer;
+
+    let result;
     let stack = [];
 
-    for (let x of s) {
-      if (!isNaN(x)) stack.push(Number(x));
+    for (let character of s) {
+      if (!isNaN(character)) stack.push(Number(character));
       else {
-        let rt = stack.pop();
-        let lt = stack.pop();
-        if (x === '+') stack.push(lt + rt);
-        else if (x === '-') stack.push(lt - rt);
-        else if (x === '*') stack.push(lt * rt);
-        else if (x === '/') stack.push(lt / rt);
+        let right = stack.pop();
+        let left = stack.pop();
+        if (character === "+") stack.push(left + right);
+        else if (character === "-") stack.push(left - right);
+        else if (character === "*") stack.push(left * right);
+        else if (character === "/") stack.push(left / right);
       }
     }
 
-    answer = stack[0];
-    return answer;
+    result = stack[0];
+    document.write(result);
+    return result;
   }
 
   let str = "352+*9-";
