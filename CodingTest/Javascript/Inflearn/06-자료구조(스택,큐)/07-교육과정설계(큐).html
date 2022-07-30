@@ -9,16 +9,29 @@
 <body>
 <script>
   function solution(need, plan) {
+    // let result = "YES";
+    // let queue = need.split('');
+    //
+    // for (let lecture of plan) {
+    //   if (queue.includes(lecture)) {
+    //     if (lecture !== queue.shift()) return "NO";
+    //   }
+    // }
+    //
+    // if (queue.length > 0) return "NO";
+    //
+    // return result;
+
     let result = "YES";
-    let queue = need.split('');
+    let needQueue = need.split('');
 
     for (let lecture of plan) {
-      if (queue.includes(lecture)) {
-        if (lecture !== queue.shift()) return "NO";
+      if (needQueue.includes(lecture)) {
+        if (lecture !== needQueue.shift()) return "NO";
       }
     }
 
-    if (queue.length > 0) return "NO";
+    if (needQueue.length > 0) return "NO";
 
     return result;
   }
