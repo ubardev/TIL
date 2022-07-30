@@ -23,15 +23,14 @@
     // answer = stack.join('');
     // return answer;
 
-
     let result;
     let stack = [];
-
-    for (let x of s) {
-      if (x !== ')') {
-        stack.push(x);
+    
+    for (let character of s) {
+      if (character !== ")") {
+        stack.push(character);
       } else {
-        while(stack.pop() !== '(');
+        while (stack.pop() !== "(");
       }
     }
 
