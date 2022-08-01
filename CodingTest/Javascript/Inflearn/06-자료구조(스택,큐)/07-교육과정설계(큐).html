@@ -23,16 +23,15 @@
     // return result;
 
     let result = "YES";
-    let needQueue = need.split('');
+    let queue = need.split('');
 
-    for (let lecture of plan) {
-      if (needQueue.includes(lecture)) {
-        if (lecture !== needQueue.shift()) return "NO";
+    for (let i = 0; i < plan.length; i++) {
+      if (queue.includes(plan[i])) {
+        if (plan[i] !== queue.shift()) return "NO";
       }
     }
 
-    if (needQueue.length > 0) return "NO";
-
+    if (queue.length > 0) return "NO";
     return result;
   }
 
