@@ -1,18 +1,26 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { hourSelector, minuteState } from './atoms';
+import styled from 'styled-components';
+
+const Father = styled.div`
+  display: flex;
+`;
+const Box = styled.div<{ bgColor: string }>`
+  background-color: ${(props) => props.bgColor};
+  width: 100px;
+  height: 100px;
+`;
+const Circle = styled(Box)`
+  border-radius: 50px;
+`;
+const Text = styled.span`
+  color: white;
+`;
 
 function App() {
-  const [minutes, setMinutes] = useRecoilState(minuteState);
-  const hours = useRecoilValue(hourSelector);
-  const onMinutesChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setMinutes(+event.currentTarget.value);
-  };
-
   return (
-    <div>
-      <input value={minutes} onChange={onMinutesChange} type="number" placeholder="Minutes" />
-      <input value={hours} type="number" placeholder="Hours" />
-    </div>
+    <Father>
+      <Box bgColor="teal" />
+      <Circle bgColor="tomato" />
+    </Father>
   );
 }
 
