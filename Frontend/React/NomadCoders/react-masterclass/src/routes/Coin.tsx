@@ -13,7 +13,6 @@ const Container = styled.div`
   max-width: 480px;
   margin: 0 auto;
 `;
-
 const Header = styled.header`
   height: 10vh;
   display: flex;
@@ -25,7 +24,15 @@ const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
 `;
-
+const Back = styled.div`
+  position: fixed;
+  left: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
 const Loader = styled.span`
   text-align: center;
   display: block;
@@ -185,6 +192,9 @@ function Coin() {
       </Helmet>
       <Header>
         <Title>{state?.name ? state.name : loading ? 'Loading...' : infoData?.name}</Title>
+        <Link to={`/`}>
+          <Back> ← Back</Back>
+        </Link>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
