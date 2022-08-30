@@ -30,6 +30,7 @@ interface IForm {
   username: string;
   password: string;
   password1: string;
+  extraError?: string;
 }
 
 function ToDoList() {
@@ -37,19 +38,30 @@ function ToDoList() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<IForm>({
     defaultValues: {
       email: '@naver.com',
     },
   });
-  const onValid = (data: any) => {
-    console.log(data);
+  const onValid = (data: IForm) => {
+    if (data.password !== data.password1) {
+      setError(
+        'password1',
+        { message: 'Password are not the same' },
+        { shouldFocus: true },
+      );
+    }
+    setError('extraError', { message: 'Server offline.' });
   };
   console.log(errors);
 
   return (
     <div>
-      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit(onValid)}>
+      <form
+        style={{ display: 'flex', flexDirection: 'column' }}
+        onSubmit={handleSubmit(onValid)}
+      >
         <input
           {...register('email', {
             required: 'Email is required',
@@ -61,9 +73,19 @@ function ToDoList() {
           placeholder="Email"
         />
         <span>{errors?.email?.message}</span>
-        <input {...register('firstName', { required: 'write here' })} placeholder="First Name" />
+        <input
+          {...register('firstName', {
+            required: 'write here',
+            validate: (value) =>
+              value.includes('nico') ? 'no nicos allowed' : true,
+          })}
+          placeholder="First Name"
+        />
         <span>{errors?.firstName?.message}</span>
-        <input {...register('lastName', { required: 'write here' })} placeholder="Last Name" />
+        <input
+          {...register('lastName', { required: 'write here' })}
+          placeholder="Last Name"
+        />
         <span>{errors?.lastName?.message}</span>
         <input
           {...register('username', { required: 'write here', minLength: 10 })}
@@ -84,6 +106,7 @@ function ToDoList() {
         />
         <span>{errors?.password1?.message}</span>
         <button>Add</button>
+        <span>{errors?.extraError?.message}</span>
       </form>
     </div>
   );
