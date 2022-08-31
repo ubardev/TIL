@@ -1,30 +1,23 @@
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 // function ToDoList() {
 //   const [toDo, setToDo] = useState('');
-//   const [toDoError, setToDoError] = useState('');
 //   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
 //     const {
 //       currentTarget: { value },
 //     } = event;
-//     setToDoError('');
 //     setToDo(value);
 //   };
 //   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 //     event.preventDefault();
-//     console.log('toDo ==========>', toDo);
-//     if (toDo.length < 10) {
-//       return setToDoError('To do should be longer');
-//     }
-//     console.log('submit');
+//     console.log(toDo);
 //   };
-//
 //   return (
 //     <div>
 //       <form onSubmit={onSubmit}>
 //         <input onChange={onChange} value={toDo} placeholder="Write a to do" />
 //         <button>Add</button>
-//         {toDoError !== '' ? toDoError : null}
 //       </form>
 //     </div>
 //   );
@@ -51,19 +44,25 @@ function ToDoList() {
       email: '@naver.com',
     },
   });
-
   const onValid = (data: IForm) => {
     if (data.password !== data.password1) {
-      setError('password1', { message: 'Password are not the same' }, { shouldFocus: true });
+      setError(
+        'password1',
+        { message: 'Password are not the same' },
+        { shouldFocus: true },
+      );
     }
     setError('extraError', { message: 'Server offline.' });
   };
-  console.log('errors ==========>', errors);
+  console.log(errors);
+
   return (
     <div>
-      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit(onValid)}>
+      <form
+        style={{ display: 'flex', flexDirection: 'column' }}
+        onSubmit={handleSubmit(onValid)}
+      >
         <input
-          {...register('firstName', { required: true })}
           {...register('email', {
             required: 'Email is required',
             pattern: {
@@ -77,15 +76,16 @@ function ToDoList() {
         <input
           {...register('firstName', {
             required: 'write here',
-            validate: {
-              noNico: (value) => (value.includes('nico') ? 'no nicos allowed' : true),
-              noNick: (value) => (value.includes('nick') ? 'no nick allowed' : true),
-            },
+            validate: (value) =>
+              value.includes('nico') ? 'no nicos allowed' : true,
           })}
           placeholder="First Name"
         />
         <span>{errors?.firstName?.message}</span>
-        <input {...register('lastName', { required: 'write here' })} placeholder="Last Name" />
+        <input
+          {...register('lastName', { required: 'write here' })}
+          placeholder="Last Name"
+        />
         <span>{errors?.lastName?.message}</span>
         <input
           {...register('username', { required: 'write here', minLength: 10 })}
@@ -100,10 +100,7 @@ function ToDoList() {
         <input
           {...register('password1', {
             required: 'Password is required',
-            minLength: {
-              value: 5,
-              message: 'Your password is too short.',
-            },
+            minLength: { value: 5, message: 'Your password is too short' },
           })}
           placeholder="Password1"
         />
