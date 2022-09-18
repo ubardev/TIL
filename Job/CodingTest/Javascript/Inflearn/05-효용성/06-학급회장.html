@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-<body>
-<script>
-  function solution(s) {
-    // let answer;
-    // let sH = new Map();
-    //
-    // for (let x of s) {
-    //   if (sH.has(x)) {
-    //     sH.set(x, sH.get(x) + 1);
-    //   } else {
-    //     sH.set(x, 1);
-    //   }
-    // }
-    //
-    // let max = Number.MIN_SAFE_INTEGER;
-    // for (let [key, val] of sH) {
-    //   if (val > max) {
-    //     max = val;
-    //     answer = key;
-    //   }
-    // }
-    //
-    // return answer;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // let answer;
+        // let sH = new Map();
+        //
+        // for (let x of s) {
+        //   if (sH.has(x)) {
+        //     sH.set(x, sH.get(x) + 1);
+        //   } else {
+        //     sH.set(x, 1);
+        //   }
+        // }
+        //
+        // let max = Number.MIN_SAFE_INTEGER;
+        // for (let [key, val] of sH) {
+        //   if (val > max) {
+        //     max = val;
+        //     answer = key;
+        //   }
+        // }
+        //
+        // return answer;
 
-    let result;
-    let targetMap = new Map();
+        let result;
+        let targetMap = new Map();
 
-    // convert map
-    for (let character of s) {
-      if (targetMap.has(character)) {
-        targetMap.set(character, targetMap.get(character) + 1);
-      } else {
-        targetMap.set(character, 1);
+        // convert map
+        for (let character of s) {
+          if (targetMap.has(character)) {
+            targetMap.set(character, targetMap.get(character) + 1);
+          } else {
+            targetMap.set(character, 1);
+          }
+        }
+
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, val] of targetMap) {
+          if (val > max) {
+            max = val;
+            result = key;
+          }
+        }
+
+        return result;
       }
-    }
-
-    let max = Number.MIN_SAFE_INTEGER;
-    for (let [key, val] of targetMap) {
-      if (val > max) {
-        max = val;
-        result = key;
-      }
-    }
-
-    return result;
-  }
-  let str = "BACBACCACCBDEDE";
-  console.log(solution(str));
-</script>
-</body>
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
 </html>
