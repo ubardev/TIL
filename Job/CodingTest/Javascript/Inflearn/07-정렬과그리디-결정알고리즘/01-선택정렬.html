@@ -23,13 +23,11 @@
         let result = arr;
 
         for (let i = 0; i < arr.length - 1; i++) {
-          let index = i;
+          let minIndex = i;
           for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[index]) {
-              index = j;
-            }
-            [arr[i], arr[index]] = [arr[index], arr[i]];
+            if (arr[j] < arr[minIndex]) minIndex = j;
           }
+          [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
         }
 
         return result;
