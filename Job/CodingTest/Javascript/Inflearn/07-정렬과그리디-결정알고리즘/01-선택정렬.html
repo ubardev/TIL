@@ -9,16 +9,17 @@
   <body>
     <script>
       function solution(arr) {
-        // let answer = arr;
+        // let result = arr;
+
         // for (let i = 0; i < arr.length - 1; i++) {
-        //   let idx = i;
+        //   let minIndex = i;
         //   for (let j = i + 1; j < arr.length; j++) {
-        //     if (arr[j] < arr[idx]) idx = j;
+        //     if (arr[j] < arr[minIndex]) minIndex = j;
         //   }
-        //   [arr[i], arr[idx]] = [arr[idx], arr[i]];
+        //   [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
         // }
 
-        // return answer;
+        // return result;
 
         let result = arr;
 
@@ -27,7 +28,7 @@
           for (let j = i + 1; j < arr.length; j++) {
             if (arr[j] < arr[minIndex]) minIndex = j;
           }
-          [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+          [arr[minIndex], arr[i]] = [arr[i], arr[minIndex]];
         }
 
         return result;
