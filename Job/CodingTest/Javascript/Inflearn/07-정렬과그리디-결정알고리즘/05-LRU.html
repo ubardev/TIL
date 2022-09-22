@@ -10,34 +10,55 @@
     <script>
       function solution(size, arr) {
         // let answer = Array.from({ length: size }, () => 0);
-        let answer = [];
+
+        // arr.forEach((x) => {
+        //   let pos = -1;
+        //   for (let i = 0; i < size; i++) {
+        //     if (x === answer[i]) {
+        //       pos = i;
+        //     }
+        //   }
+        //   if (pos === -1) {
+        //     for (let i = size - 1; i >= 1; i--) {
+        //       answer[i] = answer[i - 1];
+        //     }
+        //     if (answer.length > size) {
+        //       answer.pop();
+        //     }
+        //   } else {
+        //     for (let i = pos; i >= 1; i--) {
+        //       answer[i] = answer[i - 1];
+        //     }
+        //   }
+        //   answer[0] = x;
+        // });
+
+        // return answer;
+
+        ///////////////////////////
+
+        let result = [];
 
         arr.forEach((x) => {
           let pos = -1;
           for (let i = 0; i < size; i++) {
-            if (x === answer[i]) {
+            if (x === result[i]) {
               pos = i;
             }
           }
+
           if (pos === -1) {
-            // for (let i = size - 1; i >= 1; i--) {
-            //   answer[i] = answer[i - 1];
-            // }
-            answer.unshift(x);
-            if (answer.length > size) {
-              answer.pop();
+            result.unshift(x);
+            if (result.length > size) {
+              result.pop();
             }
           } else {
-            // for (let i = pos; i >= 1; i--) {
-            //   answer[i] = answer[i - 1];
-            // }
-            answer.splice(pos, 1);
-            answer.unshift(x);
+            result.splice(pos, 1);
+            result.unshift(x);
           }
-          // answer[0] = x;
         });
 
-        return answer;
+        return result;
       }
 
       let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
