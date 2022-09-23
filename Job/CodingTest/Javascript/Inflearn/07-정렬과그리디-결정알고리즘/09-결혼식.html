@@ -42,10 +42,11 @@
 
         timeLine.sort((a, b) => {
           if (a[0] === b[0]) return a[1].charCodeAt() - b[1].charCodeAt();
-          return a[0] - b[0];
+          else return a[0] - b[0];
         });
-        console.log('timeLine==========>', timeLine);
+
         let count = 0;
+
         for (let time of timeLine) {
           if (time[1] === 'S') count++;
           else count--;
