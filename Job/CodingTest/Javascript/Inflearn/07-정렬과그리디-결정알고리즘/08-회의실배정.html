@@ -36,10 +36,10 @@
 
         let endTime = 0;
 
-        meeting.forEach((selectedMeeting) => {
-          if (selectedMeeting[0] >= endTime) {
+        meeting.forEach((element) => {
+          if (endTime <= element[0]) {
             result++;
-            endTime = selectedMeeting[1];
+            endTime = element[1];
           }
         });
 

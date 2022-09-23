@@ -31,24 +31,48 @@
         // });
         // return answer;
         ///////////////////////////
+        // let result = [];
+        // arr.forEach((x) => {
+        //   let pos = -1;
+        //   for (let i = 0; i < size; i++) {
+        //     if (x === result[i]) {
+        //       pos = i;
+        //     }
+        //   }
+        //   if (pos === -1) {
+        //     result.unshift(x);
+        //     if (result.length > size) {
+        //       result.pop();
+        //     }
+        //   } else {
+        //     result.splice(pos, 1);
+        //     result.unshift(x);
+        //   }
+        // });
+        // return result;
+
+        //================================================================
         let result = [];
-        arr.forEach((x) => {
-          let pos = -1;
-          for (let i = 0; i < size; i++) {
-            if (x === result[i]) {
-              pos = i;
+
+        arr.forEach((number) => {
+          let position = -1;
+          for (let i = 0; i < result.length; i++) {
+            if (result[i] === number) {
+              position = i;
             }
           }
-          if (pos === -1) {
-            result.unshift(x);
+
+          if (position === -1) {
+            result.unshift(number);
             if (result.length > size) {
               result.pop();
             }
           } else {
-            result.splice(pos, 1);
-            result.unshift(x);
+            result.splice(position, 1);
+            result.unshift(number);
           }
         });
+
         return result;
       }
 
