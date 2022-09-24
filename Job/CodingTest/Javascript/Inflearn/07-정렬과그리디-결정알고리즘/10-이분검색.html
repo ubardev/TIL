@@ -9,24 +9,24 @@
   <body>
     <script>
       function solution(target, arr) {
-        let answer;
+        let result;
         arr.sort((a, b) => a - b);
-        let lt = 0;
-        let rt = arr.length - 1;
+        let left = 0;
+        let right = arr.length - 1;
 
-        while (lt <= rt) {
-          let mid = parseInt((lt + rt) / 2);
+        while (left <= right) {
+          let mid = parseInt((left + right) / 2);
           if (arr[mid] === target) {
-            answer = mid + 1;
+            result = mid + 1;
             break;
           } else if (arr[mid] > target) {
-            rt = mid - 1;
+            right = mid - 1;
           } else {
-            lt = mid + 1;
+            left = mid + 1;
           }
         }
 
-        return answer;
+        return result;
       }
 
       let arr = [23, 87, 65, 12, 57, 32, 99, 81];
