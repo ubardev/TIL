@@ -39,19 +39,24 @@
         const count = (songs, capacity) => {
           let count = 1;
           let sum = 0;
-          for (let x of songs) {
-            if (sum + x > capacity) {
+
+          for (let song of songs) {
+            if (sum + song > capacity) {
               count++;
-              sum = x;
+              sum = song;
             } else {
-              sum += x;
+              sum += song;
             }
           }
           return count;
         };
+
         let result;
         let left = Math.max(...songs);
-        let right = songs.reduce((prev, next) => prev + next, 0);
+        let right = songs.reduce((prev, next) => {
+          return prev + next;
+        }, 0);
+
         while (left <= right) {
           let mid = parseInt((left + right) / 2);
           if (count(songs, mid) <= m) {
@@ -61,6 +66,7 @@
             left = mid + 1;
           }
         }
+
         return result;
       }
 
