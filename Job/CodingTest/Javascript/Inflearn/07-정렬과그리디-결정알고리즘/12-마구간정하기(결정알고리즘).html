@@ -14,12 +14,11 @@
           let endPoint = stable[0];
 
           for (let i = 1; i < stable.length; i++) {
-            if (stable[i] - endPoint >= distance) {
+            if (endPoint + distance <= stable[i]) {
               count++;
               endPoint = stable[i];
             }
           }
-
           return count;
         };
 
