@@ -8,38 +8,41 @@
   </head>
   <body>
     <script>
-      function count(stable, dist) {
-        let cnt = 1;
-        let ep = stable[0];
-
-        for (let i = 1; i < stable.length; i++) {
-          if (stable[i] - ep >= dist) {
-            cnt++;
-            ep = stable[i];
-          }
-        }
-        return cnt;
-      }
       function solution(c, stable) {
-        let answer;
-        stable.sort((a, b) => a - b);
-        let lt = 1;
-        let rt = stable[stable.length - 1];
+        const count = (stable, distance) => {
+          let count = 1;
+          let endPoint = stable[0];
 
-        while (lt <= rt) {
-          let mid = parseInt((lt + rt) / 2);
+          for (let i = 1; i < stable.length; i++) {
+            if (stable[i] - endPoint >= distance) {
+              count++;
+              endPoint = stable[i];
+            }
+          }
+
+          return count;
+        };
+
+        let result;
+        stable.sort((prev, next) => prev - next);
+        let left = 1;
+        let right = stable[stable.length - 1];
+
+        while (left <= right) {
+          let mid = parseInt((left + right) / 2);
           if (count(stable, mid) >= c) {
-            answer = mid;
-            lt = mid + 1;
+            result = mid;
+            left = mid + 1;
           } else {
-            rt = mid - 1;
+            right = mid - 1;
           }
         }
 
-        return answer;
+        return result;
       }
 
       let arr = [1, 2, 8, 4, 9];
+      // let arr = [5, 6, 8, 12, 13];
       let result = solution(3, arr);
       console.log(result);
       document.write(result);
