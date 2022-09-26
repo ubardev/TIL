@@ -9,13 +9,19 @@
   <body>
     <script>
       function solution(n) {
-        let answer;
-        function DFS(n) {}
+        let answer = '';
+        function DFS(n) {
+          if (n === 0) return;
+          else {
+            DFS(parseInt(n / 2));
+            answer += String(n % 2);
+          }
+        }
         DFS(n);
         return answer;
       }
 
-      let result = solution(0);
+      let result = solution(11);
       console.log(result);
       document.write(result);
     </script>
