@@ -11,46 +11,40 @@
       function solution(times) {
         // let result = Number.MIN_SAFE_INTEGER;
         // let timeLine = [];
-
         // for (let time of times) {
         //   timeLine.push([time[0], 'S']);
         //   timeLine.push([time[1], 'E']);
         // }
-
         // timeLine.sort((a, b) => {
         //   if (a[0] === b[0]) return a[1].charCodeAt() - b[1].charCodeAt();
         //   else return a[0] - b[0];
         // });
-
         // let cnt = 0;
-
         // for (let time of timeLine) {
         //   if (time[1] === 'S') cnt++;
         //   else cnt--;
         //   result = Math.max(result, cnt);
         // }
-
         // return result;
-
+        ////////////////////////////////////////////////////////////////
         let result = Number.MIN_SAFE_INTEGER;
         let timeLine = [];
-
         for (let time of times) {
           timeLine.push([time[0], 'S']);
           timeLine.push([time[1], 'E']);
         }
-
-        timeLine.sort((a, b) => {
-          if (a[0] === b[0]) return a[1].charCodeAt() - b[1].charCodeAt();
-          else return a[0] - b[0];
+        timeLine.sort((prev, next) => {
+          if (prev[0] === next[0])
+            return prev[1].charCodeAt() - next[1].charCodeAt();
+          else return prev[0] - next[0];
         });
 
-        let count = 0;
+        let cnt = 0;
 
         for (let time of timeLine) {
-          if (time[1] === 'S') count++;
-          else count--;
-          result = Math.max(result, count);
+          if (time[1] === 'S') cnt++;
+          else cnt--;
+          result = Math.max(result, cnt);
         }
 
         return result;

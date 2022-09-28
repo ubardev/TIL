@@ -17,12 +17,12 @@
         // });
 
         // return result;
-
+        ////////////////////////////////////////////////////////////////
         let result = arr;
 
-        arr.sort((a, b) => {
-          if (a[0] === b[0]) return a[1] - b[1];
-          else return a[0] - b[0];
+        arr.sort((prev, next) => {
+          if (prev[0] === next[0]) return prev[1] - next[1];
+          else return prev[0] - next[0];
         });
 
         return result;
