@@ -9,7 +9,37 @@
   <body>
     <script>
       function solution(c, stable) {
-        const count = (stable, distance) => {
+        // const count = (stable, distance) => {
+        //   let count = 1;
+        //   let endPoint = stable[0];
+
+        //   for (let i = 1; i < stable.length; i++) {
+        //     if (endPoint + distance <= stable[i]) {
+        //       count++;
+        //       endPoint = stable[i];
+        //     }
+        //   }
+        //   return count;
+        // };
+
+        // let result;
+        // stable.sort((prev, next) => prev - next);
+        // let left = 1;
+        // let right = stable[stable.length - 1];
+
+        // while (left <= right) {
+        //   let mid = parseInt((left + right) / 2);
+        //   if (count(stable, mid) >= c) {
+        //     result = mid;
+        //     left = mid + 1;
+        //   } else {
+        //     right = mid - 1;
+        //   }
+        // }
+
+        // return result;
+
+        function count(stable, distance) {
           let count = 1;
           let endPoint = stable[0];
 
@@ -20,7 +50,7 @@
             }
           }
           return count;
-        };
+        }
 
         let result;
         stable.sort((prev, next) => prev - next);
