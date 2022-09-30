@@ -31,7 +31,6 @@
         // }
         //
         // return answer;
-
         //##### 풀이 2
         // let answer = 0;
         // let max = Number.MIN_SAFE_INTEGER;
@@ -49,10 +48,8 @@
         //
         // return answer;
         ////////////////////////////////////////////////////////////////
-
         // let result = 0;
         // let max = Number.MIN_SAFE_INTEGER;
-
         // for (let number of arr) {
         //   const sum = number.toString().split('').reduce((sum, number) => sum + Number(number), 0);
         //   if (sum >= max) {
@@ -60,25 +57,7 @@
         //     result = Math.max(result, number);
         //   }
         // }
-
         // return result;
-
-        let result = 0;
-        let max = Number.MIN_SAFE_INTEGER;
-
-        for (let i = 0; i < n; i++) {
-          let sum = String(arr[i])
-            .split('')
-            .reduce((sum, i) => sum + parseInt(i), 0);
-          if (sum > max) {
-            max = sum;
-            result = arr[i];
-          } else if (sum === max) {
-            result = Math.max(result, arr[i]);
-          }
-        }
-
-        return result;
       }
 
       let arr = [128, 460, 603, 40, 521, 137, 123];
