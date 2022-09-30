@@ -1,70 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-<body>
-<script>
-  function solution(n, arr) {
-    //##### 풀이 1
-    // let answer = 0;
-    // let max = Number.MIN_SAFE_INTEGER;
-    //
-    // for (let x  of arr) {
-    //   let sum = 0;
-    //   let tmp = x;
-    //
-    //   while (tmp) {
-    //     sum += tmp % 10;
-    //     tmp = Math.floor(tmp / 10);
-    //   }
-    //
-    //   if (sum > max) {
-    //     max = sum;
-    //     answer = x;
-    //   } else if (sum === max) {
-    //     if (x > answer) answer = x;
-    //   }
-    // }
-    //
-    // return answer;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        //##### 풀이 1
+        // let answer = 0;
+        // let max = Number.MIN_SAFE_INTEGER;
+        //
+        // for (let x  of arr) {
+        //   let sum = 0;
+        //   let tmp = x;
+        //
+        //   while (tmp) {
+        //     sum += tmp % 10;
+        //     tmp = Math.floor(tmp / 10);
+        //   }
+        //
+        //   if (sum > max) {
+        //     max = sum;
+        //     answer = x;
+        //   } else if (sum === max) {
+        //     if (x > answer) answer = x;
+        //   }
+        // }
+        //
+        // return answer;
 
-    //##### 풀이 2
-    // let answer = 0;
-    // let max = Number.MIN_SAFE_INTEGER;
-    //
-    // for (let x  of arr) {
-    //   let sum = x.toString().split('').reduce((sum, n) => sum + Number(n), 0);
-    //
-    //   if (sum > max) {
-    //     max = sum;
-    //     answer = x;
-    //   } else if (sum === max) {
-    //     if (x > answer) answer = x;
-    //   }
-    // }
-    //
-    // return answer;
+        //##### 풀이 2
+        // let answer = 0;
+        // let max = Number.MIN_SAFE_INTEGER;
+        //
+        // for (let x  of arr) {
+        //   let sum = x.toString().split('').reduce((sum, n) => sum + Number(n), 0);
+        //
+        //   if (sum > max) {
+        //     max = sum;
+        //     answer = x;
+        //   } else if (sum === max) {
+        //     if (x > answer) answer = x;
+        //   }
+        // }
+        //
+        // return answer;
+        ////////////////////////////////////////////////////////////////
 
-    let result = 0;
-    let max = Number.MIN_SAFE_INTEGER;
+        // let result = 0;
+        // let max = Number.MIN_SAFE_INTEGER;
 
-    for (let number of arr) {
-      const sum = number.toString().split('').reduce((sum, number) => sum + Number(number), 0);
-      if (sum >= max) {
-        max = sum;
-        result = Math.max(result, number);
+        // for (let number of arr) {
+        //   const sum = number.toString().split('').reduce((sum, number) => sum + Number(number), 0);
+        //   if (sum >= max) {
+        //     max = sum;
+        //     result = Math.max(result, number);
+        //   }
+        // }
+
+        // return result;
+
+        let result = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+
+        for (let i = 0; i < n; i++) {
+          let sum = String(arr[i])
+            .split('')
+            .reduce((sum, i) => sum + parseInt(i), 0);
+          if (sum > max) {
+            max = sum;
+            result = arr[i];
+          } else if (sum === max) {
+            result = Math.max(result, arr[i]);
+          }
+        }
+
+        return result;
       }
-    }
 
-    return result;
-  }
-
-  let arr = [128, 460, 603, 40, 521, 137, 123]
-  console.log(solution(7, arr));
-</script>
-</body>
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
 </html>
