@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-<body>
-<script>
-  function solution(need, plan) {
-    // let result = "YES";
-    // let queue = need.split('');
-    //
-    // for (let lecture of plan) {
-    //   if (queue.includes(lecture)) {
-    //     if (lecture !== queue.shift()) return "NO";
-    //   }
-    // }
-    //
-    // if (queue.length > 0) return "NO";
-    //
-    // return result;
-
-    let result = "YES";
-    let queue = need.split('');
-
-    for (let i = 0; i < plan.length; i++) {
-      if (queue.includes(plan[i])) {
-        if (plan[i] !== queue.shift()) return "NO";
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        // let result = "YES";
+        // let queue = need.split('');
+        // for (let i = 0; i < plan.length; i++) {
+        //   if (queue.includes(plan[i])) {
+        //     if (plan[i] !== queue.shift()) return "NO";
+        //   }
+        // }
+        // if (queue.length > 0) return "NO";
+        // return result;
       }
-    }
 
-    if (queue.length > 0) return "NO";
-    return result;
-  }
+      let need = 'CBA';
+      let plan = 'CBDAGE';
+      let result = solution(need, plan);
 
-  let need = "CBA";
-  let plan = "CBDAGE";
-  let result = solution(need, plan);
-
-  console.log(result);
-  document.write(result);
-</script>
-</body>
+      console.log(result);
+      document.write(result);
+    </script>
+  </body>
 </html>
