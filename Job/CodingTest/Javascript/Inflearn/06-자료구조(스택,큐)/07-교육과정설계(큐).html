@@ -18,6 +18,19 @@
         // }
         // if (queue.length > 0) return "NO";
         // return result;
+
+        let result = 'YES';
+        let queue = need.split('');
+
+        for (let i = 0; i < plan.length; i++) {
+          if (queue.includes(plan[i])) {
+            if (plan[i] !== queue.shift()) return 'NO';
+          }
+        }
+
+        if (queue.length > 0) return 'NO';
+
+        return result;
       }
 
       let need = 'CBA';
