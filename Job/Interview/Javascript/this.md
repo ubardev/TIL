@@ -1,0 +1,4 @@
+- 함수 내부에서의 this
+  - strict mode에서는 undefined
+  - 느슨한 모드에서는 globalThis
+- 생성자 함수 또는 클래서에서의 this, 앞으로 생성될 인스턴스 자체를 가리킴
