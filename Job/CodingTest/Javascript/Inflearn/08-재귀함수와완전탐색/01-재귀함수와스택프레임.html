@@ -9,14 +9,28 @@
   <body>
     <script>
       function solution(n) {
+        // function DFS(L) {
+        //   if (L === 0) return;
+        //   else {
+        //     DFS(L - 1);
+        //     console.log(L);
+        //   }
+        // }
+        // DFS(n);
+
+        let answer = [];
+
         function DFS(L) {
           if (L === 0) return;
           else {
             DFS(L - 1);
             console.log(L);
+            answer.push(L);
           }
         }
+
         DFS(n);
+        return answer;
       }
 
       let result = solution(3);
