@@ -9,18 +9,35 @@
   <body>
     <script>
       function solution(v) {
-        let answer;
+        // let answer = [];
+        // function DFS(v) {
+        //   if (v > 7) {
+        //     return;
+        //   } else {
+        //     // console.log('v==========>', v); // 전위순회
+        //     answer.push(v);
+        //     DFS(v * 2);
+        //     // console.log('v==========>', v); // 중위순회
+        //     DFS(v * 2 + 1);
+        //     // console.log('v==========>', v); // 후위순회
+        //   }
+        // }
+        // DFS(v);
+        // return answer;
+
+        let answer = [];
+
         function DFS(v) {
-          if (v > 7) {
-            return;
-          } else {
-            console.log('v==========>', v); // 전위순회
+          if (v > 7) return;
+          else {
+            // answer.push(v); // 전위순회
             DFS(v * 2);
-            // console.log('v==========>', v); // 중위순회
+            answer.push(v); // 중위순회
             DFS(v * 2 + 1);
-            // console.log('v==========>', v); // 후위순회
+            // answer.push(v); // 후위순회
           }
         }
+
         DFS(v);
         return answer;
       }
