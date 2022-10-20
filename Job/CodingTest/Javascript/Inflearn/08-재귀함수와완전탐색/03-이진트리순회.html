@@ -14,9 +14,11 @@
           if (v > 7) {
             return;
           } else {
-            console.log('v==========>', v);
+            console.log('v==========>', v); // 전위순회
             DFS(v * 2);
+            // console.log('v==========>', v); // 중위순회
             DFS(v * 2 + 1);
+            // console.log('v==========>', v); // 후위순회
           }
         }
         DFS(v);
