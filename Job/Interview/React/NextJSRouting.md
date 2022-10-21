@@ -1,0 +1,3 @@
+- location.replace("url"): 로컬 state 유지 안됨(리렌더)
+- router.push(url): 로컬 state유지 / data fetching은 일어남
+- router.push(url, as, {shallow: true}): 로컬 state유지 / data fetching x
