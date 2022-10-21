@@ -8,10 +8,10 @@
   </head>
   <body>
     <script>
-      function solution(n) {
+      function solution(arr) {
         let answer = 'NO';
         let flag = 0;
-        let total = arr.reduct((a, b) => a + b, 0);
+        let total = arr.reduce((a, b) => a + b, 0);
         let n = arr.length;
 
         function DFS(L, sum) {
