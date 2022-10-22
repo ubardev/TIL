@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -9,6 +10,17 @@ export default function Home() {
       </Head>
 
       <main>
+        <h1 className="title">
+          Read this Post{' '}
+          <Link href="/posts/first-post">
+            <a>첫번째 글</a>
+          </Link>
+        </h1>
+
+        <h1 className="title">
+          Read this Post <a href="/posts/first-post">첫번째 글(a tag)</a>
+        </h1>
+
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -48,14 +60,17 @@ export default function Home() {
         </div>
       </main>
 
+      <Link href="/posts/second-post">
+        <a>두번째 글</a>
+      </Link>
+
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
+          Powered by <img src="/vercel.svg" alt="Vercel" className="logo" />
         </a>
       </footer>
 
@@ -205,5 +220,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
