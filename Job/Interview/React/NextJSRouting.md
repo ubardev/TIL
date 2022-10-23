@@ -20,3 +20,8 @@ Next.js는 Automatic Code Splitting을 제공
 - 페이지 이동을 할 땐 목적지 페이지에 필요한 chunk만 추가 로드
 
 이를 통해 성능이 최적화 된다.
+
+Link Component
+
+- 본 서비스 외부 링크로 연결 할 때는 <a> tag만 쓰면 됨
+- Link Component에 스타일을 줄 때는 <a> tag에 줘야 함
