@@ -25,3 +25,10 @@ Link Component
 
 - 본 서비스 외부 링크로 연결 할 때는 <a> tag만 쓰면 됨
 - Link Component에 스타일을 줄 때는 <a> tag에 줘야 함
+
+Image Component
+
+- Resizing(responsive 사이즈)
+- Lazy load(viewport에 들어오면 로드)
+- 그 외 optimization(webp 형태)
+  CLS(Cumulative Layout Shift): 누적 레이아웃 이동
