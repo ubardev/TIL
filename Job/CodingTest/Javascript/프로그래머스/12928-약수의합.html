@@ -11,13 +11,14 @@
       function solution(n) {
         var answer = 0;
 
-        // for (let i = 1; i <= n; i++) {
-        //   if (n % i === 0) answer += i;
-        // }
-
-        for (let i = 1; i < Math.sqrt(n); i++) {
-          if (n % i === 0) answer += i + n / i;
+        for (let i = 1; i <= n; i++) {
+          if (n % i === 0) answer += i;
         }
+
+        // 실패하는 테스트케이스가 있음
+        // for (let i = 1; i < Math.sqrt(n); i++) {
+        //   if (n % i === 0) answer += i + n / i;
+        // }
 
         return answer;
       }
