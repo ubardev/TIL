@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // # 풀이 1
+        // let pCount = 0;
+        // let yCount = 0;
+
+        // s.toLowerCase()
+        //   .split('')
+        //   .forEach((char) => {
+        //     if (char === 'p') pCount++;
+        //     else if (char === 'y') yCount++;
+        //   });
+
+        // return pCount === yCount;
+
+        // # 풀이 2
+        return (s.match(/p/gi) || []).length === (s.match(/y/gi) || []).length;
+
+        // # 풀이 3 - 이건 안되는거 같음 더 확인 필요
+        // let aaa = ![s.toLowerCase()].reduce((sum, char) => {
+        //   if (char === 'p') return sum + 1;
+        //   if (char === 'y') return sum - 1;
+        //   return sum;
+        // }, 0);
+      }
+      console.log('solution(s) ==========>', solution('pPoooyY'));
+    </script>
+  </body>
+</html>
