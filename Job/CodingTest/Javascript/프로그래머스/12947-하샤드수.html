@@ -8,16 +8,15 @@
   </head>
   <body>
     <script>
-      function solution(n) {
-        let answer = 1;
+      function solution(x) {
+        const sum = x
+          .toString()
+          .split('')
+          .reduce((splitSum, number) => splitSum + Number(number), 0);
 
-        while (n % answer !== 1) {
-          answer++;
-        }
-
-        return answer;
+        return x % sum === 0;
       }
-      console.log('solution(n) ==========>', solution(12));
+      console.log('solution(x) ==========>', solution(10));
     </script>
   </body>
 </html>
