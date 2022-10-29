@@ -9,30 +9,40 @@
   <body>
     <script>
       function solution(numbers) {
+        // # 풀이 1
+        // function isPrime(number) {
+        //   if (number === 1) return false;
+        //   for (let i = 2; i <= Math.sqrt(number); i++) {
+        //     if (number % i === 0) return false;
+        //   }
+
+        //   return true;
+        // }
+
+        // let result = 0;
+        // const length = numbers.length;
+
+        // for (let i = 0; i < length; i++) {
+        //   for (let j = i + 1; j < length; j++) {
+        //     for (let k = j + 1; k < length; k++) {
+        //       const sum = numbers[i] + numbers[j] + numbers[k];
+        //       if (isPrime(sum)) {
+        //         result++;
+        //       }
+        //     }
+        //   }
+        // }
+
+        // return result;
+
+        // # 풀이 2
         function isPrime(number) {
           if (number === 1) return false;
           for (let i = 2; i <= Math.sqrt(number); i++) {
             if (number % i === 0) return false;
           }
-
           return true;
         }
-
-        let result = 0;
-        const length = numbers.length;
-
-        for (let i = 0; i < length; i++) {
-          for (let j = i + 1; j < length; j++) {
-            for (let k = j + 1; k < length; k++) {
-              const sum = numbers[i] + numbers[j] + numbers[k];
-              if (isPrime(sum)) {
-                result++;
-              }
-            }
-          }
-        }
-
-        return result;
       }
       console.log('solution(nums) ==========>', solution([1, 2, 7, 6, 4]));
     </script>
