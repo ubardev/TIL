@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(numbers) {
+        function isPrime(number) {
+          if (number === 1) return false;
+          for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) return false;
+          }
+
+          return true;
+        }
+
+        let result = 0;
+        const length = numbers.length;
+
+        for (let i = 0; i < length; i++) {
+          for (let j = i + 1; j < length; j++) {
+            for (let k = j + 1; k < length; k++) {
+              const sum = numbers[i] + numbers[j] + numbers[k];
+              if (isPrime(sum)) {
+                result++;
+              }
+            }
+          }
+        }
+
+        return result;
+      }
+      console.log('solution(nums) ==========>', solution([1, 2, 7, 6, 4]));
+    </script>
+  </body>
+</html>
