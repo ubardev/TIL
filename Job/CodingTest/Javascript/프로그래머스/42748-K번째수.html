@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(array, commands) {
+        const result = [];
+
+        for (const command of commands) {
+          let temp = [];
+          for (let i = command[0] - 1; i < command[1]; i++) temp.push(array[i]);
+          temp.sort((a, b) => a - b);
+          result.push(temp[command[2] - 1]);
+        }
+
+        return result;
+      }
+
+      console.log(
+        'solution(array, commands)==========>',
+        solution(
+          [1, 5, 2, 6, 3, 7, 4],
+          [
+            [2, 5, 3],
+            [4, 4, 1],
+            [1, 7, 3],
+          ]
+        )
+      );
+    </script>
+  </body>
+</html>
