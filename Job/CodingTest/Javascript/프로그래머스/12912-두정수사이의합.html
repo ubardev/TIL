@@ -10,17 +10,10 @@
     <script>
       function solution(a, b) {
         let answer = 0;
-        let min, max;
+        let min = Math.min(a, b);
+        let max = Math.max(a, b);
 
-        if (a > b) {
-          min = b;
-          max = a;
-        } else {
-          min = a;
-          max = b;
-        }
-
-        for (let i = a; i <= b; i++) {
+        for (let i = min; i <= max; i++) {
           answer += i;
         }
 

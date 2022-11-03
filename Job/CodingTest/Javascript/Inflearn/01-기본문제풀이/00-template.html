@@ -8,11 +8,34 @@
   </head>
   <body>
     <script>
-      function solution(n) {
-        let answer;
-        return answer;
+      function solution(s) {
+        let result = 0;
+        const divideCount = parseInt(s.length / 3);
+
+        for (let i = 0; i < divideCount; i++) {
+          let temp = s.slice(3 * i, 3 + 3 * i);
+
+          for (j = 0; j < 3; j++) {
+            if (temp[j] === 'X') {
+              result += 1;
+              break;
+            }
+          }
+        }
+
+        const exceptValue = s.length - 3 * divideCount;
+        //CONDITION CHECK FOR STRING LENGTH NOT MULTIPLE OF 3
+        if (exceptValue > 0) {
+          if (s[3 * divideCount] === 'X') {
+            result += 1;
+          } else if (s[3 * divideCount + 1] === 'X') {
+            result += 1;
+          }
+        }
+        //TO WRITE OUTPUT
+        document.write(result);
       }
-      console.log(solution('input'));
+      solution('X.XXXXX.X.');
     </script>
   </body>
 </html>
