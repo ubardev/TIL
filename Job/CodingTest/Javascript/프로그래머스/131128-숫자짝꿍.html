@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(X, Y) {
+        const sortedX = X.split("").sort((a, b) => b - a);
+        const sortedY = Y.split("").sort((a, b) => b - a);
+        let xIndex = 0;
+        let yIndex = 0;
+        let sameNumbers = [];
+
+        while (xIndex < X.length && yIndex < Y.length) {
+          if (sortedX[xIndex] === sortedY[yIndex]) {
+            sameNumbers.push(sortedX[xIndex]);
+            xIndex++;
+            yIndex++;
+          } else if (sortedX[xIndex] < sortedY[yIndex]) {
+            yIndex++;
+          } else {
+            xIndex++;
+          }
+        }
+
+        const joindSameNumbers = sameNumbers.join("");
+
+        return sameNumbers.length > 0
+          ? Number(joindSameNumbers) === 0
+            ? "0"
+            : sameNumbers.join("")
+          : "-1";
+      }
+      console.log(
+        "solution(X, Y) ==========>",
+        solution(
+          "2038192874012374132849712034728903174092314",
+          "5649345234598239475923487598"
+        )
+      );
+    </script>
+  </body>
+</html>
