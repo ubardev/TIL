@@ -13,13 +13,8 @@
         let remainPlayer = stages.length;
 
         for (let i = 1; i <= N; i++) {
-          let failCount = 0;
-          for (let j = 0; j < stages.length; j++) {
-            if (i === stages[j]) {
-              failCount++;
-            }
-          }
-          failRatio[i - 1] = [i, failCount / remainPlayer];
+          const failCount = stages.filter((stage) => stage === i).length;
+          failRatio.push([i, failCount / remainPlayer]);
           remainPlayer -= failCount;
         }
 
