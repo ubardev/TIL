@@ -9,16 +9,18 @@
   <body>
     <script>
       function solution(arr, divisor) {
-        const answer = [];
-        for (const number of arr) {
-          if (number % divisor === 0) {
-            answer.push(number);
-          }
-        }
+        // const answer = [];
+        // for (const number of arr) {
+        //   if (number % divisor === 0) {
+        //     answer.push(number);
+        //   }
+        // }
 
-        answer.sort((a, b) => a - b);
+        // answer.sort((a, b) => a - b);
+        // return answer.length === 0 ? [-1] : answer;
 
-        return answer.length === 0 ? [-1] : answer;
+        const answer = arr.filter((number) => number % divisor === 0);
+        return answer.length === 0 ? [-1] : answer.sort((a, b) => a - b);
       }
       console.log(
         'solution(arr, divisor)==========>',
