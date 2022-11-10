@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(N, stages) {
+        const failRatio = [];
+        let remainPlayer = stages.length;
+
+        for (let i = 1; i <= N; i++) {
+          let failCount = 0;
+          for (let j = 0; j < stages.length; j++) {
+            if (i === stages[j]) {
+              failCount++;
+            }
+          }
+          failRatio[i - 1] = [i, failCount / remainPlayer];
+          remainPlayer -= failCount;
+        }
+
+        failRatio.sort((a, b) => b[1] - a[1]);
+
+        const answer = [];
+        for (const ratio of failRatio) {
+          answer.push(ratio[0]);
+        }
+        return answer;
+
+        // let result = [];
+
+        // for (let i = 1; i <= N; i++) {
+        //   let compleated = stages.filter((stage) => stage >= i).length;
+        //   let faild = stages.filter((stage) => stage === i).length;
+        //   result.push([i, faild / compleated]);
+        // }
+
+        // result.sort((a, b) => b[1] - a[1]);
+        // return result.map((data) => data[0]);
+      }
+      console.log(
+        'solution(N, stages)==========>',
+        solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
+        // solution(4, [4, 4, 4, 4, 4])
+      );
+    </script>
+  </body>
+</html>
