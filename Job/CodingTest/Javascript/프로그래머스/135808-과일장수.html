@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(k, m, score) {
+        score.sort((a, b) => b - a);
+
+        let box = [];
+        let result = 0;
+
+        for (let i = 0; i < score.length; i++) {
+          box.push(score[i]);
+          if (box.length === m) {
+            result += Math.min(...box) * m;
+            box = [];
+          }
+        }
+
+        return result;
+      }
+
+      console.log(
+        'solution(k, m, score) ==========>',
+        // solution(3, 4, [1, 2, 3, 1, 2, 3, 1])
+        solution(4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2])
+      );
+    </script>
+  </body>
+</html>
