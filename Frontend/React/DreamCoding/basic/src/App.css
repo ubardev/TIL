@@ -8,10 +8,10 @@
   padding: 1rem;
   background-color: #ebebeb;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
   margin-bottom: 1rem;
-  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
 }
 
 .photo {
@@ -34,12 +34,21 @@
   background-color: aquamarine;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
+  text-transform: uppercase;
   font-weight: bold;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
+  width: 500px;
+  margin: auto;
+}
+
+.banner {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 2rem;
+  background-color: gold;
+  font-weight: bold;
 }
 
 .counter {

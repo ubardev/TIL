@@ -9,10 +9,6 @@ export default function Counter() {
         className="button"
         onClick={() => {
           setCount((prev) => prev + 1);
-          setCount((prev) => prev + 1);
-          setCount((prev) => prev + 1);
-          setCount((prev) => prev + 1);
-          setCount((prev) => prev + 1);
         }}
       >
         Add +
