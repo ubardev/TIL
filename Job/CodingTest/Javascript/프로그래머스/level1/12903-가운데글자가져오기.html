@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const length = s.length;
+        const mid = length / 2;
+
+        if (length % 2 === 1) {
+          return s.substring(mid, mid + 1);
+        } else {
+          return s.substring(mid - 1, mid + 1);
+        }
+      }
+
+      console.log('solution(s) ==========>', solution('qwer'));
+    </script>
+  </body>
+</html>
