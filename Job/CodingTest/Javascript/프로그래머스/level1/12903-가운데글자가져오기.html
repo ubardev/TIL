@@ -9,14 +9,17 @@
   <body>
     <script>
       function solution(s) {
-        const length = s.length;
-        const mid = length / 2;
+        // const length = s.length;
+        // const mid = length / 2;
 
-        if (length % 2 === 1) {
-          return s.substring(mid, mid + 1);
-        } else {
-          return s.substring(mid - 1, mid + 1);
-        }
+        // if (length % 2 === 1) {
+        //   return s.substring(mid, mid + 1);
+        // } else {
+        //   return s.substring(mid - 1, mid + 1);
+        // }
+
+        const mid = Math.floor(s.length / 2);
+        return s.length % 2 === 1 ? s[mid] : s[mid - 1] + s[mid];
       }
 
       console.log('solution(s) ==========>', solution('qwer'));
