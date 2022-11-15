@@ -81,3 +81,8 @@
     rgba(253, 220, 29, 1) 100%
   );
 }
+
+.total {
+  font-size: 1rem;
+  margin-left: -1.5rem;
+}
