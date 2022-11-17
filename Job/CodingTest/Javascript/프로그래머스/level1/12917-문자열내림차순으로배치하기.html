@@ -9,20 +9,20 @@
   <body>
     <script>
       function solution(s) {
-        let convertAscii = [];
+        // let convertAscii = [];
+        // for (let i = 0; i < s.length; i++) {
+        //   convertAscii[i] = s.charCodeAt(i);
+        // }
 
-        for (let i = 0; i < s.length; i++) {
-          convertAscii[i] = s.charCodeAt(i);
-        }
+        // convertAscii.sort((a, b) => b - a);
 
-        convertAscii.sort((a, b) => b - a);
+        // let result = '';
+        // for (const ascii of convertAscii) {
+        //   result += String.fromCharCode(ascii);
+        // }
+        // return result;
 
-        let result = '';
-        for (const ascii of convertAscii) {
-          result += String.fromCharCode(ascii);
-        }
-
-        return result;
+        return s.split('').sort().reverse().join('');
       }
 
       console.log('solution(s) ==========>', solution('Zbcdefg'));
