@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(price, money, count) {
+        for (let i = 1; i <= count; i++) {
+          money -= price * i;
+        }
+
+        return money < 0 ? Math.abs(money) : 0;
+      }
+
+      console.log(
+        'solution(price, money, count) ==========>',
+        solution(3, 20, 4)
+      );
+    </script>
+  </body>
+</html>
