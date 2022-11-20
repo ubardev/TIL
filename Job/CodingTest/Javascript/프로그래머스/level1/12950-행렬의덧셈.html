@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr1, arr2) {
+        const depth1Length = arr1.length;
+        const depth2Length = arr1[0].length;
+
+        const result = Array.from({ length: depth1Length }, () =>
+          Array.from({ length: depth2Length }, () => 0)
+        );
+
+        for (let i = 0; i < depth1Length; i++) {
+          for (let j = 0; j < depth2Length; j++) {
+            result[i][j] = arr1[i][j] + arr2[i][j];
+          }
+        }
+
+        return result;
+      }
+
+      console.log(
+        'solution(arr1, arr2) ==========>',
+        solution(
+          [
+            [1, 2],
+            [2, 3],
+          ],
+          [
+            [3, 4],
+            [5, 6],
+          ]
+        )
+      );
+    </script>
+  </body>
+</html>
