@@ -9,20 +9,26 @@
   <body>
     <script>
       function solution(arr1, arr2) {
-        const depth1Length = arr1.length;
-        const depth2Length = arr1[0].length;
+        // const depth1Length = arr1.length;
+        // const depth2Length = arr1[0].length;
 
-        const result = Array.from({ length: depth1Length }, () =>
-          Array.from({ length: depth2Length }, () => 0)
+        // const result = Array.from({ length: depth1Length }, () =>
+        //   Array.from({ length: depth2Length }, () => 0)
+        // );
+
+        // for (let i = 0; i < depth1Length; i++) {
+        //   for (let j = 0; j < depth2Length; j++) {
+        //     result[i][j] = arr1[i][j] + arr2[i][j];
+        //   }
+        // }
+
+        // return result;
+
+        return arr1.map((arr1Child, arr1Index) =>
+          arr1Child.map(
+            (number, arr1ChildIndex) => number + arr2[arr1Index][arr1ChildIndex]
+          )
         );
-
-        for (let i = 0; i < depth1Length; i++) {
-          for (let j = 0; j < depth2Length; j++) {
-            result[i][j] = arr1[i][j] + arr2[i][j];
-          }
-        }
-
-        return result;
       }
 
       console.log(
