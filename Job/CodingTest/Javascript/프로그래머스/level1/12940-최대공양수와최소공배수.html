@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        function getMaxDivider(first, second) {
+          const min = Math.min(first, second);
+          for (let i = min; i >= 1; i--) {
+            if (first % i === 0 && second % i === 0) return i;
+          }
+        }
+
+        function getMinMultiple(first, second) {
+          const max = Math.max(first, second);
+          for (let i = 1; i <= Number.MAX_SAFE_INTEGER; i++) {
+            const number = max * i;
+            if (number % first === 0 && number % second === 0) return number;
+          }
+        }
+
+        return [getMaxDivider(n, m), getMinMultiple(n, m)];
+      }
+
+      console.log('solution(n, m) ==========>', solution(3, 12));
+    </script>
+  </body>
+</html>
