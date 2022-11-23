@@ -9,20 +9,34 @@
   <body>
     <script>
       function solution(s) {
-        const words = s.split(' ');
+        // const words = s.split(' ');
 
-        for (let i = 0; i < words.length; i++) {
-          let temp = '';
-          for (let j = 0; j < words[i].length; j++) {
-            temp +=
-              j % 2 === 0
-                ? words[i][j].toUpperCase()
-                : words[i][j].toLowerCase();
-          }
-          words[i] = temp;
-        }
+        // for (let i = 0; i < words.length; i++) {
+        //   let temp = '';
+        //   for (let j = 0; j < words[i].length; j++) {
+        //     temp +=
+        //       j % 2 === 0
+        //         ? words[i][j].toUpperCase()
+        //         : words[i][j].toLowerCase();
+        //   }
+        //   words[i] = temp;
+        // }
 
-        return words.join(' ');
+        // return words.join(' ');
+
+        return s
+          .split(' ')
+          .map((word) =>
+            word
+              .split('')
+              .map((character, index) =>
+                index % 2 === 0
+                  ? character.toUpperCase()
+                  : character.toLowerCase()
+              )
+              .join('')
+          )
+          .join(' ');
       }
 
       console.log('solution(s) ==========>', solution('try hello world'));
