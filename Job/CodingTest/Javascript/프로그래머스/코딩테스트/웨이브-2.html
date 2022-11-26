@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(heights) {
+        let result = 0;
+        const heightsLength = heights.length;
+        const viewCount = (index) => {
+          let result = 0;
+          const left = (max, sameHeight) => {
+            for (let i = index - 1; i >= 0; i--) {
+              if (heights[i] > max) {
+                max = heights[i];
+                result++;
+                if (heights[i] === max) sameHeight = true;
+              } else if (heights[i] === max) {
+                if (!sameHeight) {
+                  result++;
+                  sameHeight = true;
+                }
+              }
+            }
+          };
+          const right = (max, sameHeight) => {
+            for (let i = index + 1; i < heightsLength; i++) {
+              if (heights[i] > max) {
+                max = heights[i];
+                result++;
+                if (heights[i] === max) sameHeight = true;
+              } else if (heights[i] === max) {
+                if (!sameHeight) {
+                  result++;
+                  sameHeight = true;
+                }
+              }
+            }
+          };
+
+          if (index === 0) {
+            let max = heights[index];
+            let sameHeight = false;
+            right(max, sameHeight);
+          } else if (index === heightsLength - 1) {
+            let max = heights[index];
+            let sameHeight = false;
+            left(max, sameHeight);
+          } else {
+            let max = heights[index];
+            let sameHeight = false;
+            left(max, sameHeight);
+            max = heights[index];
+            sameHeight = false;
+            right(max, sameHeight);
+          }
+
+          return result;
+        };
+
+        for (let i = 0; i < heightsLength; i++) {
+          result += viewCount(i);
+        }
+
+        return result;
+      }
+
+      console.log("solution() ==========>", solution([3, 5, 4, 2, 4, 4, 6, 5]));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(join_date, resign_date, holidays) {
+        // 윤년 여부 판단 함수(자바스크립트 날짜 객체 사용으로 사용하지 않음)
+        const isLeapYear = (year) =>
+          year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+
+        let days = 0;
+        let [joinDate, joinDay] = join_date.split(" ");
+        joinDate = new Date(joinDate);
+        const resignDate = new Date(resign_date);
+
+        if (joinDate === resignDate) return 1;
+
+        while (true) {
+          let tempDate = joinDate;
+          if (tempDate.getTime() > resignDate.getTime()) {
+            break;
+          } else {
+            let tempDateMonth = ("0" + (tempDate.getMonth() + 1)).slice(-2);
+            let tempDateDate = ("0" + tempDate.getDate()).slice(-2);
+            let tempDateDay = tempDate.getDay();
+
+            if (tempDateDay == 0 || tempDateDay == 6) {
+              // 주말
+            } else if (holidays.includes(`${tempDateMonth}/${tempDateDate}`)) {
+              // 휴일
+            } else {
+              // 평일
+              days++;
+            }
+            tempDate.setDate(joinDate.getDate() + 1);
+          }
+        }
+
+        return days;
+      }
+
+      console.log(
+        "solution(join_date, resign_date, holidays) ==========>",
+        solution("2019/12/01 SUN", "2020/03/02", ["01/02", "12/24", "03/01"])
+      );
+    </script>
+  </body>
+</html>
