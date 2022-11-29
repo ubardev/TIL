@@ -9,14 +9,26 @@
   <body>
     <script>
       function solution(sizes) {
-        const sortedSizes = sizes.map((size) => size.sort((a, b) => b - a));
+        // const sortedSizes = sizes.map((size) => size.sort((a, b) => b - a));
+        // let maxWidth = Number.MIN_SAFE_INTEGER;
+        // let maxHeight = Number.MIN_SAFE_INTEGER;
+
+        // for (const size of sortedSizes) {
+        //   if (size[0] >= maxWidth) maxWidth = size[0];
+        //   if (size[1] >= maxHeight) maxHeight = size[1];
+        // }
+
+        // return maxWidth * maxHeight;
+
         let maxWidth = Number.MIN_SAFE_INTEGER;
         let maxHeight = Number.MIN_SAFE_INTEGER;
 
-        for (const size of sortedSizes) {
+        sizes.forEach((size) => {
+          size.sort((a, b) => b - a);
+
           if (size[0] >= maxWidth) maxWidth = size[0];
           if (size[1] >= maxHeight) maxHeight = size[1];
-        }
+        });
 
         return maxWidth * maxHeight;
       }
