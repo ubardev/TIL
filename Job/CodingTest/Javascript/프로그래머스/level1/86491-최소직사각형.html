@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(sizes) {
+        const sortedSizes = sizes.map((size) => size.sort((a, b) => b - a));
+        let maxWidth = Number.MIN_SAFE_INTEGER;
+        let maxHeight = Number.MIN_SAFE_INTEGER;
+
+        for (const size of sortedSizes) {
+          if (size[0] >= maxWidth) maxWidth = size[0];
+          if (size[1] >= maxHeight) maxHeight = size[1];
+        }
+
+        return maxWidth * maxHeight;
+      }
+      console.log(
+        'solution(sizes) ==========>',
+        solution([
+          [60, 50],
+          [30, 70],
+          [60, 30],
+          [80, 40],
+        ])
+      );
+    </script>
+  </body>
+</html>
