@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr1, arr2) {
+        const arr1Binary = [];
+        const arr2Binary = [];
+        const result = [];
+
+        for (let i = 0; i < n; i++) {
+          arr1Binary.push(arr1[i].toString(2).padStart(n, '0'));
+          arr2Binary.push(arr2[i].toString(2).padStart(n, '0'));
+        }
+
+        for (let i = 0; i < n; i++) {
+          let temp = '';
+          for (let j = 0; j < n; j++) {
+            if (arr1Binary[i][j] === '1' || arr2Binary[i][j] === '1') {
+              temp += '#';
+            } else if (arr1Binary[i][j] === '0' && arr2Binary[i][j] === '0') {
+              temp += ' ';
+            }
+          }
+          result.push(temp);
+        }
+
+        return result;
+      }
+
+      console.log(
+        'solution(n, arr1, arr2) ==========>',
+        solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
+      );
+    </script>
+  </body>
+</html>
