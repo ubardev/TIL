@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(strings, n) {
+        const temp = [];
+        strings.forEach((string, i) => {
+          temp.push([string[n], i]);
+        });
+
+        temp.sort((a, b) => b[0] - a[0]);
+
+        console.log('temp==========>', temp);
+      }
+
+      console.log(
+        'solution(strings, n) ==========>',
+        solution(['sun', 'bed', 'car'], 1)
+      );
+    </script>
+  </body>
+</html>
