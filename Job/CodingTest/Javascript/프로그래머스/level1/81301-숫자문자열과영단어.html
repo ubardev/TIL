@@ -9,25 +9,47 @@
   <body>
     <script>
       function solution(s) {
-        if (/^[0-9]+$/.test(s)) return Number(s);
-        const numberWords = [
-          /zero/g,
-          /one/g,
-          /two/g,
-          /three/g,
-          /four/g,
-          /five/g,
-          /six/g,
-          /seven/g,
-          /eight/g,
-          /nine/g,
+        // if (/^[0-9]+$/.test(s)) return Number(s);
+        // const numberWords = [
+        //   /zero/g,
+        //   /one/g,
+        //   /two/g,
+        //   /three/g,
+        //   /four/g,
+        //   /five/g,
+        //   /six/g,
+        //   /seven/g,
+        //   /eight/g,
+        //   /nine/g,
+        // ];
+
+        // for (let i = 0; i < numberWords.length; i++) {
+        //   s = s.replace(numberWords[i], i);
+        // }
+
+        // return Number(s);
+
+        let numbers = [
+          'zero',
+          'one',
+          'two',
+          'three',
+          'four',
+          'five',
+          'six',
+          'seven',
+          'eight',
+          'nine',
         ];
 
-        for (let i = 0; i < numberWords.length; i++) {
-          s = s.replace(numberWords[i], i);
+        let result = s;
+
+        for (let i = 0; i < numbers.length; i++) {
+          const temp = result.split(numbers[i]);
+          result = temp.join(i);
         }
 
-        return Number(s);
+        return Number(result);
       }
 
       //   console.log('solution(s) ==========>', solution('one4seveneight'));
