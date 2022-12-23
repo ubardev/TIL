@@ -29,6 +29,8 @@
 
         // return Number(s);
 
+        if (/^[0-9]+$/.test(s)) return Number(s);
+
         let numbers = [
           'zero',
           'one',
@@ -53,7 +55,7 @@
       }
 
       //   console.log('solution(s) ==========>', solution('one4seveneight'));
-      console.log('solution(s) ==========>', solution('oneone'));
+      console.log('solution(s) ===========>', solution('oneone'));
     </script>
   </body>
 </html>
