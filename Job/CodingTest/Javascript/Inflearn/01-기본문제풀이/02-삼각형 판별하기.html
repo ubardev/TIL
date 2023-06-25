@@ -24,23 +24,13 @@
       // }
 
       function solution(a, b, c) {
-        let answer = 'YES';
-        let max = 0;
-        let sum = a + b + c;
+        const max = Math.max(a, b, c);
+        const sum = a + b + c;
 
-        // 최대값 구하기
-        max = a > b ? a : b;
-        max = c > max ? c : max;
-
-        if (sum - max <= max) {
-          answer = 'NO';
-        }
-
-
-        return answer;
+        return sum - max < max ? 'NO' : 'YES';
       }
 
-      console.log(solution(6, 7, 5));
+      console.log(solution(32, 10, 12));
     </script>
   </body>
 </html>
