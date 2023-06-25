@@ -8,21 +8,39 @@
   </head>
   <body>
     <script>
+      // function solution(a, b, c) {
+      //   let answer = 'YES',
+      //     max;
+      //   let sum = a + b + c;
+
+      //   // 최대값 구하기
+      //   if (a > b) max = a;
+      //   else max = b;
+      //   if (c > max) max = c;
+
+      //   if (sum - max <= max) answer = 'NO';
+
+      //   return answer;
+      // }
+
       function solution(a, b, c) {
-        let answer = 'YES',
-          max;
+        let answer = 'YES';
+        let max = 0;
         let sum = a + b + c;
 
         // 최대값 구하기
-        if (a > b) max = a;
-        else max = b;
-        if (c > max) max = c;
+        max = a > b ? a : b;
+        max = c > max ? c : max;
 
-        if (sum - max <= max) answer = 'NO';
+        if (sum - max <= max) {
+          answer = 'NO';
+        }
+
 
         return answer;
       }
-      console.log(solution(13, 33, 17));
+
+      console.log(solution(6, 7, 5));
     </script>
   </body>
 </html>
