@@ -9,12 +9,28 @@
 <body>
 <script>
   function solution(arr) {
-    let answer = arr;
-    let sum = arr.reduce((sum, number) => sum + number, 0);
+    // let answer = arr;
+    // let sum = arr.reduce((sum, number) => sum + number, 0);
 
-    endOfCircuit: for (let i=0; i<arr.length - 1; i++) {
-      for (let j=i+1; j<arr.length; j++) {
-        if ((sum - (arr[i] + arr[j])) === 100) {
+    // endOfCircuit: for (let i=0; i<arr.length - 1; i++) {
+    //   for (let j=i+1; j<arr.length; j++) {
+    //     if ((sum - (arr[i] + arr[j])) === 100) {
+    //       arr.splice(j, 1);
+    //       arr.splice(i, 1);
+    //       break endOfCircuit;
+    //     }
+    //   }
+    // }
+
+    // return answer;
+
+
+    let answer = arr;
+    let badCaseNumber = arr.reduce((sum, number) => sum + number, 0) - 100;
+
+    endOfCircuit: for (let i = 0; i <= arr.length - 1; i++) {
+      for (let j = i + 1; j <= arr.length; j++) {
+        if (arr[i] + arr[j] === badCaseNumber) {
           arr.splice(j, 1);
           arr.splice(i, 1);
           break endOfCircuit;
