@@ -9,22 +9,16 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
-        let mid = Math.floor(s.length / 2); // 정수화
+        let result = "";
+        const midNumber = Number(s.length / 2);
 
-        if (s.length % 2 === 1) {
-          answer = s.substring(mid, mid + 1);
+        if (s.length % 2 === 0) {
+          result = s.substring(midNumber - 1,  midNumber + 1);
         } else {
-          answer = s.substring(mid - 1, mid + 1);
+          result = s.substring(midNumber, midNumber + 1);
         }
 
-        // if (s.length % 2 === 1) {
-        //   answer = s.substr(mid, 1);
-        // } else {
-        //   answer = s.substr(mid - 1, 2);
-        // }
-
-        return answer;
+        return result;
       }
       console.log(solution('good'));
     </script>
