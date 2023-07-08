@@ -9,17 +9,17 @@
   <body>
     <script>
       function solution(s) {
-        let answer;
-
+        // let result = [];
+        //
         // for (let i = 0; i < s.length; i++) {
         //   if (s.indexOf(s[i]) === i) {
-        //     answer.push(s[i]);
+        //     result.push(s[i]);
         //   }
         // }
+        //
+        // return result;
 
-        answer = s.filter((number, i) => s.indexOf(number) === i);
-
-        return answer;
+        return s.filter((word, i) => s.indexOf(word) === i);
       }
 
       let str = ["good", "time", "good", "time", "student"];
