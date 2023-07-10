@@ -9,16 +9,16 @@
 <body>
 <script>
   function solution(count, aArray, bArray) {
-    let answer = '';
+    let result = '';
     for (let i = 0; i < aArray.length; i++) {
-      if (aArray[i] === bArray[i]) answer += 'D ';
-      else if (aArray[i] === 1 && bArray[i] === 3) answer += 'A ';
-      else if (aArray[i] === 2 && bArray[i] === 1) answer += 'A ';
-      else if (aArray[i] === 3 && bArray[i] === 2) answer += 'A ';
-      else answer += 'B ';
+      if (aArray[i] === bArray[i]) result += 'D ';
+      else if (aArray[i] === 1 && bArray[i] === 3) result += 'A ';
+      else if (aArray[i] === 2 && bArray[i] === 1) result += 'A ';
+      else if (aArray[i] === 3 && bArray[i] === 2) result += 'A ';
+      else result += 'B ';
     }
 
-    return answer;
+    return result;
 
     // let answer = [];
     //
