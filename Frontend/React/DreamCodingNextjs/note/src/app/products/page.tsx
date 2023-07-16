@@ -1,8 +1,9 @@
 import Link from "next/link";
-
-const products = ["skirt", "pants", "skirt", "shoes"];
+import { getProducts } from "@/service/products";
 
 export default function ProductsPage() {
+  const products = getProducts();
+
   return (
     <>
       <h1>제품 소개 페이지</h1>
