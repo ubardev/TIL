@@ -1,12 +1,14 @@
-import { Inter } from "@next/font/google";
-import os from "os";
-import Counter from "@/components/Counter"; // 노드 APIs
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import styles from './page.module.css';
+import os from 'os'; // 노드 APIs
+import Counter from '@/components/Counter';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  console.log("안녕!");
-  console.log("os.hostname() ==========>", os.hostname());
+  console.log('안녕! - 서버');
+  console.log(os.hostname());
 
   return (
     <>
