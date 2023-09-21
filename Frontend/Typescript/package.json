@@ -1,7 +1,0 @@
-{
-  "name": "Typescript",
-  "version": "1.0.0",
-  "description": "Learning Typescript by making a Blockchain with it",
-  "main": "index.js",
-  "license": "MIT"
-}
