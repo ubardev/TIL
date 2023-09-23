@@ -1,4 +1,5 @@
 import {Post} from '@/service/posts';
+import PostCard from './PostCard';
 
 interface IProps {
   posts: Post[];
@@ -6,6 +7,6 @@ interface IProps {
 
 export default function PostsGrid({posts}: IProps ) {
   return <ul>
-    {posts.map((post) => <li key={post.path}>{post.title}</li>)}
+    {posts.map((post) => <li key={post.path}><PostCard post={post} /></li>)}
   </ul>;
 }
