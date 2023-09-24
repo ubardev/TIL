@@ -1,3 +1,4 @@
+import MarkdownViewer from "@/components/MarkdownViewer";
 import { getPostDate } from "@/service/posts";
 
 interface IProps {
@@ -12,7 +13,7 @@ export default async function PostPage({ params: { slug } }: IProps) {
   return (
     <>
       <h1>{post.title}</h1>
-      <pre>{post.content}</pre>
+      <MarkdownViewer content={post.content} />
     </>
   );
 }
