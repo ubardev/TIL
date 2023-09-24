@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import profileImage from "../../public/images/profile.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import profileImage from '../../public/images/profile.png';
 
 export default function Hero() {
   return (
@@ -17,8 +17,8 @@ export default function Hero() {
       <h3 className="text-xl font-semibold">Frontend Engineer</h3>
       <p>오늘보다 나은 내일을 위해 노력하는 개발자</p>
       <Link href="/contact">
-        <button className="bg-yellow-500 font-bold rounded-xl py-1 px-4 mt-2">
-          연락하기
+        <button className="bg-green-500 font-bold rounded-xl py-1 px-4 mt-2">
+          <p className='text-white'>연락하기</p>
         </button>
       </Link>
     </section>
