@@ -9,6 +9,14 @@ interface IProps {
   };
 }
 
+export async function generateMetadata({ params: { slug } }: IProps) {
+  const { title, description } = await getPostDate(slug);
+  return {
+    title,
+    description,
+  };
+}
+
 export default async function PostPage({ params: { slug } }: IProps) {
   const post = await getPostDate(slug);
   const { title, path, prev, next } = post;

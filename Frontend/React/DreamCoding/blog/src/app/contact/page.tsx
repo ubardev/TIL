@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FaBlog } from "react-icons/fa";
 import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Me",
+  description: "Ubar에게 메일 보내기",
+};
 
 const LINKS = [
   { icon: <AiFillGithub />, url: "https://github.com/ubardev" },
