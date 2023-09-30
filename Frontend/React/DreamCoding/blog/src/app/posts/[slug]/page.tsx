@@ -1,7 +1,7 @@
 import Image from "next/image";
 import AdjacentPostCard from "@/components/AdjacentPostCard";
 import PostContent from "@/components/PostContent";
-import { getPostDate } from "@/service/posts";
+import { getFeaturedPosts, getPostDate } from "@/service/posts";
 
 interface IProps {
   params: {
@@ -37,4 +37,12 @@ export default async function PostPage({ params: { slug } }: IProps) {
       </section>
     </article>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = await getFeaturedPosts();
+
+  return posts.map((post) => ({
+    slug: post.path,
+  }));
 }
