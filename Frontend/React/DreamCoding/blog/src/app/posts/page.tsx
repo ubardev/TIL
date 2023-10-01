@@ -4,7 +4,7 @@ import { getAllPosts } from "@/service/posts";
 
 export const metadata: Metadata = {
   title: "All Posts",
-  description: "블로그 글",
+  description: "블로그 글 전체 목록",
 };
 
 export default async function PostsPage() {
