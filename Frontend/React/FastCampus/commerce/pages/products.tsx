@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Carousel from 'nuka-carousel';
+import {useState} from 'react';
 
 const images = [
   {
@@ -32,22 +33,57 @@ const images = [
     original: "https://picsum.photos/id/1019/1000/600/",
     thumbnail: "https://picsum.photos/id/1019/250/150/",
   },
+  {
+    original:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/4v.jpg",
+    thumbnail:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/4v.jpg",
+  },
+  {
+    original:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/1.jpg",
+    thumbnail:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/1.jpg",
+  },
+  {
+    original:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/2.jpg",
+    thumbnail:
+      "https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/2.jpg",
+  },
 ];
 
-export default function products() {
+export default function Products() {
+  const [index, setIndex] = useState(0);
   // return <ImageGallery items={images} />;
   return (
-    <Carousel>
-      {images.map((item) => (
-        <Image
-          key={item.original}
-          src={item.original}
-          alt="image"
-          width={1000}
-          height={600}
-          layout="responsive"
-        />
-      ))}
-    </Carousel>
+    <>
+      <Carousel
+        animation="fade"
+        autoplay
+        withoutControls
+        wrapAround
+        speed={10}
+        slideIndex={index}
+      >
+        {images.map((item) => (
+          <Image
+            key={item.original}
+            src={item.original}
+            alt="image"
+            width={1000}
+            height={600}
+            layout="responsive"
+          />
+        ))}
+      </Carousel>
+      <div style={{ display: "flex" }}>
+        {images.map((item, index) => (
+          <div key={index} onClick={() => setIndex(index)}>
+            <Image src={item.original} alt="image" width={100} height={60} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
