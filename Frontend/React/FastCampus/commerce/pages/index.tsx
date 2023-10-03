@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <input ref={inputRef} type="text" placeholder="name" />
+        <input className="" ref={inputRef} type="text" placeholder="name" />
         <button onClick={handleClick}>Add Jacket</button>
 
         <div>
