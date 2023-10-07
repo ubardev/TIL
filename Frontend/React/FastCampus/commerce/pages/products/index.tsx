@@ -1,13 +1,14 @@
 import { CATEGORY_MAP, TAKE } from "constants/products";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { Pagination } from "@mantine/core";
+import { Input, Pagination, SegmentedControl, Select } from "@mantine/core";
 import { categories, products } from "@prisma/client";
 
 export default function Products() {
   const [activePage, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [categories, setCategories] = useState<categories[]>([]);
+  const [selectedCategory, setCategory] = useState<string>("-1");
   const [products, setProducts] = useState<products[]>([]);
 
   useEffect(() => {
@@ -32,10 +33,22 @@ export default function Products() {
 
   return (
     <div className="px-36 my-36">
-      {categories &&
-        categories.map((category) => (
-          <div key={category.id}>{category.name}</div>
-        ))}
+      {categories && (
+        <div className="mb-4">
+          <SegmentedControl
+            value={selectedCategory}
+            onChange={setCategory}
+            data={[
+              { label: "ALL", value: "-1" },
+              ...categories.map((category) => ({
+                label: category.name,
+                value: String(category.id),
+              })),
+            ]}
+            color="dark"
+          />
+        </div>
+      )}
       {products && (
         <div className="grid grid-cols-3 gap-5">
           {products.map((item) => (
