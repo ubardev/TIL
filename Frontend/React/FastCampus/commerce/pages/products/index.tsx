@@ -15,21 +15,23 @@ export default function Products() {
     fetch("/api/get-categories")
       .then((res) => res.json())
       .then((data) => setCategories(data.items));
-    fetch("/api/get-products-count")
+  }, []);
+
+  useEffect(() => {
+    fetch(`/api/get-products-count?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => setTotal(Math.ceil(data.item / TAKE)));
-    fetch(`/api/get-products?skip=0&take=${TAKE}`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data.items));
-  }, []);
+  }, [selectedCategory]);
 
   useEffect(() => {
     const skip = TAKE * (activePage - 1);
 
-    fetch(`/api/get-products?skip=${skip}&take=${TAKE}`)
+    fetch(
+      `/api/get-products?skip=${skip}&take=${TAKE}&category=${selectedCategory}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data.items));
-  }, [activePage]);
+  }, [activePage, selectedCategory]);
 
   return (
     <div className="px-36 my-36">
