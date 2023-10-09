@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Input, Pagination, SegmentedControl, Select } from "@mantine/core";
 import { categories, products } from "@prisma/client";
+import { IconSearch } from "@tabler/icons";
 
 export default function Products() {
   const [activePage, setPage] = useState(1);
@@ -11,6 +12,7 @@ export default function Products() {
   const [selectedCategory, setCategory] = useState<string>("-1");
   const [products, setProducts] = useState<products[]>([]);
   const [selectedFilter, setFilter] = useState<string | null>(FILTERS[0].value);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     fetch("/api/get-categories")
@@ -33,8 +35,20 @@ export default function Products() {
       .then((data) => setProducts(data.items));
   }, [activePage, selectedCategory, selectedFilter]);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
+  };
+
   return (
     <div className="px-36 mt-36 mb-36">
+      <div className="mb-4">
+        <Input
+          icon={<IconSearch />}
+          placeholder="Search"
+          value={keyword}
+          onChange={handleChange}
+        />
+      </div>
       <div className="mb-4">
         <Select value={selectedFilter} onChange={setFilter} data={FILTERS} />
       </div>
