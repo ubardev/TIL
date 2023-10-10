@@ -4,19 +4,31 @@ import { getOrderBy } from "../../constants/products";
 
 const prisma = new PrismaClient();
 
-async function getProducts(
-  skip: number,
-  take: number,
-  category: number,
-  orderBy: string
-) {
+interface IParams {
+  skip: number;
+  take: number;
+  category: number;
+  orderBy: string;
+  contains: string;
+}
+
+async function getProducts({
+  skip,
+  take,
+  category,
+  orderBy,
+  contains,
+}: IParams) {
+  const containsCondition =
+    contains && contains !== "" ? { name: { contains } } : undefined;
   const where =
     category && category !== -1
       ? {
-          where: {
-            category_id: category,
-          },
+          category_id: category,
+          ...containsCondition,
         }
+      : containsCondition
+      ? containsCondition
       : undefined;
   const orderByCondition = getOrderBy(orderBy);
 
@@ -24,7 +36,7 @@ async function getProducts(
     const response = await prisma.products.findMany({
       skip,
       take,
-      ...where,
+      where,
       ...orderByCondition,
     });
 
@@ -43,7 +55,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { skip, take, category, orderBy } = req.query;
+  const { skip, take, category, orderBy, contains } = req.query;
 
   if (!skip || !take) {
     res.status(400).json({ message: "no skip or take" });
@@ -51,12 +63,13 @@ export default async function handler(
   }
 
   try {
-    const products = await getProducts(
-      Number(skip),
-      Number(take),
-      Number(category),
-      String(orderBy)
-    );
+    const products = await getProducts({
+      skip: Number(skip),
+      take: Number(take),
+      category: Number(category),
+      orderBy: String(orderBy),
+      contains: String(contains),
+    });
     res.status(200).json({ items: products, message: "Success" });
   } catch (error) {
     res.status(400).json({ message: "Failed" });

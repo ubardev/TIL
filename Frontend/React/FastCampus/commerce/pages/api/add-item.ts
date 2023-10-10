@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import {Client} from '@notionhq/client';
+import { Client } from "@notionhq/client";
 
 const notion = new Client({
   auth: "secret_8vU5VK2V7ra0qjKNjQpy0z63wPKcuDcfkRfs02XAI4F",
@@ -21,8 +21,6 @@ async function addItem(name: string) {
         ],
       },
     });
-
-    console.log("response ==========>", response);
   } catch (error) {
     console.error(JSON.stringify(error));
   }

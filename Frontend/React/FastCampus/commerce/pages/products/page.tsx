@@ -21,19 +21,21 @@ export default function Products() {
   }, []);
 
   useEffect(() => {
-    fetch(`/api/get-products-count?category=${selectedCategory}`)
+    fetch(
+      `/api/get-products-count?category=${selectedCategory}&contains=${keyword}`
+    )
       .then((res) => res.json())
       .then((data) => setTotal(Math.ceil(data.item / TAKE)));
-  }, [selectedCategory]);
+  }, [selectedCategory, keyword]);
 
   useEffect(() => {
     const skip = TAKE * (activePage - 1);
     fetch(
-      `/api/get-products?skip=${skip}&take=${TAKE}&category=${selectedCategory}&orderBy=${selectedFilter}`
+      `/api/get-products?skip=${skip}&take=${TAKE}&category=${selectedCategory}&orderBy=${selectedFilter}&contains=${keyword}`
     )
       .then((res) => res.json())
       .then((data) => setProducts(data.items));
-  }, [activePage, selectedCategory, selectedFilter]);
+  }, [activePage, selectedCategory, selectedFilter, keyword]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
