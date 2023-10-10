@@ -23,7 +23,7 @@ export default function Products() {
   useEffect(() => {
     fetch(`/api/get-products-count?category=${selectedCategory}`)
       .then((res) => res.json())
-      .then((data) => setTotal(Math.ceil(data.items / TAKE)));
+      .then((data) => setTotal(Math.ceil(data.item / TAKE)));
   }, [selectedCategory]);
 
   useEffect(() => {
