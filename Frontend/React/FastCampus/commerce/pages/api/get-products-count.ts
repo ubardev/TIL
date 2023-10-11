@@ -26,7 +26,7 @@ async function getProductsCount(category?: number, contains?: string) {
 }
 
 type Data = {
-  item?: any;
+  items?: any;
   message: string;
 };
 
@@ -42,7 +42,7 @@ export default async function handler(
       String(contains)
     );
 
-    res.status(200).json({ item: productsCount, message: "Success" });
+    res.status(200).json({ items: productsCount, message: "Success" });
   } catch (error) {
     res.status(400).json({ message: "Failed" });
   }
