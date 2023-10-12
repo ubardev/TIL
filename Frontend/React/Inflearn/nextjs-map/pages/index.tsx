@@ -1,12 +1,24 @@
 import Link from 'next/link';
-import {Fragment} from 'react';
+import {Fragment, useEffect} from 'react';
 import {AiOutlineShareAlt} from 'react-icons/ai';
 import {VscFeedback} from 'react-icons/vsc';
 import Header from '../components/commin/Header';
 import MapSection from '../components/home/MapSection';
+import useStores from '../hooks/useStores';
 import styles from '../styles/header.module.scss';
+import {Store} from '../types/store';
 
-export default function Home() {
+interface IProps {
+  stores: Store[];
+}
+
+export default function Home({ stores }: IProps) {
+  const { initializeStores } = useStores();
+
+  useEffect(() => {
+    initializeStores(stores);
+  }, [initializeStores, stores]);
+
   return (
     <Fragment>
       <Header
@@ -31,4 +43,14 @@ export default function Home() {
       </main>
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  /** TODO: next api routes로 불러오기 */
+  const stores = (await import("../public/stores.json")).default;
+
+  return {
+    props: { stores },
+    revalidate: 60 * 60,
+  };
 }
