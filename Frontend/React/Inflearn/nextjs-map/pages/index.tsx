@@ -3,6 +3,7 @@ import {Fragment} from 'react';
 import {AiOutlineShareAlt} from 'react-icons/ai';
 import {VscFeedback} from 'react-icons/vsc';
 import Header from '../components/commin/Header';
+import MapSection from '../components/home/MapSection';
 import styles from '../styles/header.module.scss';
 
 export default function Home() {
@@ -25,7 +26,9 @@ export default function Home() {
           </Link>,
         ]}
       />
-      <main></main>
+      <main style={{ width: "100%", height: "100%" }}>
+        <MapSection />
+      </main>
     </Fragment>
   );
 }
