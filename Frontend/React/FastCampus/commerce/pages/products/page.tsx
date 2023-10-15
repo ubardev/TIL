@@ -1,5 +1,7 @@
 import { CATEGORY_MAP, FILTERS, TAKE } from "constants/products";
 import useDebounce from "hooks/useDebounce";
+import { Session } from "inspector";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Input, Pagination, SegmentedControl, Select } from "@mantine/core";
@@ -8,6 +10,7 @@ import { IconSearch } from "@tabler/icons";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Products() {
+  const { data: session } = useSession();
   const [activePage, setPage] = useState(1);
   // const [total, setTotal] = useState(0);
   // const [categories, setCategories] = useState<categories[]>([]);
@@ -91,6 +94,7 @@ export default function Products() {
 
   return (
     <div className="px-36 mt-36 mb-36">
+      {session && <p>안녕하세요. {session.user?.name}님</p>}
       <div className="mb-4">
         <Input
           icon={<IconSearch />}

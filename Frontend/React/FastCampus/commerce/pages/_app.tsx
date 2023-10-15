@@ -1,6 +1,7 @@
 import "../styles/globals.css";
-import { CLIENT_ID } from "constants/googleAuth";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { CLIENT_ID } from "constants/googleAuth";
+import { SessionProvider } from "next-auth/react";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import type { AppProps } from "next/app";
@@ -11,13 +12,15 @@ const queryClient = new QueryClient({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <GoogleOAuthProvider clientId={CLIENT_ID}>
+    // <GoogleOAuthProvider clientId={CLIENT_ID}>
+    <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
       </QueryClientProvider>
-    </GoogleOAuthProvider>
+    </SessionProvider>
+    // </GoogleOAuthProvider>
   );
 }
 
