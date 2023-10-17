@@ -3,6 +3,7 @@ import useDebounce from "hooks/useDebounce";
 import { Session } from "inspector";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Input, Pagination, SegmentedControl, Select } from "@mantine/core";
 import { categories, products } from "@prisma/client";
@@ -10,6 +11,7 @@ import { IconSearch } from "@tabler/icons";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Products() {
+  const router = useRouter();
   const { data: session } = useSession();
   const [activePage, setPage] = useState(1);
   // const [total, setTotal] = useState(0);
@@ -125,7 +127,11 @@ export default function Products() {
       {products && (
         <div className="grid grid-cols-3 gap-5">
           {products.map((item) => (
-            <div key={item.id} style={{ maxWidth: 310 }}>
+            <div
+              key={item.id}
+              style={{ maxWidth: 310 }}
+              onClick={() => router.push(`/products/${item.id}`)}
+            >
               <Image
                 className="rounded"
                 alt={item.name}
