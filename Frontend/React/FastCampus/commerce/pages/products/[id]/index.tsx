@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@mantine/core";
 import { products } from "@prisma/client";
 import { IconHeart, IconHeartbeat } from "@tabler/icons";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
@@ -38,6 +38,7 @@ export default function Products(props: {
 
   const router = useRouter();
   const { id: productId } = router.query;
+
   const [editorState] = useState<EditorState | undefined>(() =>
     props.product.contents
       ? EditorState.createWithContent(
@@ -50,6 +51,15 @@ export default function Products(props: {
     fetch(WISHLIST_QUERY_KEY)
       .then((res) => res.json())
       .then((data) => data.item)
+  );
+
+  const { mutate } = useMutation((productId: string) =>
+    fetch("/api/update-wishlist", {
+      method: "POST",
+      body: JSON.stringify({ productId }),
+    })
+      .then((data) => data.json())
+      .then((res) => res.items)
   );
 
   const product = props.product;
@@ -121,6 +131,7 @@ export default function Products(props: {
                   router.push("/auth/login");
                   return;
                 }
+                mutate(String(productId));
               }}
             >
               찜하기
