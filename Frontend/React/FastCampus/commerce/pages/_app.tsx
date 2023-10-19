@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import Header from "components/Header";
 // import { CLIENT_ID } from "constants/googleAuth";
 import { SessionProvider } from "next-auth/react";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -17,7 +18,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     // <GoogleOAuthProvider clientId={CLIENT_ID}>
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <div className="px-36">
+          <Header />
+          <Component {...pageProps} />
+        </div>
       </QueryClientProvider>
     </SessionProvider>
     // </GoogleOAuthProvider>
