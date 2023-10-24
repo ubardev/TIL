@@ -86,3 +86,13 @@ model Wishlist {
   userId String @unique
   productIds String
 }
+
+model Generation {
+  id Int @id @default(autoincrement())
+  sequence Int
+  name String
+  startDate DateTime
+  endDate DateTime
+  place String
+  image String
+}
