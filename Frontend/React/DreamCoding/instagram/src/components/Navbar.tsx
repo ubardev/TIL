@@ -49,7 +49,7 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          {user && <Avatar image={user.image} />}
+          {user && <Avatar image={user.image} size="small" highlignt />}
           {session ? (
             <ColorButton text="Sign out" onClick={() => signOut()} />
           ) : (
