@@ -1,4 +1,4 @@
-import {client} from './sanity';
+import { client } from './sanity';
 
 type OAuthUser = {
   id: string;
@@ -22,4 +22,16 @@ export async function addUser(user: OAuthUser) {
     followers: [],
     bookmarks: [],
   });
+}
+
+export async function getUserByUsername(username: string) {
+  return client.fetch(
+    `*[_type == "user" && username == "${username}"][0]{
+      ...,
+      "id":_id,
+      following[]->{username,image},
+      followers[]->{username,image},
+      "bookmarks":bookmarks[]->_id
+    }`,
+  );
 }

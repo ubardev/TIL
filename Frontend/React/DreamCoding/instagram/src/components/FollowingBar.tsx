@@ -3,7 +3,11 @@
 import useSWR from 'swr';
 
 export default function FollowingBar() {
-  const { data, isLoading, error } = useSWR('/api/hello');
+  const { data, isLoading, error } = useSWR('/api/me');
+
+  if (!isLoading) {
+    console.log('data ==========>', data);
+  }
   // 1. 클라이언트 콤포넌트에서 백엔드에게 api/me 사용자의 정보를 얻어옴
   // 2. 백엔드에서는 현재 로그인된 사용자의 세션 정보를 이용해서
   // 3. 백엔드에서 사용자의 상세 정볼르 sanity에서 가지고 옴(followings)
