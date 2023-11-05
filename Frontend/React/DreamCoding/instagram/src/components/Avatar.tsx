@@ -13,7 +13,7 @@ export default function Avatar({
     <div className={getContainerStyle(size, highlignt)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        className={`bg-white rounded-full p-[0.1rem] ${getImageSizeStyle(
+        className={`bg-white object-cover rounded-full p-[0.1rem] ${getImageSizeStyle(
           size,
         )}`}
         alt="user profile"
