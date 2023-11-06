@@ -1,8 +1,13 @@
 import { CountControl } from "components/CountControl";
+import { CATEGORY_MAP } from "constants/products";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import styled from "@emotion/styled";
-import { IconRefresh, IconX } from "@tabler/icons";
+import { Button } from "@mantine/core";
+import { categories, products } from "@prisma/client";
+import { IconRefresh, IconShoppingCart, IconX } from "@tabler/icons";
+import { useQuery } from "@tanstack/react-query";
 
 interface CartItem {
   name: string;
@@ -14,6 +19,7 @@ interface CartItem {
 }
 
 export default function Cart() {
+  const router = useRouter();
   const [data, setData] = useState<CartItem[]>([]);
   const diliveryAmount = 5000;
   const discountAmount = 0;
@@ -48,14 +54,33 @@ export default function Cart() {
     setData(mockData);
   }, []);
 
+  const { data: products } = useQuery<
+    { items: products[] },
+    unknown,
+    products[]
+  >(
+    [`/api/get-products?skip=0&take=3`],
+    () => fetch(`/api/get-products?skip=0&take=3`).then((res) => res.json()),
+    {
+      select: (data) => data.items,
+    }
+  );
+
+  const handleOrder = () => {
+    // TODO: 구매하기 기능 구현
+    alert(`장바구니에 담긴 것들 ${JSON.stringify(data)} 주문`);
+  };
+
   return (
     <div>
       <span className="text-3xl mb-3">Cart ({data.length})</span>
       <div className="flex">
         <div className="flex flex-col p-4 space-y-4 flex-1">
-          {data.map((item, index) => (
-            <Item key={index} {...item} />
-          ))}
+          {data?.length > 0 ? (
+            data.map((item, index) => <Item key={index} {...item} />)
+          ) : (
+            <div>장바구니에 아무것도 없습니다.</div>
+          )}
         </div>
         <div className="px-4">
           <div
@@ -84,14 +109,59 @@ export default function Cart() {
                 원
               </span>
             </Row>
+            <Button
+              style={{ backgroundColor: "black" }}
+              radius="xl"
+              size="md"
+              styles={{
+                root: { height: 48 },
+              }}
+              onClick={handleOrder}
+            >
+              구매하기
+            </Button>
           </div>
         </div>
+      </div>
+      <div className="mt-32">
+        <p>추천상품</p>
+        {products && (
+          <div className="grid grid-cols-3 gap-5">
+            {products.map((item) => (
+              <div
+                key={item.id}
+                style={{ maxWidth: 310 }}
+                onClick={() => router.push(`/products/${item.id}`)}
+              >
+                <Image
+                  className="rounded"
+                  alt={item.name}
+                  src={item.image_url ?? ""}
+                  width={310}
+                  height={390}
+                  placeholder="blur"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM0tbSsBwACegEoriWGfgAAAABJRU5ErkJggg=="
+                />
+                <div className="flex">
+                  <span>{item.name}</span>
+                  <span className="ml-auto">
+                    {item.price.toLocaleString("ko-KR")}원
+                  </span>
+                </div>
+                <span className="text-zinc-400">
+                  {CATEGORY_MAP[item.category_id - 1]}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 const Item = (props: CartItem) => {
+  const router = useRouter();
   const [quantity, setQuantity] = useState<number | undefined>(props.quantity);
   const [amount, setAmount] = useState<number>(props.quantity);
 
@@ -113,7 +183,13 @@ const Item = (props: CartItem) => {
 
   return (
     <div className="w-full flex p-4" style={{ borderBottom: "1px solid grey" }}>
-      <Image src={props.image_url} width={155} height={195} alt={props.name} />
+      <Image
+        src={props.image_url}
+        width={155}
+        height={195}
+        alt={props.name}
+        onClick={() => router.push(`products/${props.productId}`)}
+      />
       <div className="flex flex-col ml-4">
         <span className="font-semibold mb-2">{props.name}</span>
         <span className="mb-auto">
