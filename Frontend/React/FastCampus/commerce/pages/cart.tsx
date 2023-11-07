@@ -5,54 +5,39 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import styled from "@emotion/styled";
 import { Button } from "@mantine/core";
-import { categories, products } from "@prisma/client";
+import { Cart, products } from "@prisma/client";
 import { IconRefresh, IconShoppingCart, IconX } from "@tabler/icons";
 import { useQuery } from "@tanstack/react-query";
 
-interface CartItem {
+interface CartItem extends Cart {
   name: string;
-  productId: number;
   price: number;
-  quantity: number;
-  amount: number;
   image_url: string;
 }
 
-export default function Cart() {
+export default function CartPage() {
   const router = useRouter();
-  const [data, setData] = useState<CartItem[]>([]);
-  const diliveryAmount = 5000;
+
+  const { data } = useQuery<{ items: CartItem[] }, unknown, CartItem[]>(
+    [`/api/get-cart`],
+    () =>
+      fetch(`/api/get-cart`)
+        .then((res) => res.json())
+        .then((data) => data.items)
+  );
+
+  console.log("data ==========>", data);
+
+  const diliveryAmount = data && data.length > 0 ? 5000 : 0;
   const discountAmount = 0;
+
   const amount = useMemo(() => {
+    if (!data) return 0;
+
     return data
       .map((item) => item.amount)
       .reduce((prev, curr) => prev + curr, 0);
   }, [data]);
-
-  useEffect(() => {
-    const mockData = [
-      {
-        name: "멋드러진 신발",
-        productId: 57,
-        price: 20000,
-        quantity: 2,
-        amount: 40000,
-        image_url:
-          "https://cdn.shopify.com/s/files/1/0282/5850/products/footwear_nike_air-more-uptempo-96_DH8011-100.view_1_720x.jpg",
-      },
-      {
-        name: "느낌있는 후드",
-        productId: 91,
-        price: 102302,
-        quantity: 1,
-        amount: 102302,
-        image_url:
-          "https://cdn.shopify.com/s/files/1/0282/5850/products/apparel_tops_undefeated_stencil-logo-pullover-hood_20078.color_black.view_1_720x.jpg",
-      },
-    ];
-
-    setData(mockData);
-  }, []);
 
   const { data: products } = useQuery<
     { items: products[] },
@@ -73,10 +58,10 @@ export default function Cart() {
 
   return (
     <div>
-      <span className="text-3xl mb-3">Cart ({data.length})</span>
+      <span className="text-3xl mb-3">Cart ({data ? data.length : 0})</span>
       <div className="flex">
         <div className="flex flex-col p-4 space-y-4 flex-1">
-          {data?.length > 0 ? (
+          {data && data?.length > 0 ? (
             data.map((item, index) => <Item key={index} {...item} />)
           ) : (
             <div>장바구니에 아무것도 없습니다.</div>

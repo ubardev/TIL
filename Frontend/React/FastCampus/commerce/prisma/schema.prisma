@@ -87,6 +87,14 @@ model Wishlist {
   productIds String
 }
 
+model Cart {
+  id Int @id @default(autoincrement())
+  userId String
+  productId Int
+  quantity Int
+  amount Int
+}
+
 model Generation {
   id Int @id @default(autoincrement())
   sequence Int

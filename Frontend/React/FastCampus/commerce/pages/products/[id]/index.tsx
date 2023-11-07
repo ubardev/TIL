@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import Carousel from "nuka-carousel";
 import { useEffect, useState } from "react";
 import { Button } from "@mantine/core";
-import { products } from "@prisma/client";
+import { Cart, products } from "@prisma/client";
 import { IconHeart, IconHeartbeat, IconShoppingCart } from "@tabler/icons";
 import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
 
@@ -64,18 +64,36 @@ export default function Products(props: {
       .then((res) => res.items)
   );
 
-  const validate = (type: "cart" | "order") => {
+  const { mutate: addCart } = useMutation<
+    unknown,
+    unknown,
+    Omit<Cart, "id" | "userId">,
+    any
+  >((item) =>
+    fetch("/api/add-cart", {
+      method: "POST",
+      body: JSON.stringify({ item }),
+    })
+      .then((data) => data.json())
+      .then((res) => res.items)
+  );
+
+  const product = props.product;
+
+  const validate = async (type: "cart" | "order") => {
     if (quantity === null) {
       alert("최소 수량을 선택하세요.");
       return;
     }
 
-    // TODO 장바구니에 등록하는 기능 추가
+    await addCart({
+      productId: product.id,
+      quantity: Number(quantity),
+      amount: product.price * (quantity || 0),
+    });
 
     router.push("/cart");
   };
-
-  const product = props.product;
 
   const isWished = wishlist ? wishlist.includes(productId) : false;
 
