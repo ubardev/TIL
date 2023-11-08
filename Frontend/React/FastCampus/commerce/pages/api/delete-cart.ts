@@ -1,22 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { PrismaClient } from "@prisma/client";
+import { Cart, PrismaClient } from "@prisma/client";
 import { authOptions } from "./auth/[...nextauth]";
 
 const prisma = new PrismaClient();
 
-async function getCart(userId: string) {
+async function deleteCart(id: number) {
   try {
-    const cart = await prisma.$queryRaw`
-      SELECT cart.id, userId, quantity, amount, price, name, image_url, productId
-      FROM Cart AS cart
-      INNER JOIN products AS products ON cart.productId = products.id
-      WHERE cart.userid = ${userId}
-    `;
+    const response = await prisma.cart.delete({
+      where: {
+        id,
+      },
+    });
 
-    console.log("cart ==========>", cart);
-
-    return cart;
+    return response;
   } catch (error) {
     console.error(error);
   }
@@ -32,15 +29,16 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const session = await getServerSession(req, res, authOptions);
+  const { id } = JSON.parse(req.body);
 
-  if (session === null) {
+  if (session == null) {
     res.status(200).json({ items: [], message: "no Session" });
     return;
   }
 
   try {
-    const cart = await getCart(String(session.id));
-    res.status(200).json({ items: cart, message: "Success" });
+    const wishlist = await deleteCart(id);
+    res.status(200).json({ items: wishlist, message: "Success" });
   } catch (error) {
     res.status(400).json({ message: "Failed" });
   }

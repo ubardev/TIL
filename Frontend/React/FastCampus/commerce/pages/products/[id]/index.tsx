@@ -9,11 +9,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Carousel from "nuka-carousel";
+import { CART_QUERY_KEY } from "pages/cart";
 import { useEffect, useState } from "react";
 import { Button } from "@mantine/core";
 import { Cart, products } from "@prisma/client";
 import { IconHeart, IconHeartbeat, IconShoppingCart } from "@tabler/icons";
-import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
@@ -39,6 +45,7 @@ export default function Products(props: {
   const [quantity, setQuantity] = useState<number | undefined>(1);
 
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { id: productId } = router.query;
 
   const [editorState] = useState<EditorState | undefined>(() =>
@@ -55,13 +62,40 @@ export default function Products(props: {
       .then((data) => data.item)
   );
 
-  const { mutate } = useMutation((productId: string) =>
-    fetch("/api/update-wishlist", {
-      method: "POST",
-      body: JSON.stringify({ productId }),
-    })
-      .then((data) => data.json())
-      .then((res) => res.items)
+  const { mutate } = useMutation<unknown, unknown, string, any>(
+    (productId) =>
+      fetch("/api/update-wishlist", {
+        method: "POST",
+        body: JSON.stringify({ productId }),
+      })
+        .then((data) => data.json())
+        .then((res) => res.items),
+    {
+      onMutate: async (productId) => {
+        await queryClient.cancelQueries([WISHLIST_QUERY_KEY]);
+
+        // Snapshot the previous value
+        const previous = queryClient.getQueryData([WISHLIST_QUERY_KEY]);
+
+        // Optimistically update to the new value
+        queryClient.setQueryData<string[]>([WISHLIST_QUERY_KEY], (old) =>
+          old
+            ? old.includes(String(productId))
+              ? old.filter((id) => id !== String(productId))
+              : old.concat(String(productId))
+            : []
+        );
+
+        // Return a context object with the snapshotted value
+        return { previous };
+      },
+      onError: (error, _, context) => {
+        queryClient.setQueryData([WISHLIST_QUERY_KEY], context.previous);
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries([WISHLIST_QUERY_KEY]);
+      },
+    }
   );
 
   const { mutate: addCart } = useMutation<
@@ -69,28 +103,39 @@ export default function Products(props: {
     unknown,
     Omit<Cart, "id" | "userId">,
     any
-  >((item) =>
-    fetch("/api/add-cart", {
-      method: "POST",
-      body: JSON.stringify({ item }),
-    })
-      .then((data) => data.json())
-      .then((res) => res.items)
+  >(
+    (item) =>
+      fetch("/api/add-cart", {
+        method: "POST",
+        body: JSON.stringify({ item }),
+      })
+        .then((data) => data.json())
+        .then((res) => res.items),
+    {
+      onMutate: () => {
+        queryClient.invalidateQueries([CART_QUERY_KEY]);
+      },
+      onSuccess: () => {
+        router.push("/cart");
+      },
+    }
   );
 
   const product = props.product;
 
-  const validate = async (type: "cart" | "order") => {
+  const validate = (type: "cart" | "order") => {
     if (quantity === null) {
       alert("최소 수량을 선택하세요.");
       return;
     }
 
-    await addCart({
-      productId: product.id,
-      quantity: Number(quantity),
-      amount: product.price * (quantity || 0),
-    });
+    if (type === "cart") {
+      addCart({
+        productId: product.id,
+        quantity: Number(quantity),
+        amount: product.price * (quantity || 0),
+      });
+    }
 
     router.push("/cart");
   };
