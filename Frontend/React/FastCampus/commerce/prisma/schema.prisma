@@ -95,12 +95,21 @@ model Cart {
   amount Int
 }
 
-model Generation {
+model OrderItem {
   id Int @id @default(autoincrement())
-  sequence Int
-  name String
-  startDate DateTime
-  endDate DateTime
-  place String
-  image String
+  productId String
+  quantity Int
+  price Int
+  amount Int
+}
+
+model Orders {
+  id Int @id @default(autoincrement())
+  userId String
+  orderItemIds  String
+  receiver String?
+  address String?
+  phoneNumber String?
+  createdAt DateTime @default(now())
+  status Int
 }
