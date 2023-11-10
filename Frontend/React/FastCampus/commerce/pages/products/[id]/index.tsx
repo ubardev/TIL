@@ -2,24 +2,19 @@ import { CountControl } from "components/CountControl";
 import CustomEditor from "components/Editor";
 import { CATEGORY_MAP } from "constants/products";
 import { format } from "date-fns";
-import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
+import { convertFromRaw, EditorState } from "draft-js";
 import { GetServerSidePropsContext } from "next";
 import { useSession } from "next-auth/react";
-import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Carousel from "nuka-carousel";
 import { CART_QUERY_KEY } from "pages/cart";
-import { useEffect, useState } from "react";
+import { ORDER_QUERY_KEY } from "pages/my";
+import { useState } from "react";
 import { Button } from "@mantine/core";
-import { Cart, products } from "@prisma/client";
+import { Cart, OrderItem, products } from "@prisma/client";
 import { IconHeart, IconHeartbeat, IconShoppingCart } from "@tabler/icons";
-import {
-  useMutation,
-  useQueries,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const product = await fetch(
@@ -121,6 +116,29 @@ export default function Products(props: {
     }
   );
 
+  const { mutate: addOrder } = useMutation<
+    unknown,
+    unknown,
+    Omit<OrderItem, "id">[],
+    any
+  >(
+    (items) =>
+      fetch("/api/add-order", {
+        method: "POST",
+        body: JSON.stringify({ items }),
+      })
+        .then((data) => data.json())
+        .then((res) => res.items),
+    {
+      onMutate: () => {
+        queryClient.invalidateQueries([ORDER_QUERY_KEY]);
+      },
+      onSuccess: () => {
+        router.push("/my");
+      },
+    }
+  );
+
   const product = props.product;
 
   const validate = (type: "cart" | "order") => {
@@ -137,7 +155,16 @@ export default function Products(props: {
       });
     }
 
-    router.push("/cart");
+    if (type === "order") {
+      addOrder([
+        {
+          productId: String(product.id),
+          quantity: Number(quantity),
+          amount: product.price * (quantity || 0),
+          price: product.price,
+        },
+      ]);
+    }
   };
 
   const isWished = wishlist ? wishlist.includes(productId) : false;
@@ -236,6 +263,24 @@ export default function Products(props: {
                 찜하기
               </Button>
             </div>
+            <Button
+              style={{ backgroundColor: "black" }}
+              radius="xl"
+              size="md"
+              styles={{
+                root: { paddingRight: 14, height: 48 },
+              }}
+              onClick={() => {
+                if (!session) {
+                  alert("로그인이 필요합니다!");
+                  router.push("/auth/login");
+                  return;
+                }
+                validate("order");
+              }}
+            >
+              구매하기
+            </Button>
             <div className="text-sm text-zinc-300">
               등록 : {format(new Date(product.createdAt), "yyyy년 M월 d일")}
             </div>
