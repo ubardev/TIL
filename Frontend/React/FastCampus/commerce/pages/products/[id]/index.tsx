@@ -158,7 +158,7 @@ export default function Products(props: {
     if (type === "order") {
       addOrder([
         {
-          productId: String(product.id),
+          productId: product.id,
           quantity: Number(quantity),
           amount: product.price * (quantity || 0),
           price: product.price,

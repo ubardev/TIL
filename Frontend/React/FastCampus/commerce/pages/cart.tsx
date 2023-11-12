@@ -81,7 +81,7 @@ export default function CartPage() {
 
     addOrder(
       data.map((cart) => ({
-        productId: String(cart.productId),
+        productId: cart.productId,
         price: cart.price,
         amount: cart.amount,
         quantity: cart.quantity,

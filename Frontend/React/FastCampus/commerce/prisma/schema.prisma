@@ -97,7 +97,7 @@ model Cart {
 
 model OrderItem {
   id Int @id @default(autoincrement())
-  productId String
+  productId Int
   quantity Int
   price Int
   amount Int
@@ -122,4 +122,38 @@ model Comment {
   contents String?
   images String?
   updatedAt DateTime @updatedAt
+}
+
+/////////////// iamsolo
+
+model Generation {
+  id Int @id @default(autoincrement())
+  name String
+  startDate DateTime
+  endDate DateTime
+  place String
+  image String
+  videoUrl String?
+  members Member[]            
+  isDisplay Boolean @default(false)
+  sequence Int
+}
+
+model Member {
+  id Int @id @default(autoincrement())
+  gender String
+  name String
+  yearOfBirth String?
+  job String?
+  school String?
+  address String?
+  car String?
+  moreInfo String?
+  image String?
+  instgramUrl String?
+  youtubeUrl String?
+  shopUrl String?
+  generation Generation @relation(fields: [generationId], references: [id], onDelete: Cascade)
+  generationId Int
+  sequence Int
 }

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { Dispatch, SetStateAction } from "react";
 import { EditorProps } from "react-draft-wysiwyg";
 import styled from "@emotion/styled";
+import Button from "./Button";
 
 interface IProps {
   editorState: EditorState;
@@ -42,7 +43,7 @@ export default function CustomEditor({
         }}
         onEditorStateChange={onEditorStateChange}
       />
-      {!readOnly && <button onClick={onSave}>Save</button>}
+      {!readOnly && <Button onClick={onSave}>Save</Button>}
     </Wrapper>
   );
 }
