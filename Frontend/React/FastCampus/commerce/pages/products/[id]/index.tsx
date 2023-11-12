@@ -1,3 +1,4 @@
+import CommentItem from "components/CommentItem";
 import { CountControl } from "components/CountControl";
 import CustomEditor from "components/Editor";
 import { CATEGORY_MAP } from "constants/products";
@@ -12,7 +13,7 @@ import { CART_QUERY_KEY } from "pages/cart";
 import { ORDER_QUERY_KEY } from "pages/my";
 import { useState } from "react";
 import { Button } from "@mantine/core";
-import { Cart, OrderItem, products } from "@prisma/client";
+import { Cart, Comment, OrderItem, products } from "@prisma/client";
 import { IconHeart, IconHeartbeat, IconShoppingCart } from "@tabler/icons";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -23,17 +24,27 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     .then((response) => response.json())
     .then((data) => data.items);
 
+  const comments = await fetch(
+    `http://localhost:3000/api/get-comments?productId=${context.params?.id}`
+  )
+    .then((response) => response.json())
+    .then((data) => data.items);
+
   return {
     props: {
       product: { ...product, images: [product.image_url, product.image_url] },
+      comments,
     },
   };
 }
 
 const WISHLIST_QUERY_KEY = "/api/get-wishlist";
 
+export interface CommentItemType extends Comment, OrderItem {}
+
 export default function Products(props: {
   product: products & { images: string[] };
+  comments: CommentItemType[];
 }) {
   const [index, setIndex] = useState(0);
   const { data: session } = useSession();
@@ -204,6 +215,13 @@ export default function Products(props: {
               ))}
             </div>
             {editorState && <CustomEditor editorState={editorState} readOnly />}
+            <div>
+              <p className="text-2xl font-semibold">후기</p>
+              {props.comments &&
+                props.comments.map((comment, idx) => (
+                  <CommentItem key={idx} item={comment} />
+                ))}
+            </div>
           </div>
           <div style={{ maxWidth: 600 }} className="flex flex-col space-y-6">
             <div className="text-lg text-zinc-400">
