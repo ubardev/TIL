@@ -38,11 +38,11 @@ export default function CommentItem({ item }: { item: CommentItemType }) {
           noPadding
         />
       </div>
-      {/* <div style={{ display: "flex" }}>
+      <div style={{ display: "flex" }}>
         {item.images?.split(",").map((image, idx) => (
           <AutoSizeImage key={idx} src={image} size={150} />
         ))}
-      </div> */}
+      </div>
     </Wrapper>
   );
 }

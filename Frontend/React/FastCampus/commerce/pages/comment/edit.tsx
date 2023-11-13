@@ -1,8 +1,8 @@
+import AutoSizeImage from "components/AutoSizeImage";
 import CustomEditor from "components/Editor";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-// import AutoSizeImage from "@components/AutoSizeImage";
 import { Slider } from "@mantine/core";
 
 export default function CommentEdit() {
@@ -27,7 +27,7 @@ export default function CommentEdit() {
               )
             );
             setRate(data.items.rate);
-            setImages(data.items.images.split(",") ?? []);
+            setImages(data.items.images ? data.items.images.split(",") : []);
           } else {
             setEditorState(EditorState.createEmpty());
           }
@@ -90,6 +90,9 @@ export default function CommentEdit() {
         });
     }
   };
+
+  console.log("images ==========>", images);
+
   return (
     <div>
       {editorState != null && (
@@ -121,11 +124,11 @@ export default function CommentEdit() {
         multiple
         onChange={handleChange}
       />
-      {/* <div style={{ display: "flex" }}>
+      <div style={{ display: "flex" }}>
         {images &&
           images.length > 0 &&
           images.map((image, idx) => <AutoSizeImage key={idx} src={image} />)}
-      </div> */}
+      </div>
     </div>
   );
 }
