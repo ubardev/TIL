@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { SimplePost } from '@/model/post';
-import { parseDate } from '@/util/date';
+import ActionBar from './ActionBar';
 import Avatar from './Avatar';
-import BookmarkIcon from './ui/icons/BookmarkIcon';
-import HeartIcon from './ui/icons/HeartIcon';
-import SmileIcon from './ui/icons/SmileIcon';
+import CommentForm from './CommentForm';
 
 type Props = {
   post: SimplePost;
@@ -31,31 +29,13 @@ export default function PostListCard({ post, priority = false }: Props) {
         priority={priority}
         onClick={() => setOpenModal(true)}
       />
-      <div className="flex justify-between my-2 px-4">
-        <HeartIcon />
-        <BookmarkIcon />
-      </div>
-      <div className="px-4 py-1">
-        <p className="text-sm font-bold mb-2">{`${likes?.length ?? 0} ${
-          likes?.length > 1 ? 'likes' : 'like'
-        }`}</p>
-        <p>
-          <span className="font-bold mr-1">{username}</span>
-          {text}
-        </p>
-        <p className="text-xs text-neutral-500 uppercase my-2">
-          {parseDate(createdAt)}
-        </p>
-        <form className="flex items-center border-t border-neutral-300">
-          <SmileIcon />
-          <input
-            className="w-full ml-2 border-none outline-none p-3"
-            type="text"
-            placeholder="Add a comment..."
-          />
-          <button className="font-bold text-sky-500 ml-2">Post</button>
-        </form>
-      </div>
+      <ActionBar
+        likes={likes}
+        username={username}
+        text={text}
+        createdAt={createdAt}
+      />
+      <CommentForm />
     </article>
   );
 }
