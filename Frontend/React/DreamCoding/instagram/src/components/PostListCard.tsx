@@ -6,6 +6,7 @@ import { SimplePost } from '@/model/post';
 import ActionBar from './ActionBar';
 import Avatar from './Avatar';
 import CommentForm from './CommentForm';
+import PostDetail from './PostDetail';
 import PostModal from './PostModal';
 import ModalPortal from './ui/ModalPortal';
 
@@ -43,7 +44,7 @@ export default function PostListCard({ post, priority = false }: Props) {
       {openModal && (
         <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
-            <p>포스트 상세 페이지!</p>
+            <PostDetail post={post} />
           </PostModal>
         </ModalPortal>
       )}
