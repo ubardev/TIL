@@ -1,9 +1,13 @@
+'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { SimplePost } from '@/model/post';
 import ActionBar from './ActionBar';
 import Avatar from './Avatar';
 import CommentForm from './CommentForm';
+import PostModal from './PostModal';
+import ModalPortal from './ui/ModalPortal';
 
 type Props = {
   post: SimplePost;
@@ -36,6 +40,13 @@ export default function PostListCard({ post, priority = false }: Props) {
         createdAt={createdAt}
       />
       <CommentForm />
+      {openModal && (
+        <ModalPortal>
+          <PostModal onClose={() => setOpenModal(false)}>
+            <p>포스트 상세 페이지!</p>
+          </PostModal>
+        </ModalPortal>
+      )}
     </article>
   );
 }
