@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import useSWR from 'swr';
+import useMe from '@/hooks/me';
+import useFullPost from '@/hooks/post';
 import { FullPost, SimplePost } from '@/model/post';
 import ActionBar from './ActionBar';
 import Avatar from './Avatar';
@@ -12,9 +14,13 @@ type Props = {
 
 export default function PostDetail({ post }: Props) {
   const { id, userImage, username, image, likes, createdAt } = post;
-  const { data } = useSWR<FullPost>(`/api/posts/${id}`);
+  const { post: data, postComment } = useFullPost(id);
+  const { user } = useMe();
   const comments = data?.comments;
-  const handlePostComment = (comment: string) => {};
+  const handlePostComment = (comment: string) => {
+    user &&
+      postComment({ comment, username: user.username, image: user.image });
+  };
 
   return (
     <section className="flex w-full h-full">
