@@ -3,20 +3,22 @@ import { useState } from 'react';
 import { useSWRConfig } from 'swr';
 import useMe from '@/hooks/me';
 import usePosts from '@/hooks/posts';
-import { SimplePost } from '@/model/post';
+import { Comment, SimplePost } from '@/model/post';
 import { parseDate } from '@/util/date';
 import BookmarkFillIcon from './ui/icons/BookmarkFillIcon';
 import BookmarkIcon from './ui/icons/BookmarkIcon';
 import HeartFillIcon from './ui/icons/HeartFillIcon';
 import HeartIcon from './ui/icons/HeartIcon';
 import ToggleButton from './ui/ToggleButton';
+import CommentForm from './CommentForm';
 
 type Props = {
   post: SimplePost;
   children?: React.ReactNode;
+  onComment: (comment: Comment) => void;
 };
 
-export default function ActionBar({ post, children }: Props) {
+export default function ActionBar({ post, children, onComment }: Props) {
   const { id, likes, createdAt } = post;
   const { user, setBookmark } = useMe();
   const { setLike } = usePosts();
@@ -30,6 +32,10 @@ export default function ActionBar({ post, children }: Props) {
 
   const handleBookmark = (bookmark: boolean) => {
     user && setBookmark(id, bookmark);
+  };
+
+  const handleComment = (comment: string) => {
+    user && onComment({ comment, username: user.username, image: user.image });
   };
 
   return (
@@ -57,6 +63,7 @@ export default function ActionBar({ post, children }: Props) {
           {parseDate(createdAt)}
         </p>
       </div>
+      <CommentForm onPostComment={handleComment} />
     </>
   );
 }
