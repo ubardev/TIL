@@ -10,7 +10,7 @@ type Props = {
 
 export default function FollowButton({ user }: Props) {
   const { username } = user;
-  const { user: loggedInUser } = useMe();
+  const { user: loggedInUser, toggleFollow } = useMe();
 
   const showButton = loggedInUser && loggedInUser.username !== username;
   const following =
@@ -18,10 +18,14 @@ export default function FollowButton({ user }: Props) {
     loggedInUser.following.find((item) => item.username === username);
   const text = following ? 'Unfollow' : 'Follow';
 
+  const handleFollow = () => {
+    toggleFollow(user.id, !following);
+  };
+
   return (
     <>
       {showButton && (
-        <Button text={text} onClick={() => {}} red={text === 'Unfollow'} />
+        <Button text={text} onClick={handleFollow} red={text === 'Unfollow'} />
       )}
     </>
   );
