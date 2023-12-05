@@ -1,26 +1,45 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
+// 내 최초 풀이
+// var isValid = function (s) {
+//   if (s.length < 2) return;
+
+//   let tempArray = [];
+
+//   for (let char of s) {
+//     if (["(", "[", "{"].includes(char)) {
+//       tempArray.push(char);
+//     } else {
+//       const savedChar = tempArray.pop();
+
+//       if (!savedChar) return false;
+//       if (savedChar === "(" && char !== ")") return false;
+//       if (savedChar === "[" && char !== "]") return false;
+//       if (savedChar === "{" && char !== "}") return false;
+//     }
+//   }
+
+//   return tempArray.length === 0;
+// };
+
 var isValid = function (s) {
-  if (s.length < 2) return;
+  const bracketPair = {
+    ")": "(",
+    "]": "[",
+    "}": "{",
+  };
 
-  let tempArray = [];
+  const stack = [];
 
-  for (let char of s) {
-    if (["(", "[", "{"].includes(char)) {
-      tempArray.push(char);
+  for (i = 0; i < s.length; i++) {
+    if (["(", "[", "{"].includes(s[i])) {
+      stack.push(s[i]);
     } else {
-      const savedChar = tempArray.pop();
-
-      if (!savedChar) return false;
-      if (savedChar === "(" && char !== ")") return false;
-      if (savedChar === "[" && char !== "]") return false;
-      if (savedChar === "{" && char !== "}") return false;
+      if (stack.pop() !== bracketPair[s[i]]) {
+        return false;
+      }
     }
   }
 
-  return tempArray.length === 0;
+  return stack.length === 0;
 };
 
 const param = ")(){}";
