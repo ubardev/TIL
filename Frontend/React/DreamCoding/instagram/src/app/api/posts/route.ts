@@ -1,8 +1,7 @@
-import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getFollowingPostsOf } from '@/service/posts';
-import { getUserByUsername } from '@/service/user';
+import { getServerSession } from 'next-auth';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   const session = await getServerSession(authOptions);

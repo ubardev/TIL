@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
-import useSWR from 'swr';
 import { SimplePost } from '@/model/post';
 import { HomeUser } from '@/model/user';
+import { useCallback } from 'react';
+import useSWR from 'swr';
 
 async function updateBookmark(postId: string, bookmark: boolean) {
   return fetch('/api/bookmarks', {
@@ -38,14 +38,14 @@ export default function useMe() {
         rollbackOnError: true,
       });
     },
-    [user, mutate],
+    [user, mutate]
   );
 
   const toggleFollow = useCallback(
     (targetId: string, follow: boolean) => {
       return mutate(updateFollow(targetId, follow), { populateCache: false });
     },
-    [mutate],
+    [mutate]
   );
   return { user, isLoading, error, setBookmark, toggleFollow };
 }

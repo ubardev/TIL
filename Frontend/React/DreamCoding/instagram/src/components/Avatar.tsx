@@ -1,25 +1,24 @@
 type AvatarSize = 'small' | 'medium' | 'large' | 'xlarge';
-
 type Props = {
   image?: string | null;
   size?: AvatarSize;
-  highlignt?: boolean;
+  highlight?: boolean;
 };
 
 export default function Avatar({
   image,
   size = 'large',
-  highlignt = false,
+  highlight = false,
 }: Props) {
   return (
-    <div className={getContainerStyle(size, highlignt)}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+    <div className={getContainerStyle(size, highlight)}>
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img
         className={`bg-white object-cover rounded-full 
         ${getImageSizeStyle(size).image}`}
-        alt="user profile"
+        alt='user profile'
         src={image ?? undefined}
-        referrerPolicy="no-referrer"
+        referrerPolicy='no-referrer'
       />
     </div>
   );
@@ -31,7 +30,6 @@ function getContainerStyle(size: AvatarSize, highlight: boolean): string {
     ? 'bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300'
     : '';
   const { container } = getImageSizeStyle(size);
-
   return `${baseStyle} ${highlightStyle} ${container}`;
 }
 

@@ -4,7 +4,6 @@ type Props = {
   red?: boolean;
   disabled?: boolean;
 };
-
 export default function Button({
   text,
   onClick,

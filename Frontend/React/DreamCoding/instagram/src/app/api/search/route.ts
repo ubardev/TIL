@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import { searchUsers } from '@/service/user';
+import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
