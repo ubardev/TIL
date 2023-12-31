@@ -1,5 +1,10 @@
-import React from "react";
+import {ReactNode} from "react";
 
-export default function layout({ children }) {
-  return <div>AfterLogin layout {children}</div>;
+export default function AfterLoginLayout({ children }: { children: ReactNode }) {
+  return (
+    <div>
+      애프터 로그인 레이아웃
+      {children}
+    </div>
+  )
 }

@@ -1,5 +1,10 @@
-import React, { ReactNode } from "react";
+import {ReactNode} from "react";
 
-export default function HomeLayout({ children }: { children: ReactNode }) {
-  return <div>홈 layout {children}</div>;
+export default async function HomeLayout({children}: { children: ReactNode }) {
+  return (
+    <div>
+      홈 레이아웃
+      {children}
+    </div>
+  );
 }
