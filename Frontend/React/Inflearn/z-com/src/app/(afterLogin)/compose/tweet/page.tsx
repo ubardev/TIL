@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <main>
-      게시글
-    </main>
-  )
+import Home from "@/app/(afterLogin)/home/page";
+
+export default function Page() {
+  return <Home />;
 }
