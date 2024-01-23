@@ -60,17 +60,16 @@
 
     <script>
       (function () {
-        const ilbuniGroup = document.querySelectorAll(".ilbuni");
-        const state = document.querySelector(".stage");
+        // 이벤트 위임
+        const stage = document.querySelector(".stage");
 
-        function clickHandler() {
-          //   state.removeChild(this);
-          this.parentNode.removeChild(this);
+        function clickHandler(e) {
+          if (e.target.classList.contains("ilbuni")) {
+            stage.removeChild(e.target);
+          }
         }
 
-        for (let i = 0; i < ilbuniGroup.length; i++) {
-          ilbuniGroup[i].addEventListener("click", clickHandler);
-        }
+        stage.addEventListener("click", clickHandler);
       })();
     </script>
   </body>
