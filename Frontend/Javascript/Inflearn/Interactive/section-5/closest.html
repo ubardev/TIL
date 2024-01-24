@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      div {
+        padding: 20px;
+        border: 5px solid black;
+      }
+
+      /* .elem2 {
+        pointer-events: none;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="elem1" data-id="about">
+      <div class="elem2">
+        <div class="elem3">elem3</div>
+      </div>
+    </div>
+    <script>
+      const elem1 = document.querySelector(".elem1");
+
+      elem1.addEventListener("click", (e) => {
+        if (!e.target.dataset.id) {
+          console.log(e.target.closest(".elem1").dataset.id);
+        } else {
+          console.log(e.target.dataset.id);
+        }
+      });
+    </script>
+  </body>
+</html>
