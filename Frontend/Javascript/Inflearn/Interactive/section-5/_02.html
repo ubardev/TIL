@@ -70,6 +70,27 @@
         }
 
         stage.addEventListener("click", clickHandler);
+
+        // 이벤트 위임 보강 영상
+        // 1. CSS로 처리 : pointer-events: none;
+
+        // 2. 스크립트로 처리
+        // const menu = document.querySelector(".menu");
+
+        // function clickHandler(event) {
+        //   let elem = event.target;
+
+        //   while (!elem.classList.contains("menu-btn")) {
+        //     elem = elem.parentNode;
+
+        //     if (elem.nodeName === "BODY") {
+        //       elem = null;
+        //       return;
+        //     }
+        //   }
+        // }
+
+        // menu.addEventListener("click", clickHandler);
       })();
     </script>
   </body>
