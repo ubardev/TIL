@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: #333;
+      }
+
+      .door {
+        position: relative;
+        width: 100px;
+        height: 150px;
+      }
+
+      .door-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+      }
+
+      .ilbuni {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        background-size: contain;
+      }
+
+      .door:nth-child(1) .ilbuni {
+        background-image: url(images/ilbuni_0.png);
+      }
+
+      .door:nth-child(2) .ilbuni {
+        background-image: url(images/ilbuni_1.png);
+      }
+
+      .door:nth-child(3) .ilbuni {
+        background-image: url(images/ilbuni_2.png);
+      }
+
+      .door-body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .door:nth-child(1) .door-body {
+        background: rgba(255, 0, 0, 0.7);
+      }
+
+      .door:nth-child(2) .door-body {
+        background: rgba(0, 255, 0, 0.7);
+      }
+
+      .door:nth-child(3) .door-body {
+        background: rgba(0, 0, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="door">
+        <div class="door-back"></div>
+        <div class="ilbuni"></div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back"></div>
+        <div class="ilbuni"></div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back"></div>
+        <div class="ilbuni"></div>
+        <div class="door-body"></div>
+      </div>
+    </div>
+  </body>
+</html>
