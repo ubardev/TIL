@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const name = '일분이';
+    const age = 10;
+    console.log( '안녕하세요? 저는 ' + name + '이고 ' + age + '살이에요.' );
+    console.log( `안녕하세요? 저는 ${name}이고, ${age}살이에요.` );
+
+    const elemHtml = ''
+      + '<div class="character">'
+        + '캐릭터'
+      + '</div>';
+    
+    const elemHtml2 = `
+      <div class="character">
+        캐릭터
+      </div>
+    `;
+    
+    document.body.innerHTML = elemHtml2;
+  </script>
+</body>
+</html>
