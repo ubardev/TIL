@@ -3,6 +3,22 @@
     transform: rotateX(-10deg);
   }
 }
+@keyframes ani-running-leg {
+  from {
+    transform: rotateX(-30deg);
+  }
+  to {
+    transform: rotateX(30deg);
+  }
+}
+@keyframes ani-running-arm {
+  from {
+    transform: rotateX(30deg);
+  }
+  to {
+    transform: rotateX(-30deg);
+  }
+}
 
 body {
   height: 500vw;
@@ -225,4 +241,13 @@ body {
 }
 .character-leg-left .face-back {
   background-image: url("../images/ilbuni_leg_0.png");
+}
+.character.running .character-leg-right {
+  animation: ani-running-leg 0.2s alternate infinite linear;
+}
+.character.running .character-leg-left {
+  animation: ani-running-leg 0.2s alternate-reverse infinite linear;
+}
+.character.running .character-arm {
+  animation: ani-running-arm 0.2s alternate infinite linear;
 }
