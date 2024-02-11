@@ -30,6 +30,8 @@ function Character(info) {
   document.querySelector(".stage").appendChild(this.mainElem);
 
   this.mainElem.style.left = info.xPos + "%";
+  // 스크롤 중인지 아닌지 체크
+  this.scrollState = false;
   this.init();
 }
 
@@ -39,7 +41,16 @@ Character.prototype = {
     const self = this;
 
     window.addEventListener("scroll", function () {
-      self.mainElem.classList.add("running");
+      this.clearTimeout(self.scrollState);
+
+      if (!self.scrollState) {
+        self.mainElem.classList.add("running");
+      }
+
+      self.scrollState = setTimeout(function () {
+        self.scrollState = false;
+        self.mainElem.classList.remove("running");
+      }, 500);
     });
   },
 };
