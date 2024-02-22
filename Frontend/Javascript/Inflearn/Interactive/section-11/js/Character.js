@@ -34,6 +34,8 @@ function Character(info) {
   this.scrollState = false;
   // 바로 이전(마지막) 스롤 위치
   this.lastScrollTop = 0;
+  this.xPos = info.xPos;
+  this.speed = 1;
   this.init();
 }
 
@@ -64,6 +66,24 @@ Character.prototype = {
       }
 
       self.lastScrollTop = this.pageYOffset;
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.keyCode === 37) {
+        // 왼쪽
+        self.mainElem.setAttribute("data-direction", "left");
+        self.mainElem.classList.add("running");
+        self.xPos -= self.speed;
+        self.mainElem.style.left = self.xPos + "%";
+      } else {
+        // 오른쪽
+        self.mainElem.setAttribute("data-direction", "right");
+        self.mainElem.classList.add("running");
+      }
+    });
+
+    window.addEventListener("keyup", function (e) {
+      self.mainElem.classList.remove("running");
     });
   },
 };
