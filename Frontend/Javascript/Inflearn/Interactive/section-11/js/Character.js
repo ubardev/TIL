@@ -37,6 +37,9 @@ function Character(info) {
   this.xPos = info.xPos;
   this.speed = 0.3;
   this.direction;
+  // 좌우 이동 중인지 아닌지
+  this.runningState = false;
+  this.rafId;
   this.init();
 }
 
@@ -70,6 +73,8 @@ Character.prototype = {
     });
 
     window.addEventListener("keydown", function (e) {
+      if (self.runningState) return;
+
       if (e.keyCode === 37) {
         // 왼쪽
         self.direction = "left";
@@ -77,6 +82,7 @@ Character.prototype = {
         self.mainElem.classList.add("running");
         // self.run(self);
         self.run();
+        self.runningState = true;
       } else {
         // 오른쪽
         self.direction = "right";
@@ -84,11 +90,13 @@ Character.prototype = {
         self.mainElem.classList.add("running");
         // self.run(self);
         self.run();
+        self.runningState = true;
       }
     });
 
     window.addEventListener("keyup", function (e) {
       self.mainElem.classList.remove("running");
+      this.cancelAnimationFrame(self.rafId);
     });
   },
   // run: function (self) {
