@@ -35,7 +35,7 @@ function Character(info) {
   // 바로 이전(마지막) 스롤 위치
   this.lastScrollTop = 0;
   this.xPos = info.xPos;
-  this.speed = 1;
+  this.speed = info.speed;
   this.direction;
   // 좌우 이동 중인지 아닌지
   this.runningState = false;
