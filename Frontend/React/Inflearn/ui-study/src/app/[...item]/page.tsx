@@ -1,5 +1,9 @@
-const ItemPage = () => {
-    return <div>Item Page</div>
-}
+const ItemPage = ({ params: { item } }: { params: { item: string[] } }) => {
+  const path = ["", ...item].join("/");
 
-export default ItemPage
+  console.log("path ==========>", path);
+
+  return <div>Item Page {path}</div>;
+};
+
+export default ItemPage;
