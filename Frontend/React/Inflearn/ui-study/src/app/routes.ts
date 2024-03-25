@@ -56,3 +56,10 @@ const routes: Record<ROUTE_PATH, ROUTE> = {
     children: null,
   },
 };
+
+export const isParentRoute = (route: ROUTE): route is ParentRoute =>
+  Array.isArray(route);
+
+export const gnbRootList = (routes["/"] as ParentRoute).children.map(
+  (r) => routes[r],
+);
