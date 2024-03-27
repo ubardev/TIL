@@ -39,7 +39,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
   },
   "/test2": {
     key: "/test2",
-    link: "/test2",
+    link: "/test2/vanilla",
     name: "테스트1",
     children: ["/test2/vanilla", "/test2/react"],
   },

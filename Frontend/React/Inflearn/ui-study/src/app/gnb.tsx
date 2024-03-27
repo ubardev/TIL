@@ -22,11 +22,6 @@ const ParentGnbItem = ({
 }) => {
   const open = children.includes(currentPath);
 
-  console.log("currentPath ==========>", currentPath);
-  console.log("children ==========>", children);
-
-  // TODO: open 변수 처리 다시 해야함
-
   return (
     <li
       className={classNames("parent", `items-${children.length}`, {
@@ -53,7 +48,7 @@ const ChildGnbItem = ({
   currentPath: ROUTE_PATH;
 }) => {
   return (
-    <li>
+    <li className={classNames({ active: link === currentPath })}>
       <Link href={link}>{name}</Link>
     </li>
   );
@@ -78,7 +73,9 @@ const Gnb = () => {
   return (
     <aside>
       <h1>
-        UI 요소 모음 <sub>Ubar</sub>
+        <Link href="/">
+          UI 요소 모음 <sub>Ubar</sub>
+        </Link>
       </h1>
       <ul className="mainRoutes">
         {gnbRootList.map((r) => (
