@@ -1,6 +1,7 @@
 import { data } from "@/components/accordion/data";
 import cx from "./cx";
 import { useState } from "react";
+import VanillaWrapper from "@/components/vanillaWrapper";
 
 const AccordionItem = ({
   id,
@@ -51,4 +52,5 @@ const Accordion3 = () => {
   );
 };
 
-export default Accordion3;
+const initiator = (wrapper: HTMLDivElement) => {};
+const Accordion4v = () => <VanillaWrapper title="#4" initiator={initiator} />;

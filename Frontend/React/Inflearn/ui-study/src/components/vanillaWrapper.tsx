@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 
 const VanillaWrapper = ({
+  title,
   initiator,
 }: {
+  title: string;
   initiator: (wrapper: HTMLDivElement) => void;
 }) => {
   const wrapper = useRef<HTMLDivElement>(null);
