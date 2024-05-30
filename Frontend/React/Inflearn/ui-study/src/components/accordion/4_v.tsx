@@ -1,56 +1,59 @@
-import { data } from "@/components/accordion/data";
 import cx from "./cx";
-import { useState } from "react";
-import VanillaWrapper from "@/components/vanillaWrapper";
+import data from "./data";
+import VanillaWrapper from "../vanillaWrapper";
 
-const AccordionItem = ({
+const itemBuilder = ({
   id,
   title,
   description,
-  current,
-  toggle,
 }: {
   id: string;
   title: string;
   description: string;
-  current: boolean;
-  toggle: () => void;
 }) => {
-  return (
-    <li className={cx("item", "item3", { current })} key={id}>
-      <div className={cx("tab")} onClick={toggle}>
-        {title}
-      </div>
-      {current ? <div className={cx("description")}>{description}</div> : null}
-    </li>
-  );
+  const $li = document.createElement("li");
+  $li.classList.add(cx("item"), cx("item3"));
+  $li.setAttribute("data-id", id);
+
+  const $tab = document.createElement("div");
+  $tab.classList.add(cx("tab"));
+  $tab.textContent = title;
+
+  const $description = document.createElement("div");
+  $description.classList.add(cx("description"));
+  $description.textContent = description;
+
+  $li.append($tab, $description);
+  return $li;
 };
 
-const Accordion3 = () => {
-  const [currentId, setCurrentId] = useState<string | null>(data[0].id);
+const initiator = (wrapper: HTMLDivElement) => {
+  let currentId: string | null = null;
 
-  const toggleItem = (id: string) => () => {
-    setCurrentId((prev) => (prev === id ? null : id));
+  const $ul = document.createElement("ul");
+  $ul.classList.add(cx("container"));
+
+  const handleClickTab = (e: Event) => {
+    const $el = e.target as HTMLElement;
+    if (!$el.classList.contains(cx("tab"))) return;
+
+    const targetId = $el.parentElement!.dataset.id;
+    if (!targetId) return;
+
+    currentId = targetId === currentId ? null : targetId;
+
+    $items.forEach(($item) => {
+      $item.classList.toggle(cx("current"), currentId === $item.dataset.id);
+    });
   };
+  $ul.addEventListener("click", handleClickTab);
 
-  return (
-    <>
-      <h3>
-        #3. React<sub>css animation(transition)</sub>
-      </h3>
-      <ul className={cx("container")}>
-        {data.map((d: any) => (
-          <AccordionItem
-            key={d.id}
-            {...d}
-            current={currentId === d.id}
-            toggle={toggleItem(d.id)}
-          />
-        ))}
-      </ul>
-    </>
-  );
+  const $items = data.map(itemBuilder);
+  $ul.append(...$items);
+  ($items[0].children[0] as HTMLElement).click();
+
+  wrapper.append($ul);
 };
 
-const initiator = (wrapper: HTMLDivElement) => {};
-const Accordion4v = () => <VanillaWrapper title="#4" initiator={initiator} />;
+const Accordion4V = () => <VanillaWrapper title="#4" initiator={initiator} />;
+export default Accordion4V;
