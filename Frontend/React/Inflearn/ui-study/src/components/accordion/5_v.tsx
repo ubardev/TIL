@@ -25,7 +25,7 @@ const AccordionItem = ({
   );
 };
 
-const Accordion3 = () => {
+const Accordion5 = () => {
   const [currentId, setCurrentId] = useState<string | null>(data[0].id);
 
   const toggleItem = (id: string) => () => {
@@ -51,4 +51,4 @@ const Accordion3 = () => {
   );
 };
 
-export default Accordion3;
+export default Accordion5;
