@@ -1,4 +1,4 @@
-import { data } from "@/components/accordion/data";
+import data from "./data";
 import cx from "./cx";
 import { useState } from "react";
 
