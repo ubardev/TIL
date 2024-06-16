@@ -5,22 +5,27 @@ import { useState } from "react";
 const TabItem = ({
   id,
   title,
+  description,
   current,
   toggle,
 }: {
   id: string;
   title: string;
+  description: string;
   current: boolean;
   toggle: () => void;
 }) => {
   return (
-    <li className={cx("tab", { current })} key={id} onClick={toggle}>
-      {title}
+    <li className={cx("item", { current })} key={id}>
+      <div className={cx("tab")} onClick={toggle}>
+        {title}
+      </div>
+      <div className={cx("description")}>{description}</div>
     </li>
   );
 };
 
-const TabMenu2 = () => {
+const TabMenu3 = () => {
   const [currentId, setCurrentId] = useState<string | null>(data[0].id);
 
   const toggleItem = (id: string) => () => {
@@ -30,27 +35,20 @@ const TabMenu2 = () => {
   return (
     <>
       <h3>
-        #1. React<sub>다 그려놓고 hidden / show css로 처리</sub>
+        #3. React<sub>한 li안에 title/desc 모두 있게 처리</sub>
       </h3>
-      <div className={cx("container", "tabMenu2")}>
-        <div className={cx("tabList")}>
-          {data.map((d: any) => (
-            <TabItem
-              key={d.id}
-              {...d}
-              current={currentId === d.id}
-              toggle={toggleItem(d.id)}
-            />
-          ))}
-        </div>
+      <ul className={cx("container", "tabMenu3")}>
         {data.map((d) => (
-          <div className={cx("description", { current: currentId === d.id })}>
-            {d.description || ""}
-          </div>
+          <TabItem
+            {...d}
+            key={d.id}
+            current={currentId === d.id}
+            toggle={toggleItem(d.id)}
+          />
         ))}
-      </div>
+      </ul>
     </>
   );
 };
 
-export default TabMenu2;
+export default TabMenu3;

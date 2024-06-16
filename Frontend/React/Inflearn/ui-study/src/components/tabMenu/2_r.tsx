@@ -30,7 +30,7 @@ const TabMenu2 = () => {
   return (
     <>
       <h3>
-        #1. React<sub>다 그려놓고 hidden / show css로 처리</sub>
+        #2. React<sub>다 그려놓고 hidden / show css로 처리</sub>
       </h3>
       <div className={cx("container", "tabMenu2")}>
         <div className={cx("tabList")}>
