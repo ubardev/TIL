@@ -49,6 +49,17 @@
       sceneInfo[i].objs.container.style.height =
         `${sceneInfo[i].scrollHeight}px`;
     }
+
+    yOffset = window.pageYOffset;
+    let totalScrollHeight = 0;
+    for (let i = 0; i < sceneInfo.length; i++) {
+      totalScrollHeight += sceneInfo[i].scrollHeight;
+      if (totalScrollHeight >= yOffset) {
+        currentScene = i;
+        break;
+      }
+    }
+    document.body.setAttribute("id", `show-scene-${currentScene}`);
   }
 
   function scrollLoop() {
@@ -59,21 +70,20 @@
 
     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
       currentScene++;
+      document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
 
     if (yOffset < prevScrollHeight) {
       if (currentScene === 0) return;
       currentScene--;
+      document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
-
-    console.log("currentScene >>>>>>>>>> ", currentScene);
   }
 
-  window.addEventListener("resize", setLayout);
   window.addEventListener("scroll", () => {
     yOffset = window.pageYOffset;
     scrollLoop();
   });
-
-  setLayout();
+  window.addEventListener("load", setLayout);
+  window.addEventListener("resize", setLayout);
 })();
