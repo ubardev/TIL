@@ -132,6 +132,8 @@
       }
     }
     document.body.setAttribute("id", `show-scene-${currentScene}`);
+
+    sceneInfo[0].objs.canvas.style.transform = `scale(${window.innerWidth / sceneInfo[0].objs.canvas.width})`;
   }
 
   function calcValues(values, currentYOffset) {
