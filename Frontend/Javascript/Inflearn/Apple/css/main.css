@@ -64,6 +64,9 @@ a {
 	padding-top: 50vh;
 }
 #scroll-section-0 h1 {
+	position: relative;
+	top: -10vh;
+	z-index: 5;
 	font-size: 4rem;
 	text-align: center;
 }
