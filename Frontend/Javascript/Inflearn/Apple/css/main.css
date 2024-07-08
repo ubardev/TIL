@@ -106,9 +106,10 @@ a {
 	font-size: 3rem;
 	color: rgb(29, 29, 31);
 }
-.description-message {
-	width: 50%;
+.sticky-elem.desc-message {
+	width: 45%;
 	font-weight: bold;
+	opacity: 0;
 }
 .pin {
 	width: 1px;
@@ -119,7 +120,7 @@ a {
 	top: 10%;
 	height: 40%;
 }
-#scroll-section-2 .b {
+#scroll-section-2 .c {
 	top: 15%;
 	height: 45%;
 }
@@ -179,6 +180,7 @@ a {
 		font-size: 4vw;
 	}
 	.description {
+		padding: 0;
 		font-size: 2rem;
 	}
 	.description strong {
@@ -190,20 +192,24 @@ a {
 	.main-message small {
 		font-size: 1.5vw;
 	}
-	.desc-message {
+	.sticky-elem.desc-message {
 		width: 20%;
 	}
 	#scroll-section-2 .b {
 		top: 20%;
 		left: 53%;
 	}
-	#scroll-section-2 .b {
+	#scroll-section-2 .c {
 		left: 55%;
 	}
 	.mid-message {
+		width: 1000px;
+		padding: 0;
 		font-size: 4vw;
 	}
 	.canvas-caption {
+		margin-top: -8rem;
+		padding: 0;
 		font-size: 2rem;
 	}
 }
