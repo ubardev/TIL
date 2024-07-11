@@ -165,11 +165,18 @@ a {
 	top: 0;
 	height: 100%;
 }
-
 .sticky-elem-canvas canvas {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+}
+.image-blend-canvas {
+	/*background: antiquewhite;*/
+}
+#scroll-section-3 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 @media (min-width: 1024px) {
