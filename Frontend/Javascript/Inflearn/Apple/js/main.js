@@ -106,7 +106,10 @@
         imagePath: ["./image/blend-image-1.jpg", "./image/blend-image-2.jpg"],
         images: [],
       },
-      values: {},
+      values: {
+        rect1X: [0, 0, { start: 0, end: 0 }],
+        rect2X: [0, 0, { start: 0, end: 0 }],
+      },
     },
   ];
 
@@ -121,6 +124,7 @@
     let imgElem2;
     for (let i = 0; i < sceneInfo[2].values.videoImageCount; i++) {
       imgElem2 = new Image();
+      imgElem2.src = `./video/002/IMG_${7027 + i}.JPG`;
       imgElem2.src = `./video/002/IMG_${7027 + i}.JPG`;
       sceneInfo[2].objs.videoImages.push(imgElem2);
     }
@@ -376,6 +380,32 @@
         objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
         objs.context.fillStyle = "white";
         objs.context.drawImage(objs.images[0], 0, 0);
+
+        // 캔버스 사이즈에 맞춰 가정한 innerWidth와 innerHeight
+        const recalculatedInnerWidth =
+          document.body.offsetWidth / canvasScaleRatio;
+        const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
+
+        const whiteRectWidth = recalculatedInnerWidth * 0.15;
+        values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
+        values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
+        values.rect2X[0] =
+          values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
+        values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
+
+        // 좌우 흰색 박스 그리기
+        objs.context.fillRect(
+          parseInt(values.rect1X[0]),
+          0,
+          parseInt(whiteRectWidth),
+          objs.canvas.height,
+        );
+        objs.context.fillRect(
+          parseInt(values.rect2X[0]),
+          0,
+          parseInt(whiteRectWidth),
+          objs.canvas.height,
+        );
 
         break;
     }
