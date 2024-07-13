@@ -109,6 +109,11 @@
       values: {
         rect1X: [0, 0, { start: 0, end: 0 }],
         rect2X: [0, 0, { start: 0, end: 0 }],
+        blendHeight: [0, 0, { start: 0, end: 0 }],
+        canvas_scale: [0, 0, { start: 0, end: 0 }],
+        canvasCaption_opacity: [0, 1, { start: 0, end: 0 }],
+        canvasCaption_translateY: [20, 0, { start: 0, end: 0 }],
+        rectStartY: 0,
       },
     },
   ];
@@ -385,6 +390,17 @@
         const recalculatedInnerWidth =
           document.body.offsetWidth / canvasScaleRatio;
         const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
+
+        if (!values.rectStartY) {
+          // values.rectStartY = objs.canvas.getBoundingClientRect().top;
+          values.rectStartY =
+            objs.canvas.offsetTop +
+            (objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2;
+          values.rect1X[2].start = window.innerHeight / 2 / scrollHeight;
+          values.rect2X[2].start = window.innerHeight / 2 / scrollHeight;
+          values.rect1X[2].end = values.rectStartY / scrollHeight;
+          values.rect2X[2].end = values.rectStartY / scrollHeight;
+        }
 
         const whiteRectWidth = recalculatedInnerWidth * 0.15;
         values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
