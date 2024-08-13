@@ -2,6 +2,7 @@ import cx from './cx';
 import Accordion1 from '@/components/accordion/1_r';
 import Accordion2 from '@/components/accordion/2_r';
 import Accordion3 from '@/components/accordion/3_r';
+import Accordion4V from '@/components/accordion/4_v';
 
 const Accordions = () => {
   return (
@@ -10,6 +11,7 @@ const Accordions = () => {
       <Accordion1 />
       <Accordion2 />
       <Accordion3 />
+      <Accordion4V />
     </div>
   );
 };
