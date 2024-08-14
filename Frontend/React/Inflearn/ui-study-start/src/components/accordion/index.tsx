@@ -4,6 +4,7 @@ import Accordion2 from '@/components/accordion/2_r';
 import Accordion3 from '@/components/accordion/3_r';
 import Accordion4V from '@/components/accordion/4_v';
 import Accordion5 from '@/components/accordion/5_r';
+import Accordion6 from '@/components/accordion/6_r';
 
 const Accordions = () => {
   return (
@@ -14,6 +15,7 @@ const Accordions = () => {
       <Accordion3 />
       <Accordion4V />
       <Accordion5 />
+      <Accordion6 />
     </div>
   );
 };
