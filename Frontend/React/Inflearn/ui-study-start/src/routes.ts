@@ -1,4 +1,5 @@
-import Accordions from "@/components/accordion";
+import Accordions from '@/components/accordion';
+import Tooltip from '@/components/tooltip';
 
 export const routePaths = [
   '/',
@@ -20,21 +21,21 @@ export const routePaths = [
   '/selectBox',
   '/autoComplete',
   '/dnd',
-] as const
-export type ROUTE_PATH = (typeof routePaths)[number]
+] as const;
+export type ROUTE_PATH = (typeof routePaths)[number];
 
 type BaseRoute = {
-  key: ROUTE_PATH
-  link: ROUTE_PATH
-  name: string
-}
+  key: ROUTE_PATH;
+  link: ROUTE_PATH;
+  name: string;
+};
 export type ParentRoute = BaseRoute & {
-  children: ROUTE_PATH[]
-}
+  children: ROUTE_PATH[];
+};
 export type ChildRoute = BaseRoute & {
-  children: ((props: unknown) => JSX.Element) | null
-}
-export type ROUTE = ParentRoute | ChildRoute
+  children: ((props: unknown) => JSX.Element) | null;
+};
+export type ROUTE = ParentRoute | ChildRoute;
 
 export const routes: Record<ROUTE_PATH, ROUTE> = {
   '/': {
@@ -78,7 +79,7 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     key: '/tooltip',
     link: '/tooltip',
     name: '03. 툴팁',
-    children: null,
+    children: Tooltip,
   },
   '/textBox': {
     key: '/textBox',
@@ -170,8 +171,11 @@ export const routes: Record<ROUTE_PATH, ROUTE> = {
     name: '18. D&D 리스트',
     children: null,
   },
-}
+};
 
-export const isParentRoute = (route: ROUTE): route is ParentRoute => Array.isArray(route.children)
+export const isParentRoute = (route: ROUTE): route is ParentRoute =>
+  Array.isArray(route.children);
 
-export const gnbRootList = (routes['/'] as ParentRoute).children.map(r => routes[r])
+export const gnbRootList = (routes['/'] as ParentRoute).children.map(
+  (r) => routes[r],
+);
