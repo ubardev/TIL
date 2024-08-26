@@ -3,7 +3,6 @@ import cx from '@/components/tooltip/cx';
 import { SyntheticEvent, useEffect, useState } from 'react';
 
 const Tooltip = ({
-  id,
   title,
   description,
 }: {
