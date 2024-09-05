@@ -2,7 +2,10 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <>
-    <header>Header</header>
-    <Component {...pageProps} /></>;
+  return (
+    <>
+      <header>글로벌 헤드</header>
+      <Component {...pageProps} />
+    </>
+  );
 }
