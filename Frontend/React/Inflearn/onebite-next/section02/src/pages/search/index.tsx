@@ -1,3 +1,9 @@
+import { useRouter } from "next/router";
+
 export default function Page() {
-  return <h1>Search</h1>;
+  const router = useRouter();
+
+  const { q } = router.query;
+
+  return <h1>Search {q}</h1>;
 }
