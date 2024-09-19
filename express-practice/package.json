@@ -4,19 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "babel-node src/index.js"
+    "dev": "nodemon --exec babel-node src/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.6",
     "@babel/core": "^7.25.2",
     "@babel/node": "^7.25.0",
-    "@babel/preset-env": "^7.25.4"
-  },
-  "dependencies": {
-    "express": "^4.21.0",
+    "@babel/preset-env": "^7.25.4",
+    "nodemon": "^3.1.5",
     "prettier": "^3.3.3"
   },
-  "babel" : {
-    "presets": ["@babel/preset-env"]
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
+    "express": "^4.21.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
