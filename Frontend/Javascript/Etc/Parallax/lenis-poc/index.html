@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .grid > div {
+        grid-row: var(--r);
+        grid-column: var(--c);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- https://www.youtube.com/watch?v=nFwNWvN_CRk -->
+    <div class="w-full bg-zinc-900">
+      <div class="grid grid-cols-8 grid-rows-20 gap-2 overflow-hidden">
+        <div class="elem col-span-1 row-span-1" style="--r: 1; --c: 3">
+          <img src="./img/1.jpeg" alt="Image 1" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 1; --c: 7">
+          <img src="./img/2.jpeg" alt="Image 2" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 2; --c: 2">
+          <img src="./img/3.jpeg" alt="Image 3" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 2; --c: 6">
+          <img src="./img/4.jpeg" alt="Image 4" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 3; --c: 4">
+          <img src="./img/5.jpeg" alt="Image 5" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 3; --c: 8">
+          <img src="./img/6.jpeg" alt="Image 6" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 4; --c: 1">
+          <img src="./img/6.jpeg" alt="Image 6" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 4; --c: 4">
+          <img src="./img/7.jpeg" alt="Image 7" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 5; --c: 2">
+          <img src="./img/8.jpeg" alt="Image 8" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 5; --c: 6">
+          <img src="./img/9.jpeg" alt="Image 9" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 6; --c: 3">
+          <img src="./img/10.jpeg" alt="Image 10" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 6; --c: 7">
+          <img src="./img/11.jpeg" alt="Image 11" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 7; --c: 5">
+          <img src="./img/12.jpeg" alt="Image 12" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 7; --c: 3">
+          <img src="./img/1.jpeg" alt="Image 1" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 8; --c: 7">
+          <img src="./img/2.jpeg" alt="Image 2" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 8; --c: 2">
+          <img src="./img/3.jpeg" alt="Image 3" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 9; --c: 6">
+          <img src="./img/4.jpeg" alt="Image 4" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 9; --c: 4">
+          <img src="./img/5.jpeg" alt="Image 5" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 10; --c: 8">
+          <img src="./img/6.jpeg" alt="Image 6" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 10; --c: 1">
+          <img src="./img/6.jpeg" alt="Image 6" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 11; --c: 4">
+          <img src="./img/7.jpeg" alt="Image 7" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 11; --c: 2">
+          <img src="./img/8.jpeg" alt="Image 8" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 12; --c: 6">
+          <img src="./img/9.jpeg" alt="Image 9" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 12; --c: 3">
+          <img src="./img/10.jpeg" alt="Image 10" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 13; --c: 7">
+          <img src="./img/11.jpeg" alt="Image 11" />
+        </div>
+        <div class="elem col-span-1 row-span-1" style="--r: 13; --c: 5">
+          <img src="./img/12.jpeg" alt="Image 12" />
+        </div>
+      </div>
+      <div
+        class="fixed top-0 font-['Helvetica_Now_Display'] left-0 w-full h-full flex flex-col items-center justify-center text-white"
+      >
+        <h1 class="text-8xl uppercase mb-4">Biggest Text Field<sup>@</sup></h1>
+        <h2 class="text-5xl">Smaller Text Field</h2>
+      </div>
+      <div
+        class="w-full h-screen bg-[#D1D1D1] flex items-center justify-center mx-auto py-96 relative z-[999] text-center"
+      >
+        <p
+          class="text-5xl w-3/4 leading-[4.2rem] text-black font-regular text-left"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro laborum
+          iusto a maxime, autem molestiae deserunt saepe fugit earum vero quos
+          architecto accusamus alias ratione vel assumenda sapiente doloremque
+          esse?
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
