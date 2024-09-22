@@ -3,6 +3,7 @@ import { Router } from "express";
 // Router
 class UserController {
   router;
+  path = "/users";
   users = [{ id: 1, name: "ubar", age: 12 }];
   constructor() {
     this.router = Router();

@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import cors from "cors";
 import helmet from "helmet";
-import UserController from "./users";
+import Controllers from "./controllers";
 
 let users = [{ id: 1, name: "ubar", age: 12 }];
 
@@ -13,7 +13,10 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "700mb" }));
 
-app.use("/users", UserController.router);
+Controllers.forEach((controller) => {
+  const { path, router } = controller;
+  app.use(path, router);
+});
 
 // req : 요청 -> Request
 // res : 응답 -> Response
