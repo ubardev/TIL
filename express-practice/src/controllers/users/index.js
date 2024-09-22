@@ -16,26 +16,47 @@ class UserController {
     this.router.post("/", this.createUser.bind(this));
   }
 
-  getUsers(req, res) {
-    res.status(200).json({ users: this.users });
+  getUsers(req, res, next) {
+    try {
+      res.status(200).json({ users: this.users });
+    } catch (err) {
+      next(err);
+    }
   }
 
-  getUser(req, res) {
-    const { id } = req.params;
-    const user = this.users.find((user) => user.id === Number(id));
-    res.status(200).json({ user });
+  getUser(req, res, next) {
+    try {
+      const { id } = req.params;
+      const user = this.users.find((user) => user.id === Number(id));
+
+      if (!user) {
+        throw { status: 404, message: "사용자를 찾을 수 없습니다." };
+      }
+
+      res.status(200).json({ user });
+    } catch (err) {
+      next(err);
+    }
   }
 
-  createUser(req, res) {
-    const { name, age } = req.body;
+  createUser(req, res, next) {
+    try {
+      const { name, age } = req.body;
 
-    this.users.push({
-      id: new Date().getTime(),
-      name,
-      age,
-    });
+      if (!name) {
+        throw { status: 400, message: "이름이 없습니다." };
+      }
 
-    res.status(201).json({ users: this.users });
+      this.users.push({
+        id: new Date().getTime(),
+        name,
+        age,
+      });
+
+      res.status(201).json({ users: this.users });
+    } catch (err) {
+      next(err);
+    }
   }
 }
 
