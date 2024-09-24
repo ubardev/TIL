@@ -2,6 +2,8 @@ import express, { Router } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import Controllers from "./controllers";
+import { swaggerDocs, options } from "./swagger";
+import swaggerUi from "swagger-ui-express";
 
 let users = [{ id: 1, name: "ubar", age: 12 }];
 
@@ -17,6 +19,11 @@ Controllers.forEach((controller) => {
   const { path, router } = controller;
   app.use(path, router);
 });
+
+app.get("/swagger.json", (req, res) => {
+  res.status(200).json(swaggerDocs);
+});
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(undefined, options));
 
 // req : 요청 -> Request
 // res : 응답 -> Response
