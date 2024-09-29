@@ -4,6 +4,7 @@ import helmet from "helmet";
 import Controllers from "./controllers";
 import { swaggerDocs, options } from "./swagger";
 import swaggerUi from "swagger-ui-express";
+import dotenv from "dotenv";
 
 let users = [{ id: 1, name: "ubar", age: 12 }];
 
