@@ -208,14 +208,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script>
-      //   const lenis = new Lenis();
+      const lenis = new Lenis();
 
-      //   function raf(time) {
-      //     lenis.raf(time);
-      //     requestAnimationFrame(raf);
-      //   }
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
 
-      //   requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
 
       const box1 = document.querySelector("#section1 .parallax__item__img");
       const box2 = document.querySelector("#section2 .parallax__item__img");
@@ -285,7 +285,7 @@
           trigger: box5,
           start: "top 50%",
           end: "bottom 20%",
-          scrub: 1, //`true, 1, 2...
+          scrub: true, // 스크롤 속도에 따라 애니메이션 속도 조절
           markers: false,
         },
       });

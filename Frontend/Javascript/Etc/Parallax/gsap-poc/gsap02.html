@@ -267,6 +267,16 @@
         <div class="parallax__item__img"></div>
       </section>
       <!-- //section9 -->
+
+      <section id="section10">
+        <div class="parallax__item__text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum officia
+          corporis mollitia molestiae praesentium officiis consectetur dolorum,
+          voluptatum vero dicta at cum magni neque vel repellendus magnam.
+          Laudantium, blanditiis nulla.
+        </div>
+      </section>
+      <!-- //section10 -->
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
@@ -274,14 +284,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script>
-      //   const lenis = new Lenis();
+      const lenis = new Lenis();
 
-      //   function raf(time) {
-      //     lenis.raf(time);
-      //     requestAnimationFrame(raf);
-      //   }
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
 
-      //   requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
 
       //01 : 이미지 애니메이션 주기
       const ani1 = gsap.timeline();
@@ -305,7 +315,7 @@
         scrub: true,
         pin: true,
         anticipatePin: 1,
-        markers: false,
+        markers: true,
       });
 
       //02 : 이미지를 순차적으로 나오기
@@ -455,12 +465,38 @@
       //09 : 이미지 확대하기
       const ani9 = gsap.timeline();
       ani9
-        .to("#section9 .parallax__item__img", { scale: 13 }) // 이미지 크기 확대
+        .to("#section9 .parallax__item__img", { scale: 13 }) // 이미지 크기 확대 (13배)
         .to("#section9 .parallax__item__img", { autoAlpha: 0 }); // 이미지 사라지기
 
       ScrollTrigger.create({
         animation: ani9,
         trigger: "#section9",
+        start: "top top",
+        end: "+=4000",
+        scrub: true,
+        pin: true,
+        markers: false,
+        anticipatePin: 1,
+      });
+
+      // 텍스트를 개별 글자로 분할
+      const textElement = document.querySelector(".parallax__item__text");
+      const text = textElement.textContent;
+      textElement.innerHTML = text
+        .split("")
+        .map((char) => `<span>${char}</span>`)
+        .join("");
+
+      // 애니메이션 정의
+      const ani10 = gsap.timeline();
+      gsap.utils.toArray(".parallax__item__text span").forEach((char, i) => {
+        ani10.to(char, { color: "red", opacity: 1, duration: 0.5 }, i * 0.1);
+      });
+
+      // ScrollTrigger 설정
+      ScrollTrigger.create({
+        animation: ani10,
+        trigger: "#section10",
         start: "top top",
         end: "+=4000",
         scrub: true,
