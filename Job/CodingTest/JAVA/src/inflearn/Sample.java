@@ -12,7 +12,7 @@ public class Sample {
     public static void main(String[] args) {
         Sample T = new Sample();
         Scanner kb = new Scanner(System.in);
-
+        String str = kb.next();
         System.out.println();
     }
 }
