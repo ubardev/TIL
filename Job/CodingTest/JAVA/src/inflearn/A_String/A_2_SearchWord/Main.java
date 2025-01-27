@@ -1,4 +1,4 @@
-package inflearn.A_String.A_1_SearchWord;
+package inflearn.A_String.A_2_SearchWord;
 
 import java.util.*;
 
