@@ -3,16 +3,27 @@ package inflearn.A_String.A_9;
 import java.util.Scanner;
 
 public class Main {
+//    public int solution(String str) {
+//        int answer = 0;
+//
+//        for (char x : str.toCharArray()) {
+//            if (x >= 48 && x <= 57) {
+//                answer = answer * 10 + (x - 48);
+//            }
+//        }
+//
+//        return answer;
+//    }
     public int solution(String str) {
-        int answer = 0;
+        String answer = "";
 
         for (char x : str.toCharArray()) {
-            if (x >= 48 && x <= 57) {
-                answer = answer * 10 + (x - 48);
+            if (Character.isDigit(x)) {
+                answer += x;
             }
         }
 
-        return answer;
+        return Integer.parseInt(answer);
     }
 
     // g0en2T0s8eSoft
