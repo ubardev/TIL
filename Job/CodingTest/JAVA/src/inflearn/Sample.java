@@ -3,16 +3,16 @@ package inflearn;
 import java.util.*;
 
 public class Sample {
-    public int solution(String str, char t) {
-        int answer = 0;
+    public String solution(String s) {
+        String answer = "";
 
         return answer;
     }
 
     public static void main(String[] args) {
-        Sample T = new Sample();
+        inflearn.A_String.A_11.Main T = new inflearn.A_String.A_11.Main();
         Scanner kb = new Scanner(System.in);
         String str = kb.next();
-        System.out.println();
+        System.out.println(T.solution(str));
     }
 }
