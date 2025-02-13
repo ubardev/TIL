@@ -1,17 +1,16 @@
-package inflearn.A_String.A_1_ConvertUpperCase;
-import java.util.*;
+package inflearn.A_String.A_1;
+
+import java.util.Scanner;
 
 public class Main {
     public String solution(String str) {
         String answer = "";
 
         for (char x : str.toCharArray()) {
-//            if (Character.isLowerCase(x)) answer += Character.toUpperCase(x);
-//            else answer += Character.toLowerCase(x);
-            if (x >= 97 && x <=122) {
-                answer += (char)(x - 32);
+            if (Character.isLowerCase(x)) {
+                answer += Character.toUpperCase(x);
             } else {
-                answer += (char)(x + 32);
+                answer += Character.toLowerCase(x);
             }
         }
 
