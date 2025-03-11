@@ -146,13 +146,12 @@ export default function Navigation() {
                             key={item.name}
                             className={cn([
                               "select-none rounded-md transition-colors focus:bg-accent  hover:bg-accent",
-                              item.to === "/products/promote" &&
-                                "col-span-2 bg-primary/10 hover:bg-primary/20 focus:bg-primary/20",
-                              item.to === "/jobs/submit" &&
+                              (item.to === "/products/promote" ||
+                                item.to === "/jobs/submit") &&
                                 "col-span-2 bg-primary/10 hover:bg-primary/20 focus:bg-primary/20",
                             ])}
                           >
-                            <NavigationMenuLink asChild>
+                            <NavigationMenuLink>
                               <Link
                                 className="p-3 space-y-1 block leading-none no-underline outline-none"
                                 to={item.to}
