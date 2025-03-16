@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Main T = new Main();
         Scanner kb = new Scanner(System.in);
-        String str = kb.next();
+        String str = kb.nextLine();
         System.out.println(T.solution(str));
     }
 }
