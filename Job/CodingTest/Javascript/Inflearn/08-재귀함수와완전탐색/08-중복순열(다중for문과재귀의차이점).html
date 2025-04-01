@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function solution(n, m) {
+    let answer = [];
+    let temp = Array.from({length: m}, () => 0)
+
+    function DFS(L) {
+      if (L === m) {
+        answer.push([...temp]);
+      } else {
+        for (let i = 1; i <= n; i++) {
+          temp[L] = i;
+          DFS(L + 1);
+        }
+      }
+    }
+
+    DFS(0);
+    return answer;
+  }
+
+  console.log(solution(3, 2));
+  document.write(solution(3, 2));
+</script>
+</body>
+</html>
