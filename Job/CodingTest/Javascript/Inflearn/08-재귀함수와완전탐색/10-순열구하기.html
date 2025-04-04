@@ -8,23 +8,49 @@
 </head>
 <body>
 <script>
-  function solution(m, arr) {
-    let answer = [];
-    n = arr.length;
+  // function solution(m, arr) {
+  //   let answer = [];
+  //   n = arr.length;
+  //
+  //   let ch = Array.from({length: n}, () => 0);
+  //   let tmp = Array.from({length: m}, () => 0);
+  //
+  //   function DFS(L) {
+  //     if (L === m) {
+  //       answer.push([...tmp]);
+  //     } else {
+  //       for (let i = 0; i <n; i++) {
+  //         if (ch[i] === 0) {
+  //           ch[i] = 1;
+  //           tmp[L] = arr[i];
+  //           DFS(L + 1);
+  //           ch[i] = 0;
+  //         }
+  //       }
+  //     }
+  //   }
+  //
+  //   DFS(0);
+  //   return answer;
+  // }
 
-    let ch = Array.from({length: n}, () => 0);
-    let tmp = Array.from({length: m}, () => 0);
+  function solution(m, arr) {
+    const answer = [];
+    const arrayLength = arr.length;
+
+    let checked = Array.from({length: arrayLength}, () => 0);
+    let tempAnswer = Array.from({length: m}, () => 0);
 
     function DFS(L) {
       if (L === m) {
-        answer.push([...tmp]);
+        answer.push([...tempAnswer]);
       } else {
-        for (let i = 0; i <n; i++) {
-          if (ch[i] === 0) {
-            ch[i] = 1;
-            tmp[L] = arr[i];
+        for (let i = 0; i < arrayLength; i++) {
+          if (checked[i] === 0) {
+            checked[i] = 1;
+            tempAnswer[L] = arr[i];
             DFS(L + 1);
-            ch[i] = 0;
+            checked[i] = 0;
           }
         }
       }
