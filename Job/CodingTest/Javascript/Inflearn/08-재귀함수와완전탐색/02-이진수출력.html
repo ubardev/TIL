@@ -13,10 +13,10 @@
 
         function DFS(number) {
           if (number === 0) {
-            return;
+
           } else {
             DFS(parseInt(number / 2));
-            answer += String(number % 2);
+            answer += number % 2;
           }
         }
 
