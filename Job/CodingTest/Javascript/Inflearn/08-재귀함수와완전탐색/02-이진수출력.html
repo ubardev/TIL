@@ -8,18 +8,19 @@
   </head>
   <body>
     <script>
-      function solution(n) {
+      function solution(inputNumber) {
         let answer = "";
 
-        function DFS(n) {
-          if (n === 0) return;
-          else {
-            DFS(parseInt(n / 2));
-            answer += String(n % 2);
+        function DFS(number) {
+          if (number === 0) {
+            return;
+          } else {
+            DFS(parseInt(number / 2));
+            answer += String(number % 2);
           }
         }
 
-        DFS(n);
+        DFS(inputNumber);
         return answer;
       }
 
