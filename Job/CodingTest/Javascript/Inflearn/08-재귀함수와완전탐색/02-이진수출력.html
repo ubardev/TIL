@@ -13,7 +13,7 @@
 
         function DFS(number) {
           if (number === 0) {
-
+            return;
           } else {
             DFS(parseInt(number / 2));
             answer += number % 2;
@@ -21,7 +21,7 @@
         }
 
         DFS(inputNumber);
-        return answer;
+        return answer
       }
 
       let result = solution(11);
