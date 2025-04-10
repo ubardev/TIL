@@ -9,21 +9,18 @@
 <body>
 <script>
   function solution(arr) {
-    let answer = "NO", flag = 0;
-    let total = arr.reduce((a, b) => a + b, 0);
-    let n = arr.length;
+    let answer = "NO";
+    let totalSum = arr.reduce((prev, next) => prev + next, 0);
+    let length = arr.length;
 
-    function DFS(L, sum) {
-      if (flag) return;
+    function DFS(level, sum) {
+      if (answer === 'YES') return;
 
-      if (L === n) {
-        if ((total - sum) === sum) {
-          answer = "YES";
-          flag = 1;
-        }
+      if (level === length) {
+        if ((totalSum - sum) === sum) answer = "YES";
       } else {
-        DFS(L + 1, sum + arr[L]);
-        DFS(L + 1, sum);
+        DFS(level + 1, sum + arr[level]);
+        DFS(level + 1, sum);
       }
     }
 
