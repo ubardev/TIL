@@ -67,12 +67,13 @@ function solution(n) {
 
         subset.push(index);
         dfs(index + 1);
+
         subset.pop();
         dfs(index + 1);
     }
 
-    dfs(1);
-    console.log(result.join('\n'));
+    dfs(1)
+    console.log(result.join("\n"));
 }
 
 solution(3);
