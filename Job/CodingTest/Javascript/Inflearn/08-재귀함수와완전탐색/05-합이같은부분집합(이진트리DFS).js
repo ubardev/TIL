@@ -1,7 +1,26 @@
 // inflearn
-// function solution(numbers) {}
+// function solution(numbers) {
+//   let answer = "NO";
+//   const totalSum = numbers.reduce((acc, number) => acc + number, 0);
+//   const numberCount = numbers.length;
+//
+//   function DFS(currentIndex, currentSubsetSum) {
+//     if (answer === "YES") return;
+//
+//     if (currentIndex === numberCount) {
+//       if ((totalSum - currentSubsetSum) === currentSubsetSum) answer = "YES";
+//       return;
+//     }
+//
+//     DFS(currentIndex + 1, currentSubsetSum + numbers[currentIndex]);
+//     DFS(currentIndex + 1, currentSubsetSum);
+//   }
+//
+//   DFS(0, 0);
+//   return answer;
+// }
 
-// GPT
+// AI
 // function solution(numbers) {
 //   const numberCount = numbers.length;
 //   let isPossible = false;
@@ -27,26 +46,27 @@
 //   return isPossible ? "YES" : "NO";
 // }
 
-
 function solution(numbers) {
   let answer = "NO";
-  const totalSum = numbers.reduce((acc, number) => acc + number, 0);
+  const totalSum = numbers.reduce((sum, num) => sum + num, 0);
   const numberCount = numbers.length;
 
-  function DFS(level, sum) {
-    if (answer === "YES") return;
+  function dfs(currentIndex, currentSubsetSum) {
+    if (answer === 'YES') return;
 
-    if (level === numberCount) {
-      if ((totalSum - sum) === sum) answer = "YES";
+    if (currentIndex === numberCount) {
+      if ((totalSum - currentSubsetSum) === currentSubsetSum) answer = "YES";
       return;
     }
 
-    DFS(level + 1, sum + numbers[level]);
-    DFS(level + 1, sum);
+    dfs(currentIndex + 1, currentSubsetSum + numbers[currentIndex])
+    dfs(currentIndex + 1, currentSubsetSum)
+
   }
 
-  DFS(0, 0);
+  dfs(0, 0);
   return answer;
+
 }
 
 const input = [1, 3, 5, 6, 7, 10];
